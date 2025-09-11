@@ -6,10 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
 public class Main extends Application {
-    
+
     public final String APP_NAME = "PayWho";
-    
+
     public static void main(String[] args) {
         launch(args);
     }

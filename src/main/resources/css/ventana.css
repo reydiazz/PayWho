@@ -1,10 +1,13 @@
-
 #nav{
     -fx-background-color: #ffffff;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0.3, 0, -5);
 }
 
 .button-decorator{
+    -fx-background-color: #ffffff;
+}
 
+.button-toolbar-decorator{
+    -fx-background-color: transparent;
 }
 
