@@ -7,6 +7,15 @@
     -fx-background-color: #ffffff;
 }
 
+.button-decorator:hover {
+    -fx-background-color: #000000;
+    -fx-text-fill:  #ffffff;
+}
+
+.button-decorator:hover .svg-button{
+    -fx-fill:  #ffffff;
+}
+
 .button-toolbar-decorator{
     -fx-background-color: transparent;
 }
