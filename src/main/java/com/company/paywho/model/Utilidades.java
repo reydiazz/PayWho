@@ -3,23 +3,23 @@ package com.company.paywho.model;
 import java.util.LinkedList;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 
 public class Utilidades {
-    
-    public static LinkedList<Button> recojerBotonesLinkedList(Parent root, Parent evitar) {
-        LinkedList<Button> btns = new LinkedList<>();
-        for (Node node : root.getChildrenUnmodifiable()) {  
+
+    public static <T extends Node> LinkedList<T> recojerNodos(Parent root, Parent evitar, Class<T> tipo) {
+        LinkedList<T> lista = new LinkedList<>();
+        for (Node node : root.getChildrenUnmodifiable()) {
             if (node == evitar) {
                 continue;
             }
-            if (node instanceof Button) {
-                btns.add((Button)node);
+            if (tipo.isInstance(node)) {
+                lista.add(tipo.cast(node));
             }
             if (node instanceof Parent) {
-                btns.addAll(recojerBotonesLinkedList((Parent) node, evitar));
+                lista.addAll(recojerNodos((Parent) node, evitar, tipo));
             }
         }
-        return btns;
+        return lista;
     }
+    
 }

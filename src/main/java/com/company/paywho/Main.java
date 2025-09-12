@@ -1,5 +1,7 @@
 package com.company.paywho;
 
+import com.company.paywho.controller.VentanaController;
+import com.company.paywho.model.ArchivoServicio;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,10 +19,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/ventana.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ArchivoServicio.getInstancia().getRuta("ventana.fxml")));
+        Parent root = loader.load();
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle(APP_NAME);
         stage.setScene(new Scene(root));
         stage.show();
+        VentanaController controlador = loader.getController();
+        controlador.setVentana(stage);
     }
 }

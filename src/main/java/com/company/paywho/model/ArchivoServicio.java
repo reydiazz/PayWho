@@ -1,16 +1,17 @@
 package com.company.paywho.model;
 
-import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class ArchivoServicio {
 
     private static ArchivoServicio instancia;
     private Properties rutas;
+    private final String RUTA_ARCHIVO = "/config.properties";
 
-    private ArchivoServicio() {
-        rutas = new Properties();
-        try (FileInputStream fis = new FileInputStream("config.properties")) {
+    private ArchivoServicio() { 
+       try (InputStream fis = getClass().getResourceAsStream(RUTA_ARCHIVO)) {
+             rutas = new Properties();
             rutas.load(fis);
         } catch (Exception e) {
             e.printStackTrace();

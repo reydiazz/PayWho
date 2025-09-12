@@ -9,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
@@ -159,7 +160,7 @@
     <center>
         <VBox fx:id="vb_contenedor_principal" prefHeight="909.0" prefWidth="988.0" BorderPane.alignment="CENTER">
             <children>
-            <VBox prefHeight="202.0" prefWidth="1080.0">
+            <VBox prefHeight="151.0" prefWidth="1080.0">
                <children>
                       <HBox fx:id="hb_toolbar" alignment="TOP_RIGHT" prefHeight="33.0" prefWidth="1080.0">
                           <children>
@@ -181,7 +182,7 @@
                         </Button>
                           </children>
                       </HBox>
-                  <HBox alignment="TOP_RIGHT" prefHeight="78.0" prefWidth="1080.0">
+                  <HBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="78.0" prefWidth="1080.0">
                      <children>
                         <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="87.0" prefWidth="430.0">
                            <children>
@@ -197,7 +198,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <HBox prefHeight="87.0" prefWidth="206.0" />
+                        <Region prefHeight="78.0" prefWidth="147.0" HBox.hgrow="ALWAYS" />
                         <StackPane prefHeight="94.0" prefWidth="377.0">
                            <children>
                               <Button fx:id="btn_perfil" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="250.0" styleClass="button-toolbar-decorator" text="Anghelo Reynoso">
@@ -218,10 +219,16 @@
                            </children>
                         </StackPane>
                      </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
                   </HBox>
                </children>
             </VBox>
-                <StackPane fx:id="sp_contenido" prefHeight="682.0" prefWidth="1080.0" />
+                <StackPane fx:id="sp_contenido" VBox.vgrow="ALWAYS" />
             </children>
         </VBox>
     </center>

@@ -1,8 +1,9 @@
 package com.company.paywho.controller;
 
-import com.company.paywho.model.Utilidades;
-import java.io.IOException;
+import com.company.paywho.model.ArchivoServicio;
+import com.company.paywho.view.BotonNavegacion;
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,8 +13,11 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 public class VentanaController implements Initializable {
+
+    private Stage ventana;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -21,25 +25,71 @@ public class VentanaController implements Initializable {
     }
 
     private void inicializarBotones() {
-
+        inicializarBotonesToolBar();
+        inicializarBotonesPrincipales();
+        inicializarBotonPerfil();
     }
 
     private void inicializarBotonesPrincipales() {
-        
+        LinkedList<BotonNavegacion> botonesPrincipales = new LinkedList<>();
+        botonesPrincipales.add(new BotonNavegacion(btn_inicio, ArchivoServicio.getInstancia().getRuta("inicio.fxml")));
+        botonesPrincipales.add(new BotonNavegacion(btn_ingreso, ArchivoServicio.getInstancia().getRuta("ingreso.fxml")));
+        botonesPrincipales.add(new BotonNavegacion(btn_gasto, ArchivoServicio.getInstancia().getRuta("gasto.fxml")));
+        botonesPrincipales.add(new BotonNavegacion(btn_ahorro, ArchivoServicio.getInstancia().getRuta("ahorro.fxml")));
+        botonesPrincipales.add(new BotonNavegacion(btn_categoria, ArchivoServicio.getInstancia().getRuta("categoria.fxml")));
+        botonesPrincipales.add(new BotonNavegacion(btn_ajuste, ArchivoServicio.getInstancia().getRuta("ajuste.fxml")));
+        asignarRutaBotones(botonesPrincipales);
+    }
+
+    private void inicializarBotonPerfil() {
+        BotonNavegacion botonPerfil = new BotonNavegacion(btn_perfil, ArchivoServicio.getInstancia().getRuta("ajuste.fxml"));
+        asignarRutaBoton(botonPerfil);
+    }
+
+    private void inicializarBotonesSecundarios() {
+
+    }
+
+    private void inicializarBotonesToolBar() {
+        btn_cerrar.setOnAction(e -> {
+            ventana.close();
+        });
+        btn_minimizar.setOnAction(e -> {
+            ventana.setIconified(true);
+        });
     }
 
     private void cambiarEscena(String ruta) {
         try {
-            limpiarEscenarioYCambiarEscena(ruta);
+            sp_contenido.getChildren().clear();
+            Parent root = FXMLLoader.load(getClass().getResource(ruta));
+            sp_contenido.getChildren().add(root);
+            System.out.println("Cargo correctamente.");
         } catch (Exception e) {
-            System.out.println("No se encontro el archivo fxml");
+            System.out.println("No se encontro el archivo fxml.");
         }
     }
 
-    private void limpiarEscenarioYCambiarEscena(String ruta) throws IOException {
-        sp_contenido.getChildren().clear();
-        Parent root = FXMLLoader.load(getClass().getResource(ruta));
-        sp_contenido.getChildren().add(root);
+    private void asignarRutaBotones(LinkedList<BotonNavegacion> botones) {
+        for (BotonNavegacion boton : botones) {
+            boton.getBoton().setOnAction(evento -> {
+                cambiarEscena(boton.getRuta());
+            });
+        }
+    }
+
+    private void asignarRutaBoton(BotonNavegacion boton) {
+        boton.getBoton().setOnAction(evento -> {
+            cambiarEscena(boton.getRuta());
+        });
+    }
+
+    public Stage getVentana() {
+        return ventana;
+    }
+
+    public void setVentana(Stage ventana) {
+        this.ventana = ventana;
     }
 
     @FXML
