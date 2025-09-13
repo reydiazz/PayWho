@@ -28,6 +28,7 @@ public class VentanaController implements Initializable {
         inicializarBotonesToolBar();
         inicializarBotonesPrincipales();
         inicializarBotonPerfil();
+        inicializarInicio();
     }
 
     private void inicializarBotonesPrincipales() {
@@ -44,6 +45,10 @@ public class VentanaController implements Initializable {
     private void inicializarBotonPerfil() {
         BotonNavegacion botonPerfil = new BotonNavegacion(btn_perfil, ArchivoServicio.getInstancia().getRuta("ajuste.fxml"));
         asignarRutaBoton(botonPerfil);
+    }
+    
+    private void inicializarInicio(){
+        cambiarEscena(ArchivoServicio.getInstancia().getRuta("inicio.fxml"));
     }
 
     private void inicializarBotonesSecundarios() {

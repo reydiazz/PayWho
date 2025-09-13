@@ -1,6 +1,402 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" />
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" stylesheets="@../css/inicio.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox prefHeight="600.0" prefWidth="1060.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane hgap="40.0" prefHeight="199.0" prefWidth="1060.0" VBox.vgrow="ALWAYS">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <VBox.margin>
+                  <Insets left="30.0" right="30.0" top="30.0" />
+               </VBox.margin>
+               <children>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="panel">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <StackPane prefHeight="68.0" prefWidth="92.0">
+                                       <children>
+                                          <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="marcIcon">
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="46.0" prefWidth="34.0">
+                                                   <graphic>
+                                                      <Group>
+                                                         <children>
+                                                            <SVGPath content="M256,0C114.625,0,0,114.625,0,256s114.625,256,256,256c141.406,0,256-114.625,256-256S397.406,0,256,0z M325.812,354.844   c-12.594,14.125-30.78,22.438-54.562,24.938V416h-30.313v-36.031c-39.656-4.062-64.188-27.125-73.656-69.125l46.875-12.219   c4.344,26.406,18.719,39.594,43.125,39.594c11.406,0,19.844-2.812,25.219-8.469s8.062-12.469,8.062-20.469   c0-8.281-2.688-14.563-8.062-18.813c-5.375-4.28-17.344-9.688-35.875-16.25c-16.656-5.78-29.688-11.469-39.063-17.155   c-9.375-5.625-17-13.531-22.844-23.688c-5.844-10.188-8.781-22.063-8.781-35.563c0-17.719,5.25-33.688,15.688-47.875   c10.438-14.156,26.875-22.813,49.313-25.969V96h30.313v27.969c33.875,4.063,55.813,23.219,65.781,57.5l-41.75,17.125   c-8.156-23.5-20.72-35.25-37.781-35.25c-8.563,0-15.438,2.625-20.594,7.875c-5.188,5.25-7.781,11.625-7.781,19.094   c0,7.625,2.5,13.469,7.5,17.563c4.969,4.063,15.688,9.094,32.063,15.125c18,6.563,32.125,12.781,42.344,18.625   c10.25,5.844,18.406,13.938,24.531,24.219c6.094,10.313,9.155,22.345,9.155,36.126C344.719,323.125,338.406,340.75,325.812,354.844   z" scaleX="0.06" scaleY="0.06" />
+                                                         </children>
+                                                      </Group>
+                                                   </graphic>
+                                                </Label>
+                                             </children>
+                                             <StackPane.margin>
+                                                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                             </StackPane.margin>
+                                             <padding>
+                                                <Insets bottom="5.0" top="5.0" />
+                                             </padding>
+                                          </StackPane>
+                                       </children>
+                                    </StackPane>
+                                    <VBox prefHeight="78.0" prefWidth="235.0">
+                                       <children>
+                                          <Label prefHeight="97.0" prefWidth="229.0" text="Ingresos">
+                                             <font>
+                                                <Font name="Montserrat Bold" size="25.0" />
+                                             </font>
+                                          </Label>
+                                          <Label prefHeight="52.0" prefWidth="196.0" text="9 numero de ingresos">
+                                             <font>
+                                                <Font name="Segoe UI" size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="76.0" prefWidth="314.0" text="\$700">
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="51.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="20.0" right="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="33.0" prefWidth="258.0" text="+15.65%">
+                                       <graphic>
+                                          <Group>
+                                             <children>
+                                                <SVGPath content="M51,21c-.4554,0-.8973,.0555-1.3239,.152-1.0009-2.0925-3.7791-7.1628-7.2308-7.1628-3.9336,0-7.667,6.4756-8.8584,9.6113-.1396,.3672-.2764,.7383-.4131,1.1094-.8677,2.3604-1.8423,5.0576-3.1367,4.833-.7188-.1133-1.874-2.041-2.6387-3.3174-1.3076-2.1816-2.5425-4.2432-4.3345-4.2432-2.5151,0-4.5879,4.4062-5.1631,5.7559-1.0083,2.3646-3.0403,7.3961-3.8322,9.3625-.3474-.0628-.7034-.1008-1.0687-.1008-3.3086,0-6,2.6914-6,6s2.6914,6,6,6,6-2.6914,6-6c0-2.2357-1.2313-4.186-3.0492-5.2181,.8066-2.0026,2.7988-6.9343,3.7899-9.2594,1.3672-3.208,2.8389-4.54,3.3232-4.54,.6587,0,1.8857,2.0479,2.6187,3.2715,1.2349,2.0605,2.4009,4.0059,4.0435,4.2656,2.9082,.4629,4.1353-2.8857,5.3247-6.1191,.1348-.3643,.2686-.7295,.4053-1.0889,1.3213-3.4756,4.6182-8.3223,6.9893-8.3223,1.8899,0,4.1369,3.3498,5.3813,5.9279-1.6942,1.0616-2.8266,2.9401-2.8266,5.0828,0,3.3086,2.6914,6,6,6s6-2.6914,6-6-2.6914-6-6-6ZM13,47c-2.2056,0-4-1.7939-4-4s1.7944-4,4-4,4,1.7939,4,4-1.7944,4-4,4ZM51,31c-2.2061,0-4-1.7939-4-4s1.7939-4,4-4,4,1.7939,4,4-1.7939,4-4,4Z" scaleX="0.4" scaleY="0.4" />
+                                             </children>
+                                          </Group>
+                                       </graphic>
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="48.0" prefWidth="254.0" text="+4 esta semana">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="20.0" right="20.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                           <StackPane.margin>
+                              <Insets bottom="20.0" top="20.0" />
+                           </StackPane.margin>
+                        </VBox>
+                     </children>
+                  </StackPane>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="panel" GridPane.columnIndex="1">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <StackPane prefHeight="68.0" prefWidth="92.0">
+                                       <children>
+                                          <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="marcIcon">
+                                             <StackPane.margin>
+                                                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                             </StackPane.margin>
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="46.0" prefWidth="34.0">
+                                                   <graphic>
+                                                      <Group>
+                                                         <children>
+                                                            <SVGPath content="M318.423,303.258c11.696,0,22.271-4.56,30.322-11.817c8.056,7.258,18.631,11.817,30.331,11.817    c25.109,0,45.485-20.376,45.485-45.485c0-25.114-20.376-45.49-45.485-45.49c-11.7,0-22.275,4.562-30.331,11.815    c-8.051-7.252-18.626-11.815-30.322-11.815c-25.118,0-45.49,20.376-45.49,45.49C272.933,282.882,293.305,303.258,318.423,303.258z M454.889,60.651H90.978c-16.762,0-30.327,13.565-30.327,30.327v90.978h30.327h151.629h212.282v151.629H242.606v30.321    h212.282c16.759,0,30.322-13.562,30.322-30.321V90.978C485.211,74.216,471.647,60.651,454.889,60.651z M454.889,121.305H90.978    V90.978h363.911V121.305z  M106.139,212.282C47.504,212.282,0,259.784,0,318.416C0,377.059,47.504,424.56,106.139,424.56    c58.64,0,106.144-47.501,106.144-106.144C212.282,259.784,164.778,212.282,106.139,212.282z M84.7,382.747l-53.604-53.605    l21.438-21.44l32.166,32.16l75.042-75.042l21.443,21.441L84.7,382.747z " scaleX="0.06" scaleY="0.06" />
+                                                         </children>
+                                                      </Group>
+                                                   </graphic>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="5.0" top="5.0" />
+                                             </padding>
+                                          </StackPane>
+                                       </children>
+                                    </StackPane>
+                                    <VBox prefHeight="78.0" prefWidth="235.0">
+                                       <children>
+                                          <Label prefHeight="97.0" prefWidth="229.0" text="Gastos">
+                                             <font>
+                                                <Font name="Montserrat Bold" size="25.0" />
+                                             </font>
+                                          </Label>
+                                          <Label prefHeight="52.0" prefWidth="196.0" text="4 numero de gastos">
+                                             <font>
+                                                <Font name="Segoe UI" size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="76.0" prefWidth="314.0" text="\$500">
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="51.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="20.0" right="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="33.0" prefWidth="258.0" text="+7.2%">
+                                       <graphic>
+                                          <Group>
+                                             <children>
+                                                <SVGPath content="M51,21c-.4554,0-.8973,.0555-1.3239,.152-1.0009-2.0925-3.7791-7.1628-7.2308-7.1628-3.9336,0-7.667,6.4756-8.8584,9.6113-.1396,.3672-.2764,.7383-.4131,1.1094-.8677,2.3604-1.8423,5.0576-3.1367,4.833-.7188-.1133-1.874-2.041-2.6387-3.3174-1.3076-2.1816-2.5425-4.2432-4.3345-4.2432-2.5151,0-4.5879,4.4062-5.1631,5.7559-1.0083,2.3646-3.0403,7.3961-3.8322,9.3625-.3474-.0628-.7034-.1008-1.0687-.1008-3.3086,0-6,2.6914-6,6s2.6914,6,6,6,6-2.6914,6-6c0-2.2357-1.2313-4.186-3.0492-5.2181,.8066-2.0026,2.7988-6.9343,3.7899-9.2594,1.3672-3.208,2.8389-4.54,3.3232-4.54,.6587,0,1.8857,2.0479,2.6187,3.2715,1.2349,2.0605,2.4009,4.0059,4.0435,4.2656,2.9082,.4629,4.1353-2.8857,5.3247-6.1191,.1348-.3643,.2686-.7295,.4053-1.0889,1.3213-3.4756,4.6182-8.3223,6.9893-8.3223,1.8899,0,4.1369,3.3498,5.3813,5.9279-1.6942,1.0616-2.8266,2.9401-2.8266,5.0828,0,3.3086,2.6914,6,6,6s6-2.6914,6-6-2.6914-6-6-6ZM13,47c-2.2056,0-4-1.7939-4-4s1.7944-4,4-4,4,1.7939,4,4-1.7944,4-4,4ZM51,31c-2.2061,0-4-1.7939-4-4s1.7939-4,4-4,4,1.7939,4,4-1.7939,4-4,4Z" scaleX="0.4" scaleY="0.4" />
+                                             </children>
+                                          </Group>
+                                       </graphic>
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="48.0" prefWidth="254.0" text="+1 esta semana">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="20.0" right="20.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                           <StackPane.margin>
+                              <Insets bottom="20.0" top="20.0" />
+                           </StackPane.margin>
+                        </VBox>
+                     </children>
+                  </StackPane>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="panel" GridPane.columnIndex="2">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <StackPane prefHeight="68.0" prefWidth="92.0">
+                                       <children>
+                                          <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="marcIcon">
+                                             <StackPane.margin>
+                                                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                             </StackPane.margin>
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="46.0" prefWidth="34.0">
+                                                   <graphic>
+                                                      <Group>
+                                                         <children>
+                                                            <SVGPath content="M192,192c106,0,192-43,192-96S298,0,192,0C85.938,0,0,43,0,96S85.938,192,192,192z M218.5,109.813   c-5.375-1.75-17.375-3.875-35.875-6.5c-16.688-2.313-29.688-4.625-39.063-6.875s-17-5.406-22.875-9.469   c-5.813-4.094-8.75-8.844-8.75-14.219c0-7.094,5.25-13.5,15.688-19.156c10.438-5.656,26.875-9.125,49.313-10.406V32h30.313v11.188   c33.875,1.625,55.813,9.313,65.75,23l-41.75,6.875c-8.125-9.406-20.688-14.125-37.75-14.125c-8.563,0-15.438,1.063-20.625,3.156   c-5.187,2.093-7.75,4.656-7.75,7.656c0,3.031,2.5,5.375,7.5,7c4.938,1.625,15.688,3.656,32.063,6.063   c18,2.625,32.125,5.125,42.313,7.438c10.25,2.344,18.438,5.594,24.562,9.688c6.063,4.125,9.125,8.938,9.125,14.438   c0,8.5-6.312,15.531-18.875,21.188c-12.625,5.625-30.812,8.969-54.562,9.969V160h-30.313v-14.406   c-39.688-1.625-64.188-10.844-73.688-27.656l46.875-4.875c4.375,10.563,18.75,15.844,43.125,15.844   c11.438,0,19.875-1.125,25.25-3.406c5.375-2.25,8.063-5,8.063-8.188C226.563,114,223.875,111.5,218.5,109.813z M0,160   c0-5.688,1.125-11.219,3.063-16.625C35.625,181.813,107,208,192,208c24.375,0,47.438-2.375,69-6.344   c-22.5,13.656-41.688,32.094-56.125,54.031C200.563,255.813,196.313,256,192,256C85.938,256,0,213,0,160z M384,160   c0,6.313-1.312,12.5-3.688,18.5c-9.25-1.5-18.625-2.5-28.313-2.5c-5.25,0-10.375,0.344-15.5,0.781   c18.313-9.531,33.625-20.719,44.438-33.406C382.812,148.781,384,154.313,384,160z M264.938,504.781   C242.438,509.406,217.813,512,192,512C85.938,512,0,469,0,416c0-5.688,1.125-11.219,3.063-16.625C35.625,437.812,107,464,192,464   c8.063,0,15.875-0.438,23.625-0.906C229.313,479.844,246.063,493.969,264.938,504.781z M0,352c0-5.688,1.125-11.219,3.063-16.625   c31.375,37,98.875,62.406,179.688,64.281c4.813,17.219,12.188,33.375,21.75,48.031c-4.188,0.125-8.313,0.312-12.5,0.312   C85.938,448,0,405,0,352z M0,288c0-5.688,1.125-11.219,3.063-16.625c30.625,36.094,95.625,61.094,173.75,64.031   c-0.5,5.469-0.813,11-0.813,16.594c0,10.812,1.125,21.375,3,31.688C79.063,380.312,0,338.812,0,288z M0,224   c0-5.688,1.125-11.219,3.063-16.625C35.625,245.813,107,272,192,272c1.188,0,2.313-0.125,3.5-0.125   c-7.625,14.844-13.25,30.875-16.375,47.812C79.125,316.344,0,274.812,0,224z M352,192c-88.438,0-160,71.688-160,160   c0,88.406,71.562,160,160,160c88.375,0,160-71.594,160-160C512,263.688,440.375,192,352,192z M407.875,431.094   c-10.062,11.313-24.688,17.938-43.688,19.938v28.938h-24.25v-28.78c-31.688-3.25-51.313-21.72-58.875-55.345l37.438-9.75   c3.5,21.125,15,31.688,34.562,31.688c9.063,0,15.813-2.25,20.125-6.781c4.312-4.531,6.5-9.969,6.5-16.375   c0-6.625-2.188-11.656-6.5-15.031c-4.312-3.438-13.875-7.781-28.688-13.031c-13.312-4.594-23.75-9.155-31.25-13.719   c-7.5-4.5-13.562-10.812-18.312-18.938c-4.625-8.156-7-17.656-7-28.438c0-14.188,4.188-26.969,12.562-38.312   c8.375-11.344,21.5-18.25,39.438-20.781V224h24.25v22.375c27.125,3.25,44.688,18.562,52.625,45.969l-33.375,13.75   c-6.5-18.844-16.562-28.219-30.25-28.219c-6.812,0-12.312,2.094-16.438,6.312c-4.188,4.22-6.25,9.281-6.25,15.25   c0,6.125,2,10.781,6,14.063c4,3.25,12.562,7.281,25.625,12.094c14.438,5.25,25.75,10.22,33.875,14.906   c8.188,4.656,14.75,11.156,19.688,19.375C420.5,368.125,423,377.75,423,388.75C423,405.688,417.938,419.781,407.875,431.094z" scaleX="0.06" scaleY="0.06" />
+                                                         </children>
+                                                      </Group>
+                                                   </graphic>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="5.0" top="5.0" />
+                                             </padding>
+                                          </StackPane>
+                                       </children>
+                                    </StackPane>
+                                    <VBox prefHeight="78.0" prefWidth="235.0">
+                                       <children>
+                                          <Label prefHeight="97.0" prefWidth="229.0" text="Ahorros">
+                                             <font>
+                                                <Font name="Montserrat Bold" size="25.0" />
+                                             </font>
+                                          </Label>
+                                          <Label prefHeight="52.0" prefWidth="196.0" text="15% de cada ingreso">
+                                             <font>
+                                                <Font name="Segoe UI" size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="76.0" prefWidth="314.0" text="\$100">
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="51.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="20.0" right="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                 <padding>
+                                    <Insets left="20.0" right="20.0" />
+                                 </padding>
+                                 <children>
+                                    <ProgressBar prefHeight="31.0" prefWidth="267.0" progress="0.0" />
+                                    <Label alignment="CENTER" prefHeight="46.0" prefWidth="34.0">
+                                       <graphic>
+                                          <Group>
+                                             <children>
+                                                <SVGPath content="M33.75,39.81A8,8,0,0,1,24,32.67a2,2,0,0,0-.61-1.25A2,2,0,0,0,20,33q0,.31.07.61A12,12,0,1,0,33.61,20.11L33,20a2,2,0,0,0-1.59,3.37,2,2,0,0,0,1.25.61,8,8,0,0,1,7.18,9.58A7.81,7.81,0,0,1,33.75,39.81Z M16.49,24.49h0a2,2,0,0,0-3.3.71,20,20,0,1,0,12-12,2,2,0,0,0-.72,3.3,2,2,0,0,0,2.08.47,15.84,15.84,0,0,1,7.62-.81,16,16,0,1,1-18,18A15.84,15.84,0,0,1,17,26.57,2,2,0,0,0,16.49,24.49Z M29.72,59.91A28,28,0,1,0,18.94,7.24a2,2,0,0,0-.5,3.19h0a2,2,0,0,0,2.32.36,24,24,0,1,1-10,10,2,2,0,0,0-.36-2.32,2,2,0,0,0-3.19.5,28,28,0,0,0,22.47,41Z M8.12,14.76a4.22,4.22,0,0,0,3,1.24,5,5,0,0,1,3.53,1.46l16,16a2,2,0,0,0,2.94-.12,2.09,2.09,0,0,0-.2-2.8L17.46,14.63A5,5,0,0,1,16,11.1a4.22,4.22,0,0,0-1.24-3L11,4.31A.94.94,0,0,0,9.36,5V8.35a1,1,0,0,1-1,1H5A.94.94,0,0,0,4.31,11Z" scaleX="0.4" scaleY="0.4" />
+                                             </children>
+                                          </Group>
+                                       </graphic>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <StackPane.margin>
+                              <Insets bottom="20.0" top="20.0" />
+                           </StackPane.margin>
+                        </VBox>
+                     </children>
+                  </StackPane>
+               </children>
+            </GridPane>
+            <GridPane hgap="40.0" maxHeight="1.7976931348623157E308" prefHeight="297.0" prefWidth="1060.0" VBox.vgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="674.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="326.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <VBox.margin>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </VBox.margin>
+               <children>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="panel">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="66.0" prefWidth="664.0" text="Evolución financiera">
+                                 <font>
+                                    <Font name="Montserrat Bold" size="25.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets top="20.0" />
+                                 </padding>
+                              </Label>
+                              <BarChart prefHeight="252.0" prefWidth="692.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </BarChart>
+                           </children>
+                        </VBox>
+                     </children>
+                  </StackPane>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="panel" GridPane.columnIndex="1">
+                     <children>
+                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label prefHeight="57.0" prefWidth="348.0" text="Balance actual">
+                                       <font>
+                                          <Font name="Montserrat Bold" size="25.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label prefHeight="62.0" prefWidth="337.0" text="\$250">
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="51.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="20.0" right="20.0" />
+                                       </padding>
+                                    </Label>
+                                    <HBox prefHeight="195.0" prefWidth="316.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="170.0" prefWidth="177.0" spacing="20.0">
+                                             <children>
+                                                <Label graphicTextGap="5.0" text="Ingreso">
+                                                   <graphic>
+                                                      <StackPane prefHeight="31.0" prefWidth="31.0" styleClass="marcIcon" />
+                                                   </graphic>
+                                                   <font>
+                                                      <Font name="Segoe UI" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label graphicTextGap="5.0" text="Gasto">
+                                                   <graphic>
+                                                      <StackPane prefHeight="31.0" prefWidth="31.0" styleClass="marcIcon" />
+                                                   </graphic>
+                                                   <font>
+                                                      <Font name="Segoe UI" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label graphicTextGap="5.0" text="Ahorro">
+                                                   <graphic>
+                                                      <StackPane prefHeight="31.0" prefWidth="31.0" styleClass="marcIcon" />
+                                                   </graphic>
+                                                   <font>
+                                                      <Font name="Segoe UI" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets left="20.0" />
+                                             </padding>
+                                          </VBox>
+                                          <PieChart prefHeight="170.0" prefWidth="177.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </StackPane>
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
