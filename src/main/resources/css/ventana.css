@@ -2,21 +2,18 @@
     -fx-background-color: #ffffff;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0.3, 0, -5);
 }
-
-.button-decorator{
+.button-nav-decorator{
     -fx-background-color: #ffffff;
+    -fx-text-fill:  #000000;
 }
-
-.button-decorator:hover {
+.button-nav-decorator:hover {
     -fx-background-color: #000000;
     -fx-text-fill:  #ffffff;
 }
-
-.button-decorator:hover .svg-button{
+.button-nav-decorator:hover SVGPath{
     -fx-fill:  #ffffff;
 }
-
 .button-toolbar-decorator{
+     -fx-text-fill:  #000000;
     -fx-background-color: transparent;
 }
-

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.chart.BarChart?>
@@ -18,11 +19,11 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" stylesheets="@../css/inicio.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="bp_inicio" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <VBox prefHeight="600.0" prefWidth="1060.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="vb_contenido_inicio" prefHeight="600.0" prefWidth="1060.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane hgap="40.0" prefHeight="199.0" prefWidth="1060.0" VBox.vgrow="ALWAYS">
+            <GridPane fx:id="gp_ingr_gast_ahorr" hgap="40.0" prefHeight="199.0" prefWidth="1060.0" VBox.vgrow="ALWAYS">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -35,7 +36,7 @@
                   <Insets left="30.0" right="30.0" top="30.0" />
                </VBox.margin>
                <children>
-                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="panel">
+                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="borde-sombreado-panel">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                            <children>
@@ -43,7 +44,7 @@
                                  <children>
                                     <StackPane prefHeight="68.0" prefWidth="92.0">
                                        <children>
-                                          <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="marcIcon">
+                                          <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="marco-icono">
                                              <children>
                                                 <Label alignment="CENTER" prefHeight="46.0" prefWidth="34.0">
                                                    <graphic>
@@ -73,7 +74,7 @@
                                           </Label>
                                           <Label prefHeight="52.0" prefWidth="196.0" text="9 numero de ingresos">
                                              <font>
-                                                <Font name="Segoe UI" size="18.0" />
+                                                <Font size="18.0" />
                                              </font>
                                           </Label>
                                        </children>
@@ -82,7 +83,7 @@
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label prefHeight="76.0" prefWidth="314.0" text="\$700">
+                                    <Label prefHeight="100.0" prefWidth="314.0" text="\$700">
                                        <font>
                                           <Font name="Segoe UI Bold" size="51.0" />
                                        </font>
@@ -94,7 +95,7 @@
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label alignment="CENTER" prefHeight="33.0" prefWidth="258.0" text="+15.65%">
+                                    <Label prefHeight="48.0" prefWidth="207.0" text="+15.65%">
                                        <graphic>
                                           <Group>
                                              <children>
@@ -106,7 +107,7 @@
                                           <Font size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER" prefHeight="48.0" prefWidth="254.0" text="+4 esta semana">
+                                    <Label prefHeight="48.0" prefWidth="254.0" text="+4 esta semana">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
@@ -123,7 +124,7 @@
                         </VBox>
                      </children>
                   </StackPane>
-                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="panel" GridPane.columnIndex="1">
+                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="borde-sombreado-panel" GridPane.columnIndex="1">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                            <children>
@@ -131,7 +132,7 @@
                                  <children>
                                     <StackPane prefHeight="68.0" prefWidth="92.0">
                                        <children>
-                                          <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="marcIcon">
+                                          <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="marco-icono">
                                              <StackPane.margin>
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </StackPane.margin>
@@ -161,7 +162,7 @@
                                           </Label>
                                           <Label prefHeight="52.0" prefWidth="196.0" text="4 numero de gastos">
                                              <font>
-                                                <Font name="Segoe UI" size="18.0" />
+                                                <Font size="18.0" />
                                              </font>
                                           </Label>
                                        </children>
@@ -170,7 +171,7 @@
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label prefHeight="76.0" prefWidth="314.0" text="\$500">
+                                    <Label prefHeight="100.0" prefWidth="314.0" text="\$500">
                                        <font>
                                           <Font name="Segoe UI Bold" size="51.0" />
                                        </font>
@@ -182,7 +183,7 @@
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label alignment="CENTER" prefHeight="33.0" prefWidth="258.0" text="+7.2%">
+                                    <Label prefHeight="48.0" prefWidth="163.0" text="+7.2%">
                                        <graphic>
                                           <Group>
                                              <children>
@@ -194,7 +195,7 @@
                                           <Font size="17.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER" prefHeight="48.0" prefWidth="254.0" text="+1 esta semana">
+                                    <Label prefHeight="48.0" prefWidth="254.0" text="+1 esta semana">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
@@ -211,7 +212,7 @@
                         </VBox>
                      </children>
                   </StackPane>
-                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="panel" GridPane.columnIndex="2">
+                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="borde-sombreado-panel" GridPane.columnIndex="2">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                            <children>
@@ -219,7 +220,7 @@
                                  <children>
                                     <StackPane prefHeight="68.0" prefWidth="92.0">
                                        <children>
-                                          <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="marcIcon">
+                                          <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="marco-icono">
                                              <StackPane.margin>
                                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                                              </StackPane.margin>
@@ -249,7 +250,7 @@
                                           </Label>
                                           <Label prefHeight="52.0" prefWidth="196.0" text="15% de cada ingreso">
                                              <font>
-                                                <Font name="Segoe UI" size="18.0" />
+                                                <Font size="18.0" />
                                              </font>
                                           </Label>
                                        </children>
@@ -270,11 +271,11 @@
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <padding>
-                                    <Insets left="20.0" right="20.0" />
+                                    <Insets left="20.0" right="20.0" top="10.0" />
                                  </padding>
                                  <children>
-                                    <ProgressBar prefHeight="31.0" prefWidth="267.0" progress="0.0" />
-                                    <Label alignment="CENTER" prefHeight="46.0" prefWidth="34.0">
+                                    <ProgressBar prefHeight="30.0" prefWidth="267.0" progress="0.0" />
+                                    <Label alignment="CENTER" prefHeight="30.0" prefWidth="35.0">
                                        <graphic>
                                           <Group>
                                              <children>
@@ -294,7 +295,7 @@
                   </StackPane>
                </children>
             </GridPane>
-            <GridPane hgap="40.0" maxHeight="1.7976931348623157E308" prefHeight="297.0" prefWidth="1060.0" VBox.vgrow="ALWAYS">
+            <GridPane fx:id="gp_evolu_balance" hgap="40.0" maxHeight="1.7976931348623157E308" prefHeight="297.0" prefWidth="1060.0" VBox.vgrow="ALWAYS">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="674.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="326.0" />
@@ -306,7 +307,7 @@
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </VBox.margin>
                <children>
-                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="panel">
+                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="borde-sombreado-panel">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
@@ -325,12 +326,15 @@
                                 <yAxis>
                                   <NumberAxis side="LEFT" />
                                 </yAxis>
+                                 <VBox.margin>
+                                    <Insets right="10.0" />
+                                 </VBox.margin>
                               </BarChart>
                            </children>
                         </VBox>
                      </children>
                   </StackPane>
-                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="panel" GridPane.columnIndex="1">
+                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="borde-sombreado-panel" GridPane.columnIndex="1">
                      <children>
                         <StackPane prefHeight="150.0" prefWidth="200.0">
                            <children>
@@ -358,26 +362,26 @@
                                              <children>
                                                 <Label graphicTextGap="5.0" text="Ingreso">
                                                    <graphic>
-                                                      <StackPane prefHeight="31.0" prefWidth="31.0" styleClass="marcIcon" />
+                                                      <StackPane prefHeight="31.0" prefWidth="31.0" styleClass="marco-icono" />
                                                    </graphic>
                                                    <font>
-                                                      <Font name="Segoe UI" size="15.0" />
+                                                      <Font size="16.0" />
                                                    </font>
                                                 </Label>
                                                 <Label graphicTextGap="5.0" text="Gasto">
                                                    <graphic>
-                                                      <StackPane prefHeight="31.0" prefWidth="31.0" styleClass="marcIcon" />
+                                                      <StackPane prefHeight="31.0" prefWidth="31.0" styleClass="marco-icono" />
                                                    </graphic>
                                                    <font>
-                                                      <Font name="Segoe UI" size="15.0" />
+                                                      <Font size="16.0" />
                                                    </font>
                                                 </Label>
                                                 <Label graphicTextGap="5.0" text="Ahorro">
                                                    <graphic>
-                                                      <StackPane prefHeight="31.0" prefWidth="31.0" styleClass="marcIcon" />
+                                                      <StackPane prefHeight="31.0" prefWidth="31.0" styleClass="marco-icono" />
                                                    </graphic>
                                                    <font>
-                                                      <Font name="Segoe UI" size="15.0" />
+                                                      <Font size="16.0" />
                                                    </font>
                                                 </Label>
                                              </children>
@@ -399,4 +403,8 @@
          </children>
       </VBox>
    </center>
+   <stylesheets>
+      <URL value="@../css/global.css" />
+      <URL value="@../css/inicio.css" />
+   </stylesheets>
 </BorderPane>

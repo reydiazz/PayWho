@@ -1,9 +1,0 @@
-
-.mainFxmlClass {
-}
-
-.panel{
-    -fx-background-color: #ffffff;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0.2, -1, -1);
-}
-
