@@ -25,7 +25,6 @@ public class VentanaController implements Initializable {
     }
 
     private void inicializarBotones() {
-        inicializarBotonesToolBar();
         inicializarBotonesPrincipales();
         inicializarBotonPerfil();
         inicializarInicio();
@@ -46,22 +45,13 @@ public class VentanaController implements Initializable {
         BotonNavegacion botonPerfil = new BotonNavegacion(btn_perfil, ArchivoServicio.getInstancia().getRuta("ajuste.fxml"));
         asignarRutaBoton(botonPerfil);
     }
-    
-    private void inicializarInicio(){
+
+    private void inicializarInicio() {
         cambiarEscena(ArchivoServicio.getInstancia().getRuta("inicio.fxml"));
     }
 
     private void inicializarBotonesSecundarios() {
 
-    }
-
-    private void inicializarBotonesToolBar() {
-        btn_cerrar.setOnAction(e -> {
-            ventana.close();
-        });
-        btn_minimizar.setOnAction(e -> {
-            ventana.setIconified(true);
-        });
     }
 
     private void cambiarEscena(String ruta) {
@@ -100,10 +90,6 @@ public class VentanaController implements Initializable {
     @FXML
     private StackPane sp_contenido;
     @FXML
-    private BorderPane bp_root;
-    @FXML
-    private HBox hb_toolbar;
-    @FXML
     private Button btn_inicio;
     @FXML
     private Button btn_ingreso;
@@ -117,10 +103,6 @@ public class VentanaController implements Initializable {
     private Button btn_ajuste;
     @FXML
     private Button btn_log_out;
-    @FXML
-    private Button btn_minimizar;
-    @FXML
-    private Button btn_cerrar;
     @FXML
     private Button btn_perfil;
 

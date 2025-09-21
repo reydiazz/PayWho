@@ -9,9 +9,9 @@ public class ArchivoServicio {
     private Properties rutas;
     private final String RUTA_ARCHIVO = "/config.properties";
 
-    private ArchivoServicio() { 
-       try (InputStream fis = getClass().getResourceAsStream(RUTA_ARCHIVO)) {
-             rutas = new Properties();
+    private ArchivoServicio() {
+        try (InputStream fis = getClass().getResourceAsStream(RUTA_ARCHIVO)) {
+            rutas = new Properties();
             rutas.load(fis);
         } catch (Exception e) {
             e.printStackTrace();

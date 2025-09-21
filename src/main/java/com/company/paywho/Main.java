@@ -7,11 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
-    public final String APP_NAME = "PayWho";
+    public final String WINDOW_NAME = "Menu principal";
 
     public static void main(String[] args) {
         launch(args);
@@ -21,8 +20,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ArchivoServicio.getInstancia().getRuta("ventana.fxml")));
         Parent root = loader.load();
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.setTitle(APP_NAME);
+        stage.setTitle(WINDOW_NAME);
         stage.setScene(new Scene(root));
         stage.show();
         VentanaController controlador = loader.getController();
