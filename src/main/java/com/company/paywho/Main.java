@@ -1,7 +1,8 @@
 package com.company.paywho;
 
-import com.company.paywho.controller.VentanaController;
+import com.company.paywho.controller.AccesoController;
 import com.company.paywho.model.ArchivoServicio;
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,7 +11,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public final String WINDOW_NAME = "Menu principal";
+    private final String APP_NAME = "PayWho";
 
     public static void main(String[] args) {
         launch(args);
@@ -18,12 +19,17 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(ArchivoServicio.getInstancia().getRuta("ventana.fxml")));
+        iniciarLogin(stage);
+    }
+
+    private void iniciarLogin(Stage stage) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ArchivoServicio.getInstancia().getRuta("acceso.fxml")));
         Parent root = loader.load();
-        stage.setTitle(WINDOW_NAME);
+        stage.setTitle(APP_NAME);
         stage.setScene(new Scene(root));
         stage.show();
-        VentanaController controlador = loader.getController();
+        AccesoController controlador = loader.getController();
         controlador.setVentana(stage);
     }
+
 }

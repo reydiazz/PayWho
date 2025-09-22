@@ -10,14 +10,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class VentanaController implements Initializable {
 
     private Stage ventana;
+
+    public Stage getVentana() {
+        return ventana;
+    }
+
+    public void setVentana(Stage ventana) {
+        this.ventana = ventana;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -77,14 +83,6 @@ public class VentanaController implements Initializable {
         boton.getBoton().setOnAction(evento -> {
             cambiarEscena(boton.getRuta());
         });
-    }
-
-    public Stage getVentana() {
-        return ventana;
-    }
-
-    public void setVentana(Stage ventana) {
-        this.ventana = ventana;
     }
 
     @FXML
