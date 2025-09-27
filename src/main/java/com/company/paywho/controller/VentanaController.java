@@ -17,14 +17,6 @@ public class VentanaController implements Initializable {
 
     private Stage ventana;
 
-    public Stage getVentana() {
-        return ventana;
-    }
-
-    public void setVentana(Stage ventana) {
-        this.ventana = ventana;
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         inicializarBotones();
@@ -43,7 +35,7 @@ public class VentanaController implements Initializable {
         botonesPrincipales.add(new BotonNavegacion(btn_gasto, ArchivoServicio.getInstancia().getRuta("gasto.fxml")));
         botonesPrincipales.add(new BotonNavegacion(btn_ahorro, ArchivoServicio.getInstancia().getRuta("ahorro.fxml")));
         botonesPrincipales.add(new BotonNavegacion(btn_categoria, ArchivoServicio.getInstancia().getRuta("categoria.fxml")));
-        botonesPrincipales.add(new BotonNavegacion(btn_ajuste, ArchivoServicio.getInstancia().getRuta("ajuste.fxml")));
+        // botonesPrincipales.add(new BotonNavegacion(btn_ajuste, ArchivoServicio.getInstancia().getRuta("ajuste.fxml")));
         asignarRutaBotones(botonesPrincipales);
     }
 
@@ -83,6 +75,14 @@ public class VentanaController implements Initializable {
         boton.getBoton().setOnAction(evento -> {
             cambiarEscena(boton.getRuta());
         });
+    }
+
+    public Stage getVentana() {
+        return ventana;
+    }
+
+    public void setVentana(Stage ventana) {
+        this.ventana = ventana;
     }
 
     @FXML

@@ -35,7 +35,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="47.0" prefWidth="334.0" VBox.vgrow="ALWAYS" />
+                              <TextField fx:id="txf_correo" prefHeight="47.0" prefWidth="334.0" text="anghelor@hotmail.com" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                         <VBox prefHeight="81.0" prefWidth="330.0" spacing="10.0">
@@ -45,7 +45,7 @@
                                     <Font name="Segoe UI" size="15.0" />
                                  </font>
                               </Label>
-                              <PasswordField prefHeight="90.0" prefWidth="440.0" VBox.vgrow="ALWAYS" />
+                              <PasswordField fx:id="pf_contrasena" prefHeight="90.0" prefWidth="440.0" text="root" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                         <Button fx:id="btn_iniciar_sesion" mnemonicParsing="false" prefHeight="54.0" prefWidth="215.0" text="Iniciar Sesion">
@@ -79,7 +79,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="53.0" prefWidth="340.0" />
+                              <TextField fx:id="txf_correo_registrar" prefHeight="53.0" prefWidth="340.0" />
                            </children>
                         </VBox>
                         <HBox prefHeight="77.0" prefWidth="453.0" spacing="30.0">
@@ -91,7 +91,7 @@
                                           <Font name="Segoe UI" size="15.0" />
                                        </font>
                                     </Label>
-                                    <PasswordField prefHeight="47.0" prefWidth="440.0" />
+                                    <TextField fx:id="txf_nombre_registrar" prefHeight="71.0" prefWidth="208.0" />
                                  </children>
                               </VBox>
                               <VBox prefHeight="65.0" prefWidth="440.0" spacing="10.0">
@@ -101,7 +101,7 @@
                                           <Font name="Segoe UI" size="15.0" />
                                        </font>
                                     </Label>
-                                    <PasswordField prefHeight="47.0" prefWidth="440.0" />
+                                    <TextField fx:id="txf_apellido_registrar" prefHeight="71.0" prefWidth="208.0" />
                                  </children>
                               </VBox>
                            </children>
@@ -113,7 +113,7 @@
                                     <Font name="Segoe UI" size="15.0" />
                                  </font>
                               </Label>
-                              <PasswordField prefHeight="107.0" prefWidth="440.0" />
+                              <PasswordField fx:id="pf_contrasena_registrar" prefHeight="107.0" prefWidth="440.0" />
                            </children>
                         </VBox>
                         <VBox prefHeight="77.0" prefWidth="340.0" spacing="10.0">
@@ -123,7 +123,7 @@
                                     <Font name="Segoe UI" size="15.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="53.0" prefWidth="340.0" />
+                              <TextField fx:id="txf_balance_registro" prefHeight="53.0" prefWidth="340.0" />
                            </children>
                         </VBox>
                         <Button fx:id="btn_registrarse" mnemonicParsing="false" prefHeight="54.0" prefWidth="215.0" text="Registrarse">
