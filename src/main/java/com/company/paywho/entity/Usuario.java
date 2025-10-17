@@ -1,4 +1,4 @@
-package com.company.paywho.entity;
+ package com.company.paywho.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

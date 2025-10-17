@@ -22,6 +22,7 @@ public class Utilidades {
         }
         return lista;
     }
+    
 
     public static String sha256(final String base) {
         try {

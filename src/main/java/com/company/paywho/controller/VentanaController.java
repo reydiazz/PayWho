@@ -1,5 +1,6 @@
 package com.company.paywho.controller;
 
+import com.company.paywho.JavaFXApp;
 import com.company.paywho.model.ArchivoServicio;
 import com.company.paywho.view.BotonNavegacion;
 import java.net.URL;
@@ -10,12 +11,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class VentanaController implements Initializable {
 
     private Stage ventana;
+    private double xOffset;
+    private double yOffset;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -24,7 +28,7 @@ public class VentanaController implements Initializable {
 
     private void inicializarBotones() {
         inicializarBotonesPrincipales();
-        inicializarBotonPerfil();
+        inicializarBotonesSecundarios();
         inicializarInicio();
     }
 
@@ -35,13 +39,8 @@ public class VentanaController implements Initializable {
         botonesPrincipales.add(new BotonNavegacion(btn_gasto, ArchivoServicio.getInstancia().getRuta("gasto.fxml")));
         botonesPrincipales.add(new BotonNavegacion(btn_ahorro, ArchivoServicio.getInstancia().getRuta("ahorro.fxml")));
         botonesPrincipales.add(new BotonNavegacion(btn_categoria, ArchivoServicio.getInstancia().getRuta("categoria.fxml")));
-        // botonesPrincipales.add(new BotonNavegacion(btn_ajuste, ArchivoServicio.getInstancia().getRuta("ajuste.fxml")));
+        botonesPrincipales.add(new BotonNavegacion(btn_perfil, ArchivoServicio.getInstancia().getRuta("ajuste.fxml")));
         asignarRutaBotones(botonesPrincipales);
-    }
-
-    private void inicializarBotonPerfil() {
-        BotonNavegacion botonPerfil = new BotonNavegacion(btn_perfil, ArchivoServicio.getInstancia().getRuta("ajuste.fxml"));
-        asignarRutaBoton(botonPerfil);
     }
 
     private void inicializarInicio() {
@@ -49,7 +48,25 @@ public class VentanaController implements Initializable {
     }
 
     private void inicializarBotonesSecundarios() {
+        btn_cerrar.setOnAction(evento -> {
+            ventana.close();
+        });
+        btn_minimizar.setOnAction(evento -> {
+            ventana.setIconified(true);
+        });
+        btn_log_out.setOnAction(evento -> {
+            JavaFXApp app = new JavaFXApp();
+            app.iniciarLogin(ventana, app.getContexto());
+        });
+        hb_toolbar.setOnMousePressed(event -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        });
 
+        hb_toolbar.setOnMouseDragged(event -> {
+            ventana.setX(event.getScreenX() - xOffset);
+            ventana.setY(event.getScreenY() - yOffset);
+        });
     }
 
     private void cambiarEscena(String ruta) {
@@ -71,12 +88,6 @@ public class VentanaController implements Initializable {
         }
     }
 
-    private void asignarRutaBoton(BotonNavegacion boton) {
-        boton.getBoton().setOnAction(evento -> {
-            cambiarEscena(boton.getRuta());
-        });
-    }
-
     public Stage getVentana() {
         return ventana;
     }
@@ -85,6 +96,12 @@ public class VentanaController implements Initializable {
         this.ventana = ventana;
     }
 
+    @FXML
+    private HBox hb_toolbar;
+    @FXML
+    private Button btn_cerrar;
+    @FXML
+    private Button btn_minimizar;
     @FXML
     private StackPane sp_contenido;
     @FXML

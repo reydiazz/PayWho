@@ -21,45 +21,75 @@
          <children>
             <StackPane prefHeight="720.0" prefWidth="640.0" HBox.hgrow="ALWAYS">
                <children>
-                  <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="540.0" spacing="20.0" StackPane.alignment="CENTER">
+                  <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Label prefHeight="17.0" prefWidth="479.0" text="Iniciar Sesion" VBox.vgrow="ALWAYS">
-                           <font>
-                              <Font name="Montserrat Bold" size="33.0" />
-                           </font>
-                        </Label>
-                        <VBox prefHeight="78.0" prefWidth="340.0" spacing="10.0">
+                        <HBox fx:id="hb_toolbar" alignment="TOP_RIGHT" prefHeight="76.0" prefWidth="1080.0">
                            <children>
-                              <Label text="Correo" VBox.vgrow="ALWAYS">
+                              <HBox prefHeight="37.0" prefWidth="65.0">
+                                 <children>
+                                    <Button fx:id="btn_minimizar" mnemonicParsing="false" prefHeight="41.0" prefWidth="82.0" styleClass="button-toolbar-decorator">
+                                       <graphic>
+                                          <Group>
+                                             <children>
+                                                <SVGPath fx:id="svg_minimizar" content="M20,14H4V10H20" styleClass="svg-button" />
+                                             </children>
+                                          </Group>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="btn_cerrar" mnemonicParsing="false" prefHeight="41.0" prefWidth="81.0" styleClass="button-toolbar-decorator">
+                                       <graphic>
+                                          <Group>
+                                             <children>
+                                                <SVGPath fx:id="svg_cerrar" content="M268.064,256.75l138.593-138.593c3.124-3.124,3.124-8.189,0-11.313c-3.125-3.124-8.189-3.124-11.314,0L256.75,245.436   L118.157,106.843c-3.124-3.124-8.189-3.124-11.313,0c-3.125,3.124-3.125,8.189,0,11.313L245.436,256.75L106.843,395.343   c-3.125,3.125-3.125,8.189,0,11.314c1.562,1.562,3.609,2.343,5.657,2.343s4.095-0.781,5.657-2.343L256.75,268.064l138.593,138.593   c1.563,1.562,3.609,2.343,5.657,2.343s4.095-0.781,5.657-2.343c3.124-3.125,3.124-8.189,0-11.314L268.064,256.75z" scaleX="0.05" scaleY="0.05" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="10.0" styleClass="svg-button" />
+                                             </children>
+                                          </Group>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="716.0" prefWidth="634.0" spacing="20.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="479.0" text="Iniciar Sesion" VBox.vgrow="ALWAYS">
                                  <font>
-                                    <Font size="15.0" />
+                                    <Font name="Montserrat Bold" size="33.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txf_correo" prefHeight="47.0" prefWidth="334.0" text="anghelor@hotmail.com" VBox.vgrow="ALWAYS" />
+                              <VBox prefHeight="78.0" prefWidth="340.0" spacing="10.0">
+                                 <children>
+                                    <Label text="Correo" VBox.vgrow="ALWAYS">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txf_correo" prefHeight="47.0" prefWidth="334.0" text="anghelor@hotmail.com" VBox.vgrow="ALWAYS" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="81.0" prefWidth="330.0" spacing="10.0">
+                                 <children>
+                                    <Label text="Contraseña" VBox.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="Segoe UI" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <PasswordField fx:id="pf_contrasena" prefHeight="90.0" prefWidth="440.0" text="root" VBox.vgrow="ALWAYS" />
+                                 </children>
+                              </VBox>
+                              <Button fx:id="btn_iniciar_sesion" mnemonicParsing="false" prefHeight="54.0" prefWidth="215.0" text="Iniciar Sesion">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Button>
                            </children>
+                           <padding>
+                              <Insets left="100.0" right="100.0" />
+                           </padding>
                         </VBox>
-                        <VBox prefHeight="81.0" prefWidth="330.0" spacing="10.0">
-                           <children>
-                              <Label text="Contraseña" VBox.vgrow="ALWAYS">
-                                 <font>
-                                    <Font name="Segoe UI" size="15.0" />
-                                 </font>
-                              </Label>
-                              <PasswordField fx:id="pf_contrasena" prefHeight="90.0" prefWidth="440.0" text="root" VBox.vgrow="ALWAYS" />
-                           </children>
-                        </VBox>
-                        <Button fx:id="btn_iniciar_sesion" mnemonicParsing="false" prefHeight="54.0" prefWidth="215.0" text="Iniciar Sesion">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </Button>
                      </children>
-                     <StackPane.margin>
-                        <Insets left="150.0" right="150.0" />
-                     </StackPane.margin>
                   </VBox>
                </children>
             </StackPane>

@@ -14,11 +14,14 @@ import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.HBox;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Component
 public class AccesoController {
 
+    private double xOffset;
+    private double yOffset;
     private Stage ventana;
     private final UsuarioServicio usuarioServicio;
 
@@ -38,6 +41,21 @@ public class AccesoController {
         });
         btn_registrarse.setOnAction(evento -> {
             registrarUsuario();
+        });
+        btn_cerrar.setOnAction(evento -> {
+            ventana.close();
+        });
+        btn_minimizar.setOnAction(evento -> {
+            ventana.setIconified(true);
+        });
+        hb_toolbar.setOnMousePressed(event -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        });
+
+        hb_toolbar.setOnMouseDragged(event -> {
+            ventana.setX(event.getScreenX() - xOffset);
+            ventana.setY(event.getScreenY() - yOffset);
         });
     }
 
@@ -85,7 +103,9 @@ public class AccesoController {
             System.out.println("Archivo fxml no encontrado.");
         }
     }
-    
+
+    @FXML
+    private HBox hb_toolbar;
     @FXML
     private PasswordField pf_contrasena;
     @FXML
@@ -104,6 +124,10 @@ public class AccesoController {
     private Button btn_registrarse;
     @FXML
     private TextField txf_balance_registro;
+    @FXML
+    private Button btn_cerrar;
+    @FXML
+    private Button btn_minimizar;
 
     public Stage getVentana() {
         return ventana;
