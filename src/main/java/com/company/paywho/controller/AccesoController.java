@@ -1,32 +1,23 @@
 package com.company.paywho.controller;
 
-import com.company.paywho.model.ArchivoServicio;
+import com.company.paywho.service.SesionServicio;
 import com.company.paywho.service.UsuarioServicio;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import org.springframework.stereotype.Component;
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.HBox;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
-@Component
+@Controller
 public class AccesoController {
 
-    private double xOffset;
-    private double yOffset;
-    private Stage ventana;
-    private final UsuarioServicio usuarioServicio;
+    private UsuarioServicio usuarioServicio;
+    private SesionServicio sesionServicio;
 
     @Autowired
-    public AccesoController(UsuarioServicio usuarioServicio) {
+    public AccesoController(UsuarioServicio usuarioServicio, SesionServicio sesionServicio) {
+        this.sesionServicio = sesionServicio;
         this.usuarioServicio = usuarioServicio;
     }
 
@@ -42,26 +33,11 @@ public class AccesoController {
         btn_registrarse.setOnAction(evento -> {
             registrarUsuario();
         });
-        btn_cerrar.setOnAction(evento -> {
-            ventana.close();
-        });
-        btn_minimizar.setOnAction(evento -> {
-            ventana.setIconified(true);
-        });
-        hb_toolbar.setOnMousePressed(event -> {
-            xOffset = event.getSceneX();
-            yOffset = event.getSceneY();
-        });
-
-        hb_toolbar.setOnMouseDragged(event -> {
-            ventana.setX(event.getScreenX() - xOffset);
-            ventana.setY(event.getScreenY() - yOffset);
-        });
     }
 
     private void iniciarSesion() {
         if (enviarDatosEsperarRespuestaServicioLogin()) {
-            iniciarMenuPrincipal();
+            sesionServicio.setSesionActiva(true);
         } else {
             System.out.println("Usuario no encontrado.");
         }
@@ -69,7 +45,7 @@ public class AccesoController {
 
     private void registrarUsuario() {
         if (enviarDatosEsperarRespuestaServicioRegistro()) {
-            iniciarMenuPrincipal();
+            sesionServicio.setSesionActiva(true);
         } else {
             System.out.println("Datos no corespondientes.");
         }
@@ -86,26 +62,10 @@ public class AccesoController {
         String apellido = txf_apellido_registrar.getText();
         String correo_electronico = txf_correo_registrar.getText();
         String contrasena = pf_contrasena_registrar.getText();
-        Long saldo = Long.parseLong(txf_balance_registro.getText());
+        String saldo = txf_balance_registro.getText();
         return usuarioServicio.registrarUsuario(nombre, apellido, correo_electronico, contrasena, saldo);
     }
 
-    private void iniciarMenuPrincipal() {
-        try {
-            FXMLLoader fxmlMenuPrincipal = new FXMLLoader(getClass().getResource(ArchivoServicio.getInstancia().getRuta("ventana.fxml")));
-            Parent raiz = fxmlMenuPrincipal.load();
-            Scene escena = new Scene(raiz);
-            ventana.setScene(escena);
-            VentanaController controlador = fxmlMenuPrincipal.getController();
-            controlador.setVentana(ventana);
-        } catch (Exception ex) {
-            Logger.getLogger(AccesoController.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Archivo fxml no encontrado.");
-        }
-    }
-
-    @FXML
-    private HBox hb_toolbar;
     @FXML
     private PasswordField pf_contrasena;
     @FXML
@@ -124,16 +84,5 @@ public class AccesoController {
     private Button btn_registrarse;
     @FXML
     private TextField txf_balance_registro;
-    @FXML
-    private Button btn_cerrar;
-    @FXML
-    private Button btn_minimizar;
 
-    public Stage getVentana() {
-        return ventana;
-    }
-
-    public void setVentana(Stage ventana) {
-        this.ventana = ventana;
-    }
 }

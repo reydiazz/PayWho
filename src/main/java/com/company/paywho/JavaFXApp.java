@@ -1,9 +1,7 @@
 package com.company.paywho;
 
-import com.company.paywho.controller.AccesoController;
+import com.company.paywho.controller.VentanaController;
 import com.company.paywho.model.ArchivoServicio;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,40 +13,38 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 public class JavaFXApp extends Application {
 
-    private static ConfigurableApplicationContext contexto;
+    private static ConfigurableApplicationContext configuracionApp;
 
     @Override
     public void init() {
-        contexto = new SpringApplicationBuilder(SpringBootApp.class).run();
+        configuracionApp = new SpringApplicationBuilder(SpringBootApp.class).run();
     }
 
     public static ConfigurableApplicationContext getContexto() {
-        return contexto;
+        return configuracionApp;
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        iniciarLogin(stage, contexto);
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.show();
+        iniciarApp(stage);
     }
 
     @Override
     public void stop() {
-        contexto.close();
+        configuracionApp.close();
     }
 
-    public void iniciarLogin(Stage stage, ConfigurableApplicationContext contexto) {
+    public void iniciarApp(Stage stage) {
         try {
-            FXMLLoader fxmlLogin = new FXMLLoader(
-                    getClass().getResource(ArchivoServicio.getInstancia().getRuta("acceso.fxml"))
-            );
-            fxmlLogin.setControllerFactory(contexto::getBean);
-            Parent raiz = fxmlLogin.load();
+            FXMLLoader fxml = new FXMLLoader(getClass().getResource(ArchivoServicio.getInstancia().getRuta("ventana.fxml")));
+            fxml.setControllerFactory(configuracionApp::getBean);
+            Parent raiz = fxml.load();
             Scene escena = new Scene(raiz);
             stage.setScene(escena);
-            AccesoController controlador = fxmlLogin.getController();
+            VentanaController controlador = fxml.getController();
             controlador.setVentana(stage);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

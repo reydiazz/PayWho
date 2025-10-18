@@ -1,4 +1,4 @@
- package com.company.paywho.entity;
+package com.company.paywho.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,12 +17,12 @@ public class Usuario {
     private String apellido;
     private String correo_electronico;
     private String contrasena;
-    private Long saldo;
+    private long saldo;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, String correo_electronico, String contrasena, Long saldo) {
+    public Usuario(String nombre, String apellido, String correo_electronico, String contrasena, long saldo) {
         this.id_usuario = id_usuario;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -71,14 +71,12 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
-    public Long getSaldo() {
+    public long getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(Long saldo) {
+    public void setSaldo(long saldo) {
         this.saldo = saldo;
     }
-    
-    
 
 }

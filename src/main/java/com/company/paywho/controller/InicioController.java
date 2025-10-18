@@ -9,7 +9,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class InicioController implements Initializable {
 
     @Override
@@ -65,7 +67,7 @@ public class InicioController implements Initializable {
         // Agregar todas las series
         sbc_barras.getData().addAll(gastos, ahorros, ingresos);
     }
-
+    
     @FXML
     private StackedBarChart sbc_barras;
     @FXML
