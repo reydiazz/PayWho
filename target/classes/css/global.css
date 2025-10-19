@@ -1,0 +1,152 @@
+.button{
+    -fx-font-family: "Montserrat";
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-color: black;
+    -fx-text-fill:  #ffffff;
+}
+#nav{
+    -fx-background-color: #000000;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0.3, 0, -5);
+}
+#logo{
+    -fx-fill: #ffffff;
+}
+.button-nav-decorator{
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-background-color: #000000;
+    -fx-text-fill:  #ffffff;
+}
+
+.button-nav-decorator:hover {
+    -fx-background-color: #ffffff;
+    -fx-text-fill:  #000000;
+}
+
+.button-nav-decorator SVGPath{
+    -fx-fill: #ffffff;
+}
+.button-nav-decorator:hover SVGPath{
+    -fx-fill: #000000;
+}
+.button-toolbar-decorator{
+    -fx-text-fill:  #000000;
+    -fx-background-color: transparent;
+}
+.marco-icono{
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-background-color: #EBEBEB;
+}
+
+.progress-bar {
+    -fx-box-border: transparent;
+    -fx-border-color: #ABABAB;
+}
+
+.progress-bar .track{
+    -fx-background-color: transparent;
+}
+
+.progress-bar .bar{
+    -fx-background-color: linear-gradient(to right, #00c6ff, #0072ff);
+    -fx-background-insets: 0;
+}
+
+.combo-box{
+    -fx-background-color: transparent;
+    -fx-border-color:  #9E9E9E;
+    -fx-border-width: 0 0 1 0;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent
+}
+
+.text-field{
+    -fx-background-color: transparent;
+    -fx-border-color:  #9E9E9E;
+    -fx-border-width: 0 0 1 0;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent
+}
+
+.borde-sombreado-panel{
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0.2, -1, -1);
+    -fx-background-insets: 0;
+}
+
+.table-view {
+    -fx-font-family: "Montserrat";
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-padding: 10;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #e0e0e0;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER-LEFT;
+    -fx-padding: 8 15 8 15;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 8 15 8 15;
+}
+
+.table-view .table-row-cell:filled {
+    -fx-border-color: transparent transparent #e0e0e0 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #f0f6ff;
+}
+
+.table-view .cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-font-size: 13px;
+    -fx-padding: 8 15 8 15;
+}
+
+.default-color0.chart-pie {
+    -fx-pie-color: #567E55;
+    -fx-border-width: 3;
+}
+
+.default-color1.chart-pie {
+    -fx-pie-color: #950000;
+    -fx-border-width: 3;
+}
+
+.default-color2.chart-pie {
+    -fx-pie-color: #04156E;
+    -fx-border-width: 3;
+}
+
+.default-color0.chart-bar {
+    -fx-bar-fill: #950000;
+}
+
+.default-color1.chart-bar {
+    -fx-bar-fill: #567E55;
+}
+
+.default-color2.chart-bar {
+    -fx-bar-fill: #04156E;
+}
+
