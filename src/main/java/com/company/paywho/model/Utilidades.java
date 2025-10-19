@@ -22,7 +22,6 @@ public class Utilidades {
         }
         return lista;
     }
-    
 
     public static String sha256(final String base) {
         try {
@@ -42,4 +41,26 @@ public class Utilidades {
         }
     }
 
+    public static void visibilidadComponentes(LinkedList<Node> componentes, boolean visibilidad) {
+        for (Node componente : componentes) {
+            if (visibilidad) {
+                componente.setVisible(true);
+                componente.setManaged(true);
+            } else {
+                componente.setVisible(false);
+                componente.setManaged(false);
+            }
+        }
+    }
+
+    public static void visibilidadComponente(Node componente, boolean visibilidad) {
+        if (visibilidad) {
+            componente.setVisible(true);
+            componente.setManaged(true);
+        } else {
+            componente.setVisible(false);
+            componente.setManaged(false);
+        }
+
+    }
 }

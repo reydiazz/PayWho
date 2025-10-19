@@ -1,23 +1,39 @@
 package com.company.paywho.service;
 
+import com.company.paywho.entity.Usuario;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class SesionServicio {
 
-    private final BooleanProperty sesionActiva = new SimpleBooleanProperty(false);
+    private static Usuario usuarioActual;
+    private static final BooleanProperty sesionActiva = new SimpleBooleanProperty(false);
 
-    public BooleanProperty sesionActivaProperty() {
-        return sesionActiva;
+    public static void iniciarSesion(Usuario usuario) {
+        usuarioActual = usuario;
+        sesionActiva.set(true);
     }
 
-    public boolean isSesionActiva() {
+    public static Usuario getUsuarioActual() {
+        return usuarioActual;
+    }
+
+    public static void cerrarSesion() {
+        usuarioActual = null;
+        sesionActiva.set(false);
+    }
+
+    public static boolean haySesionActiva() {
         return sesionActiva.get();
     }
 
-    public void setSesionActiva(boolean valor) {
-        sesionActiva.set(valor);
+    public static void sesionActiva() {
+        sesionActiva.set(true);
+    }
+
+    public static BooleanProperty sesionActivaProperty() {
+        return sesionActiva;
     }
 }

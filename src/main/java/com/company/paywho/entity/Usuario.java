@@ -79,4 +79,8 @@ public class Usuario {
         this.saldo = saldo;
     }
 
+    public String getNombreApellido() {
+        return nombre + " " + apellido;
+    }
+
 }

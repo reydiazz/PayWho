@@ -1,11 +1,12 @@
 package com.company.paywho.controller;
 
-import com.company.paywho.service.SesionServicio;
+import com.company.paywho.model.Utilidades;
 import com.company.paywho.service.UsuarioServicio;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -13,11 +14,9 @@ import org.springframework.stereotype.Controller;
 public class AccesoController {
 
     private UsuarioServicio usuarioServicio;
-    private SesionServicio sesionServicio;
 
     @Autowired
-    public AccesoController(UsuarioServicio usuarioServicio, SesionServicio sesionServicio) {
-        this.sesionServicio = sesionServicio;
+    public AccesoController(UsuarioServicio usuarioServicio) {
         this.usuarioServicio = usuarioServicio;
     }
 
@@ -33,11 +32,19 @@ public class AccesoController {
         btn_registrarse.setOnAction(evento -> {
             registrarUsuario();
         });
+        btn_crear_cuenta.setOnAction(evento -> {
+            Utilidades.visibilidadComponente(vb_iniciar_sesion, false);
+            Utilidades.visibilidadComponente(vb_registrarse, true);
+        });
+        btn_logear.setOnAction(evento -> {
+            Utilidades.visibilidadComponente(vb_registrarse, false);
+            Utilidades.visibilidadComponente(vb_iniciar_sesion, true);
+        });
     }
 
     private void iniciarSesion() {
         if (enviarDatosEsperarRespuestaServicioLogin()) {
-            sesionServicio.setSesionActiva(true);
+            System.out.println("Todo correcto");
         } else {
             System.out.println("Usuario no encontrado.");
         }
@@ -45,7 +52,7 @@ public class AccesoController {
 
     private void registrarUsuario() {
         if (enviarDatosEsperarRespuestaServicioRegistro()) {
-            sesionServicio.setSesionActiva(true);
+            System.out.println("Todo correcto");
         } else {
             System.out.println("Datos no corespondientes.");
         }
@@ -67,6 +74,10 @@ public class AccesoController {
     }
 
     @FXML
+    private Button btn_logear;
+    @FXML
+    private Button btn_crear_cuenta;
+    @FXML
     private PasswordField pf_contrasena;
     @FXML
     private TextField txf_correo;
@@ -84,5 +95,9 @@ public class AccesoController {
     private Button btn_registrarse;
     @FXML
     private TextField txf_balance_registro;
+    @FXML
+    private VBox vb_iniciar_sesion;
+    @FXML
+    private VBox vb_registrarse;
 
 }

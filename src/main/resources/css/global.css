@@ -18,6 +18,7 @@
     -fx-background-color: #000000;
     -fx-text-fill:  #ffffff;
 }
+
 .button-nav-decorator:hover {
     -fx-background-color: #ffffff;
     -fx-text-fill:  #000000;
@@ -56,7 +57,7 @@
 .combo-box{
     -fx-background-color: transparent;
     -fx-border-color:  #9E9E9E;
-    -fx-border-width: 1;
+    -fx-border-width: 0 0 1 0;
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent
 }
@@ -64,7 +65,7 @@
 .text-field{
     -fx-background-color: transparent;
     -fx-border-color:  #9E9E9E;
-    -fx-border-width: 1;
+    -fx-border-width: 0 0 1 0;
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent
 }

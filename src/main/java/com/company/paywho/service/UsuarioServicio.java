@@ -10,14 +10,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class UsuarioServicio {
 
+    private UsuarioRepositorio usuarioRepositorio;
+
     @Autowired
-    private UsuarioRepositorio usuarioRepository;
-    private Usuario usuarioActual;
+    public UsuarioServicio(UsuarioRepositorio usuarioRepositorio) {
+        this.usuarioRepositorio = usuarioRepositorio;
+    }
 
     public boolean validarUsuario(String correo_electronico, String contrasena) {
-        Optional<Usuario> usuario = usuarioRepository.findByCorreoAndContrasena(correo_electronico, Utilidades.sha256(contrasena));
+        Optional<Usuario> usuario = usuarioRepositorio.findByCorreoAndContrasena(correo_electronico, Utilidades.sha256(contrasena));
         if (usuario.isPresent()) {
-            usuarioActual = usuario.get();
+            SesionServicio.iniciarSesion(usuario.get());
             return true;
         }
         return false;
@@ -28,27 +31,12 @@ public class UsuarioServicio {
         try {
             long balance = Long.parseLong(balanceCadena);
             Usuario usuario = new Usuario(nombre, apellido, correo_electronico, sha256Contrasena, balance);
-            usuarioRepository.save(usuario);
+            usuarioRepositorio.save(usuario);
+            validarUsuario(correo_electronico, contrasena);
         } catch (Exception e) {
             return false;
         }
         return true;
-    }
-
-    public UsuarioRepositorio getUsuarioRepository() {
-        return usuarioRepository;
-    }
-
-    public void setUsuarioRepository(UsuarioRepositorio usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
-    }
-
-    public Usuario getUsuarioActual() {
-        return usuarioActual;
-    }
-
-    public void setUsuarioActual(Usuario usuarioActual) {
-        this.usuarioActual = usuarioActual;
     }
 
 }

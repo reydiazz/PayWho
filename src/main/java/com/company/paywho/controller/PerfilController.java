@@ -6,7 +6,7 @@ import javafx.fxml.Initializable;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class AjusteController implements Initializable {
+public class PerfilController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

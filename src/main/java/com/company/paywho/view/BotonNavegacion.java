@@ -12,6 +12,10 @@ public class BotonNavegacion {
         this.ruta = ruta;
     }
 
+    public BotonNavegacion(String ruta) {
+        this.ruta = ruta;
+    }
+
     public Button getBoton() {
         return boton;
     }

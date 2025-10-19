@@ -6,74 +6,75 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="1080.0" stylesheets="@../css/global.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.paywho.controller.AccesoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="1080.0" stylesheets="@../css/global.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.paywho.controller.AccesoController">
    <center>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <StackPane prefHeight="720.0" prefWidth="640.0" HBox.hgrow="ALWAYS">
+            <StackPane prefHeight="720.0" prefWidth="540.0" HBox.hgrow="ALWAYS">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox fx:id="vb_iniciar_sesion" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="716.0" prefWidth="540.0" spacing="20.0">
                      <children>
-                        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="716.0" prefWidth="634.0" spacing="20.0">
-                           <children>
-                              <Label prefHeight="17.0" prefWidth="479.0" text="Iniciar Sesion" VBox.vgrow="ALWAYS">
-                                 <font>
-                                    <Font name="Montserrat Bold" size="33.0" />
-                                 </font>
-                              </Label>
-                              <VBox prefHeight="78.0" prefWidth="340.0" spacing="10.0">
-                                 <children>
-                                    <Label text="Correo" VBox.vgrow="ALWAYS">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="txf_correo" prefHeight="47.0" prefWidth="334.0" text="anghelor@hotmail.com" VBox.vgrow="ALWAYS" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="81.0" prefWidth="330.0" spacing="10.0">
-                                 <children>
-                                    <Label text="Contraseña" VBox.vgrow="ALWAYS">
-                                       <font>
-                                          <Font name="Segoe UI" size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <PasswordField fx:id="pf_contrasena" prefHeight="90.0" prefWidth="440.0" text="root" VBox.vgrow="ALWAYS" />
-                                 </children>
-                              </VBox>
-                              <Button fx:id="btn_iniciar_sesion" mnemonicParsing="false" prefHeight="54.0" prefWidth="215.0" text="Iniciar Sesion">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <VBox.margin>
-                                    <Insets top="20.0" />
-                                 </VBox.margin>
-                              </Button>
-                           </children>
-                           <padding>
-                              <Insets left="100.0" right="100.0" />
-                           </padding>
-                        </VBox>
-                     </children>
-                  </VBox>
-               </children>
-            </StackPane>
-            <StackPane prefHeight="720.0" prefWidth="651.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="646.0" spacing="20.0">
-                     <children>
-                        <Label prefHeight="17.0" prefWidth="479.0" text="Registrar usuario">
+                        <Label prefHeight="17.0" prefWidth="479.0" text="Iniciar Sesion" VBox.vgrow="ALWAYS">
                            <font>
                               <Font name="Montserrat Bold" size="33.0" />
                            </font>
                         </Label>
-                        <VBox prefHeight="77.0" prefWidth="340.0" spacing="10.0">
+                        <VBox prefHeight="67.0" prefWidth="283.0" spacing="5.0">
+                           <children>
+                              <Label text="Correo" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txf_correo" prefHeight="40.0" prefWidth="318.0" text="anghelor@hotmail.com" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="64.0" prefWidth="318.0" spacing="5.0">
+                           <children>
+                              <Label text="Contraseña" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Segoe UI" size="15.0" />
+                                 </font>
+                              </Label>
+                              <PasswordField fx:id="pf_contrasena" prefHeight="40.0" prefWidth="440.0" text="root" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                        <Button fx:id="btn_iniciar_sesion" mnemonicParsing="false" prefHeight="38.0" prefWidth="215.0" text="Iniciar Sesion">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btn_crear_cuenta" mnemonicParsing="false" prefHeight="31.0" prefWidth="216.0" style="-fx-background-color: TRANSPARENT; -fx-text-fill: BLACK;" text="Crear una cuenta" underline="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                     </children>
+                     <StackPane.margin>
+                        <Insets bottom="60.0" left="50.0" right="50.0" top="50.0" />
+                     </StackPane.margin>
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" />
+                     </padding>
+                  </VBox>
+                  <VBox fx:id="vb_registrarse" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="453.0" spacing="20.0" visible="false">
+                     <children>
+                        <Label alignment="BOTTOM_LEFT" prefHeight="38.0" prefWidth="347.0" text="Registrar usuario">
+                           <font>
+                              <Font name="Montserrat Bold" size="33.0" />
+                           </font>
+                        </Label>
+                        <VBox prefHeight="77.0" prefWidth="340.0" spacing="5.0">
                            <children>
                               <Label text="Correo">
                                  <font>
@@ -85,7 +86,7 @@
                         </VBox>
                         <HBox prefHeight="77.0" prefWidth="453.0" spacing="30.0">
                            <children>
-                              <VBox prefHeight="65.0" prefWidth="440.0" spacing="10.0">
+                              <VBox prefHeight="65.0" prefWidth="440.0" spacing="5.0">
                                  <children>
                                     <Label text="Nombre">
                                        <font>
@@ -95,7 +96,7 @@
                                     <TextField fx:id="txf_nombre_registrar" prefHeight="71.0" prefWidth="208.0" />
                                  </children>
                               </VBox>
-                              <VBox prefHeight="65.0" prefWidth="440.0" spacing="10.0">
+                              <VBox prefHeight="65.0" prefWidth="440.0" spacing="5.0">
                                  <children>
                                     <Label text="Apellido">
                                        <font>
@@ -107,7 +108,7 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <VBox prefHeight="77.0" prefWidth="340.0" spacing="10.0">
+                        <VBox prefHeight="77.0" prefWidth="340.0" spacing="5.0">
                            <children>
                               <Label text="Contraseña">
                                  <font>
@@ -117,7 +118,7 @@
                               <PasswordField fx:id="pf_contrasena_registrar" prefHeight="107.0" prefWidth="440.0" />
                            </children>
                         </VBox>
-                        <VBox prefHeight="77.0" prefWidth="340.0" spacing="10.0">
+                        <VBox prefHeight="77.0" prefWidth="340.0" spacing="5.0">
                            <children>
                               <Label text="Balance actual">
                                  <font>
@@ -135,11 +136,34 @@
                               <Insets top="20.0" />
                            </VBox.margin>
                         </Button>
+                        <Button fx:id="btn_logear" mnemonicParsing="false" prefHeight="31.0" prefWidth="216.0" style="-fx-background-color: TRANSPARENT; -fx-text-fill: BLACK;" text="Iniciar Sesion" underline="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
+                     <StackPane.margin>
+                        <Insets bottom="60.0" left="50.0" right="50.0" top="30.0" />
+                     </StackPane.margin>
                      <padding>
-                        <Insets left="100.0" right="100.0" />
+                        <Insets left="50.0" right="50.0" top="40.0" />
                      </padding>
                   </VBox>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="720.0" prefWidth="540.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <StackPane prefHeight="455.0" prefWidth="447.0" styleClass="borde-sombreado-panel">
+                     <StackPane.margin>
+                        <Insets bottom="60.0" left="25.0" right="70.0" top="60.0" />
+                     </StackPane.margin>
+                     <children>
+                        <ImageView fitHeight="310.0" fitWidth="447.0" pickOnBounds="true" preserveRatio="true" scaleY="1.72">
+                           <image>
+                              <Image url="@../img/img_auntenticacion.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
                </children></StackPane>
          </children>
       </HBox>

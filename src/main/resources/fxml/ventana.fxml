@@ -191,14 +191,14 @@
                <children>
                   <StackPane prefHeight="150.0" prefWidth="491.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <VBox fx:id="vb_titulo" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="110.0" prefWidth="500.0">
+                        <VBox fx:id="vb_titulo" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="62.0" prefWidth="552.0">
                            <children>
-                              <Label fx:id="lbl_titulo_principal" prefHeight="50.0" prefWidth="400.0" text="Bienvenido de nuevo, XXXX">
+                              <Label fx:id="lbl_titulo_principal" prefHeight="50.0" prefWidth="400.0" text="XXXXXXXXXXXXXX">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lbl_titulo_secundario" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="400.0" text="Un paso más hacia tus metas financieras.">
+                              <Label fx:id="lbl_titulo_secundario" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="400.0" text="xxxxxxxxxxxxxxxxxxxxxx">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -207,7 +207,7 @@
                         </VBox>
                      </children>
                   </StackPane>
-                  <Region prefHeight="110.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Region prefHeight="62.0" prefWidth="123.0" HBox.hgrow="ALWAYS" />
                   <StackPane fx:id="sp_perfil" prefHeight="110.0" prefWidth="400.0">
                      <children>
                         <Button fx:id="btn_perfil" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="250.0" styleClass="button-toolbar-decorator" text="XXXX">
