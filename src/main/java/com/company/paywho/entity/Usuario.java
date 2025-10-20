@@ -12,23 +12,25 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_usuario;
+    private long id_usuario;
     private String nombre;
     private String apellido;
     private String correo_electronico;
     private String contrasena;
     private long saldo;
+    private String ruta_img;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, String correo_electronico, String contrasena, long saldo) {
+    public Usuario(String nombre, String apellido, String correo_electronico, String contrasena, long saldo, String ruta_img) {
         this.id_usuario = id_usuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo_electronico = correo_electronico;
         this.contrasena = contrasena;
         this.saldo = saldo;
+        this.ruta_img = ruta_img;
     }
 
     public Long getId_usuario() {
@@ -82,5 +84,15 @@ public class Usuario {
     public String getNombreApellido() {
         return nombre + " " + apellido;
     }
+
+    public String getRuta_img() {
+        return ruta_img;
+    }
+
+    public void setRuta_img(String ruta_img) {
+        this.ruta_img = ruta_img;
+    }
+    
+    
 
 }

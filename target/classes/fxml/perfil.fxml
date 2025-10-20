@@ -18,17 +18,20 @@
    <center>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <StackPane prefHeight="560.0" prefWidth="991.0" styleClass="borde-sombreado-panel">
+            <StackPane prefHeight="560.0" prefWidth="991.0">
                <children>
                   <VBox prefHeight="550.0" prefWidth="790.0">
                      <children>
-                        <Label prefHeight="74.0" prefWidth="902.0" text="Editar usuario">
+                        <Label prefHeight="66.0" prefWidth="1028.0" text="Editar usuario">
                            <font>
                               <Font name="Montserrat Bold" size="22.0" />
                            </font>
                            <padding>
-                              <Insets left="30.0" />
+                              <Insets left="65.0" />
                            </padding>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </Label>
                         <HBox prefHeight="486.0" prefWidth="902.0" spacing="20.0">
                            <children>
@@ -41,78 +44,67 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Label>
-                                          <TextField prefHeight="51.0" prefWidth="842.0" />
+                                          <TextField fx:id="txf_correo_electronico" prefHeight="51.0" prefWidth="842.0" />
                                        </children>
                                     </VBox>
-                                    <HBox prefHeight="600.0" prefWidth="842.0" spacing="20.0">
+                                    <HBox prefHeight="600.0" prefWidth="842.0" spacing="15.0">
                                        <children>
-                                          <VBox prefHeight="64.0" prefWidth="395.0" spacing="10.0">
+                                          <VBox prefHeight="64.0" prefWidth="395.0" spacing="15.0">
                                              <children>
                                                 <Label text="Nombre">
                                                    <font>
                                                       <Font name="Segoe UI" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField prefHeight="60.0" prefWidth="340.0" />
+                                                <TextField fx:id="txf_nombre" prefHeight="60.0" prefWidth="340.0" />
                                              </children>
                                           </VBox>
-                                          <VBox prefHeight="68.0" prefWidth="411.0" spacing="10.0">
+                                          <VBox prefHeight="68.0" prefWidth="411.0" spacing="15.0">
                                              <children>
                                                 <Label text="Apellido">
                                                    <font>
                                                       <Font name="Segoe UI" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField prefHeight="65.0" prefWidth="222.0" />
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="600.0" prefWidth="842.0" spacing="20.0">
-                                       <children>
-                                          <VBox prefHeight="64.0" prefWidth="395.0" spacing="10.0">
-                                             <children>
-                                                <Label text="Contraseña actual">
-                                                   <font>
-                                                      <Font name="Segoe UI" size="15.0" />
-                                                   </font>
-                                                </Label>
-                                                <TextField prefHeight="60.0" prefWidth="340.0" />
-                                             </children>
-                                          </VBox>
-                                          <VBox prefHeight="68.0" prefWidth="411.0" spacing="10.0">
-                                             <children>
-                                                <Label text="Balance actual">
-                                                   <font>
-                                                      <Font name="Segoe UI" size="15.0" />
-                                                   </font>
-                                                </Label>
-                                                <TextField prefHeight="65.0" prefWidth="222.0" />
+                                                <TextField fx:id="txf_apellido" prefHeight="65.0" prefWidth="222.0" />
                                              </children>
                                           </VBox>
                                        </children>
                                     </HBox>
                                     <VBox prefHeight="600.0" prefWidth="342.0" spacing="10.0">
                                        <children>
-                                          <Label text="Nueva contraseña">
+                                          <Label text="Balance actual">
                                              <font>
                                                 <Font name="Segoe UI" size="15.0" />
                                              </font>
                                           </Label>
-                                          <PasswordField prefHeight="87.0" prefWidth="492.0" />
+                                          <TextField fx:id="txf_balance_actual" prefHeight="65.0" prefWidth="222.0" />
                                        </children>
                                     </VBox>
-                                    <VBox prefHeight="600.0" prefWidth="447.0" spacing="20.0">
+                                    <HBox prefHeight="600.0" prefWidth="842.0" spacing="15.0">
                                        <children>
-                                          <HBox prefHeight="49.0" prefWidth="842.0" spacing="10.0">
+                                          <VBox prefHeight="77.0" prefWidth="503.0" spacing="10.0">
                                              <children>
-                                                <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="164.0" text="Editar">
-                                                   <cursor>
-                                                      <Cursor fx:constant="HAND" />
-                                                   </cursor>
-                                                </Button>
+                                                <Label text="Contraseña actual">
+                                                   <font>
+                                                      <Font name="Segoe UI" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <PasswordField fx:id="pf_contrasena_actual" prefHeight="87.0" prefWidth="492.0" />
                                              </children>
-                                          </HBox>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <VBox prefHeight="600.0" prefWidth="504.0" spacing="20.0">
+                                       <children>
+                                          <Button fx:id="btn_editar" mnemonicParsing="false" prefHeight="38.0" prefWidth="160.0" text="Editar">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Button>
                                        </children>
                                     </VBox>
                                  </children>
@@ -128,18 +120,18 @@
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                    <HBox alignment="CENTER" prefHeight="164.0" prefWidth="306.0">
                                        <children>
-                                          <StackPane prefHeight="150.0" prefWidth="154.0" styleClass="borde-sombreado-panel">
+                                          <StackPane prefHeight="150.0" prefWidth="154.0" style="-fx-background-radius: 40;" styleClass="borde-sombreado-panel">
                                              <children>
-                                                <ImageView fitHeight="150.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true" styleClass="borde-sombreado-panel" />
+                                                <ImageView fx:id="img_perfil" fitHeight="164.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true" styleClass="borde-sombreado-panel" />
                                              </children>
                                           </StackPane>
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" prefHeight="46.0" prefWidth="370.0">
                                        <children>
-                                          <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" text="Seleccionar imagen">
+                                          <Button fx:id="btn_cambiar_img_perfil" mnemonicParsing="false" prefHeight="38.0" prefWidth="200.0" text="Seleccionar imagen">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
@@ -148,8 +140,14 @@
                                     </HBox>
                                  </children></VBox>
                            </children>
+                           <VBox.margin>
+                              <Insets left="40.0" right="40.0" />
+                           </VBox.margin>
                         </HBox>
                      </children>
+                     <padding>
+                        <Insets right="30.0" />
+                     </padding>
                   </VBox>
                </children>
                <padding>

@@ -5,6 +5,7 @@ import com.company.paywho.model.ArchivoServicio;
 import com.company.paywho.model.Utilidades;
 import com.company.paywho.service.SesionServicio;
 import com.company.paywho.view.BotonNavegacion;
+import java.io.File;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
@@ -15,6 +16,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -77,7 +80,7 @@ public class VentanaController implements Initializable {
     }
 
     private void inicializarLogin() {
-        actualizarEtiquetas("xxxx", "Bienvenido a tu espacio financiero", "Inicia sesión o regístrate para continuar.");
+        actualizarEtiquetas("xxxx", "Bienvenido a tu espacio financiero", "Inicia sesión o regístrate para continuar.", ArchivoServicio.getInstancia().getRuta("img_perfil_predeterminado"));
         Utilidades.visibilidadComponentes(obtenerGrupoComponentesEliminarLogin(), false);
         establecerEscena(ArchivoServicio.getInstancia().getRuta("acceso.fxml"));
     }
@@ -87,7 +90,7 @@ public class VentanaController implements Initializable {
             if (nuevoValor) {
                 Utilidades.visibilidadComponentes(obtenerGrupoComponentesEliminarLogin(), true);
                 establecerEscena(ArchivoServicio.getInstancia().getRuta("inicio.fxml"));
-                actualizarEtiquetas(SesionServicio.getUsuarioActual().getNombreApellido(), "Bienvenido de nuevo, " + SesionServicio.getUsuarioActual().getNombre(), "Un paso más hacia tus metas financieras.");
+                actualizarEtiquetas(SesionServicio.getUsuarioActual().getNombreApellido(), "Bienvenido de nuevo, " + SesionServicio.getUsuarioActual().getNombre(), "Un paso más hacia tus metas financieras.", SesionServicio.getUsuarioActual().getRuta_img());
             }
         });
     }
@@ -113,7 +116,10 @@ public class VentanaController implements Initializable {
         return nodos;
     }
 
-    public void actualizarEtiquetas(String perfil, String titulo, String descripcion) {
+    public void actualizarEtiquetas(String perfil, String titulo, String descripcion, String ruta_img) {
+        File file = new File(ruta_img);
+        Image image = new Image(file.toURI().toString());
+        img_perfil.setImage(image);
         btn_perfil.setText(perfil);
         lbl_titulo_principal.setText(titulo);
         lbl_titulo_secundario.setText(descripcion);
@@ -131,7 +137,7 @@ public class VentanaController implements Initializable {
 
     private void cerrarSesion() {
         SesionServicio.cerrarSesion();
-        actualizarEtiquetas("xxxx", "Bienvenido a tu espacio financiero", "Inicia sesión o regístrate para continuar.");
+        actualizarEtiquetas("xxxx", "Bienvenido a tu espacio financiero", "Inicia sesión o regístrate para continuar.", ArchivoServicio.getInstancia().getRuta("img_perfil_predeterminado"));
     }
 
     private void cerrarVentana() {
@@ -191,5 +197,7 @@ public class VentanaController implements Initializable {
     private Button btn_cerrar_sesion;
     @FXML
     private Button btn_perfil;
+    @FXML
+    private ImageView img_perfil;
 
 }

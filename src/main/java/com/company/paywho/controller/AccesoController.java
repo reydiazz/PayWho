@@ -63,6 +63,8 @@ public class AccesoController {
         String contrasena = pf_contrasena.getText();
         return usuarioServicio.validarUsuario(correo, contrasena);
     }
+    
+    
 
     private boolean enviarDatosEsperarRespuestaServicioRegistro() {
         String nombre = txf_nombre_registrar.getText();

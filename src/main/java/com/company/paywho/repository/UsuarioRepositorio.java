@@ -1,15 +1,30 @@
 package com.company.paywho.repository;
 
 import com.company.paywho.entity.Usuario;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
 
     @Query("SELECT u FROM Usuario u WHERE u.correo_electronico = :correo AND u.contrasena = :contrasena")
-    Optional<Usuario> findByCorreoAndContrasena(@Param("correo") String correo, @Param("contrasena") String contrasena);
-   
+    public Optional<Usuario> findByCorreoAndContrasena(@Param("correo") String correo, @Param("contrasena") String contrasena);
+
+    @Query("SELECT u FROM Usuario u WHERE u.id_usuario = :id AND u.contrasena = :contrasena")
+    public Optional<Usuario> findByIDAndContrasena(@Param("id") long id, @Param("contrasena") String contrasena);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Usuario u SET u.nombre = :nombre, u.apellido = :apellido, u.correo_electronico = :correo_electronico, u.saldo = :saldo WHERE u.id_usuario = :id_usuario")
+    public void updateUser(@Param("nombre") String nombre, @Param("apellido") String apellido, @Param("correo_electronico") String correo_electronico, @Param("saldo") long saldo, @Param("id_usuario") long id_usuario);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Usuario u SET u.ruta_img = :ruta_img WHERE u.id_usuario = :id_usuario")
+    public void updateImgRute(@Param("ruta_img") String ruta_img, @Param("id_usuario") long id_usuario);
+
 }
