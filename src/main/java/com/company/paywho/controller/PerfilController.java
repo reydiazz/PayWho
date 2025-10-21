@@ -1,22 +1,18 @@
 package com.company.paywho.controller;
 
+import com.company.paywho.model.Utilidades;
 import com.company.paywho.service.SesionServicio;
 import com.company.paywho.service.UsuarioServicio;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -41,69 +37,48 @@ public class PerfilController implements Initializable {
         txf_apellido.setText(SesionServicio.getUsuarioActual().getApellido());
         txf_correo_electronico.setText(SesionServicio.getUsuarioActual().getCorreo_electronico());
         txf_balance_actual.setText(String.valueOf(SesionServicio.getUsuarioActual().getSaldo()));
-        File file = new File(SesionServicio.getUsuarioActual().getRuta_img());
-        Image image = new Image(file.toURI().toString());
-        img_perfil.setImage(image);
+        img_perfil.setImage(Utilidades.obtenerImagenPerfil(SesionServicio.getUsuarioActual().getRuta_img()));
     }
 
     private void inicializarBotones() {
         btn_editar.setOnAction(evento -> {
-            if (esperarServicioSiContrasenaEsCorrecta()) {
-                System.out.println("Contrasena correcta");
-                if (editarPerfil()) {
-                    System.out.println("Datos editados correctamente, para visualizarlos autentíquese de nuevo.");
-                } else {
-                    System.out.println("Datos invalidos");
-                }
-            } else {
-                System.out.println("Contrasena incorrecta.");
-            }
+            editarPerfil();
         });
 
         btn_cambiar_img_perfil.setOnAction(evento -> {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Seleccionar imagen");
-            fileChooser.getExtensionFilters().add(
-                    new FileChooser.ExtensionFilter("Archivos de imagen", "*.png", "*.jpg", "*.jpeg")
-            );
-
-            Stage stage = (Stage) ((javafx.scene.Node) evento.getSource()).getScene().getWindow();
-            File file = fileChooser.showOpenDialog(stage);
-
-            if (file != null) {
-                try {
-                    // Mostrar la imagen en el ImageView
-                    Image image = new Image(file.toURI().toString());
-                    img_perfil.setImage(image);
-
-                    // Crear carpeta si no existe
-                    File carpeta = new File("user_img");
-                    if (!carpeta.exists()) {
-                        carpeta.mkdir();
-                    }
-
-                    // ?Copiar la imagen a la carpeta del proyecto
-                    String nombreArchivo = System.currentTimeMillis() + "_" + file.getName();
-                    File destino = new File(carpeta, nombreArchivo);
-                    Files.copy(file.toPath(), destino.toPath(), StandardCopyOption.REPLACE_EXISTING);
-
-                    if (usuarioServicio.editarImagenUsuario(SesionServicio.getUsuarioActual().getId_usuario(), destino.getPath())) {
-                        System.out.println("Imagen editada correctamente, para visualizarla autentíquese de nuevo.");
-                    } else {
-                        System.out.println("Error al cargar la imagen.");
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            editarImagenPerfil(evento);
         });
+    }
+
+    private void editarPerfil() {
+        if (esperarServicioSiContrasenaEsCorrecta()) {
+            System.out.println("Contrasena correcta");
+            if (esperarServicioEditarPerfil()) {
+                System.out.println("Datos editados correctamente, para visualizarlos autentíquese de nuevo.");
+            } else {
+                System.out.println("Datos invalidos");
+            }
+        } else {
+            System.out.println("Contrasena incorrecta.");
+        }
+    }
+
+    private void editarImagenPerfil(ActionEvent evento) {
+        File nuevaImagen = Utilidades.cargarImagen(evento);
+        if (nuevaImagen != null) {
+            if (usuarioServicio.editarImagenUsuario(SesionServicio.getUsuarioActual().getId_usuario(), nuevaImagen.getPath())) {
+                System.out.println("Imagen editada correctamente, para visualizarla autentíquese de nuevo.");
+            } else {
+                System.out.println("Error al cargar la imagen.");
+            }
+        }
     }
 
     private boolean esperarServicioSiContrasenaEsCorrecta() {
         return usuarioServicio.validarUsuarioContrasena(SesionServicio.getUsuarioActual().getId_usuario(), pf_contrasena_actual.getText());
     }
 
-    private boolean editarPerfil() {
+    private boolean esperarServicioEditarPerfil() {
         String nuevoNombre = txf_nombre.getText();
         String nuevoApellido = txf_apellido.getText();
         String nuevoCorreoElectronico = txf_correo_electronico.getText();

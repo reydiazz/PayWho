@@ -5,7 +5,6 @@ import com.company.paywho.model.ArchivoServicio;
 import com.company.paywho.model.Utilidades;
 import com.company.paywho.service.SesionServicio;
 import com.company.paywho.view.BotonNavegacion;
-import java.io.File;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
@@ -16,7 +15,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -54,7 +52,7 @@ public class VentanaController implements Initializable {
         botonesNavegacion.add(new BotonNavegacion(btn_ahorro, ArchivoServicio.getInstancia().getRuta("ahorro.fxml")));
         botonesNavegacion.add(new BotonNavegacion(btn_categoria, ArchivoServicio.getInstancia().getRuta("categoria.fxml")));
         botonesNavegacion.add(new BotonNavegacion(btn_perfil, ArchivoServicio.getInstancia().getRuta("perfil.fxml")));
-        asignarBotones(botonesNavegacion);
+        asignarRutasBotonesNavegacion(botonesNavegacion);
     }
 
     private void inicializarBotonesFuncionales() {
@@ -66,7 +64,6 @@ public class VentanaController implements Initializable {
         });
         btn_cerrar_sesion.setOnAction(evento -> {
             cerrarSesion();
-            inicializarLogin();
         });
     }
 
@@ -80,8 +77,8 @@ public class VentanaController implements Initializable {
     }
 
     private void inicializarLogin() {
-        actualizarEtiquetas("xxxx", "Bienvenido a tu espacio financiero", "Inicia sesión o regístrate para continuar.", ArchivoServicio.getInstancia().getRuta("img_perfil_predeterminado"));
         Utilidades.visibilidadComponentes(obtenerGrupoComponentesEliminarLogin(), false);
+        actualizarEtiquetas("User", "Bienvenido a tu espacio financiero", "Inicia sesión o regístrate para continuar.");
         establecerEscena(ArchivoServicio.getInstancia().getRuta("acceso.fxml"));
     }
 
@@ -90,7 +87,8 @@ public class VentanaController implements Initializable {
             if (nuevoValor) {
                 Utilidades.visibilidadComponentes(obtenerGrupoComponentesEliminarLogin(), true);
                 establecerEscena(ArchivoServicio.getInstancia().getRuta("inicio.fxml"));
-                actualizarEtiquetas(SesionServicio.getUsuarioActual().getNombreApellido(), "Bienvenido de nuevo, " + SesionServicio.getUsuarioActual().getNombre(), "Un paso más hacia tus metas financieras.", SesionServicio.getUsuarioActual().getRuta_img());
+                actualizarEtiquetas(SesionServicio.getUsuarioActual().getNombreApellido(), "Bienvenido de nuevo, " + SesionServicio.getUsuarioActual().getNombre(), "Un paso más hacia tus metas financieras.");
+                actualizarImagenPerfil(SesionServicio.getUsuarioActual().getRuta_img());
             }
         });
     }
@@ -108,21 +106,30 @@ public class VentanaController implements Initializable {
         }
     }
 
+    private void actualizarEtiquetas(String perfil, String titulo, String descripcion) {
+        btn_perfil.setText(perfil);
+        lbl_titulo_principal.setText(titulo);
+        lbl_titulo_secundario.setText(descripcion);
+    }
+
+    private void actualizarImagenPerfil(String rutaImg) {
+        img_perfil.setImage(Utilidades.obtenerImagenPerfil(rutaImg));
+    }
+
+    private void asignarRutasBotonesNavegacion(LinkedList<BotonNavegacion> botones) {
+        for (BotonNavegacion boton : botones) {
+            boton.getBoton().setOnAction(evento -> {
+                establecerEscena(boton.getRuta());
+            });
+        }
+    }
+
     private LinkedList obtenerGrupoComponentesEliminarLogin() {
         LinkedList<Node> nodos = new LinkedList<>();
         nodos.add(vb_contendor_botones_principales);
         nodos.add(vb_contendor_botones_secundarios);
         nodos.add(btn_perfil);
         return nodos;
-    }
-
-    public void actualizarEtiquetas(String perfil, String titulo, String descripcion, String ruta_img) {
-        File file = new File(ruta_img);
-        Image image = new Image(file.toURI().toString());
-        img_perfil.setImage(image);
-        btn_perfil.setText(perfil);
-        lbl_titulo_principal.setText(titulo);
-        lbl_titulo_secundario.setText(descripcion);
     }
 
     private void actualizarRecorridoVentana(MouseEvent evento) {
@@ -137,7 +144,7 @@ public class VentanaController implements Initializable {
 
     private void cerrarSesion() {
         SesionServicio.cerrarSesion();
-        actualizarEtiquetas("xxxx", "Bienvenido a tu espacio financiero", "Inicia sesión o regístrate para continuar.", ArchivoServicio.getInstancia().getRuta("img_perfil_predeterminado"));
+        inicializarLogin();
     }
 
     private void cerrarVentana() {
@@ -156,13 +163,6 @@ public class VentanaController implements Initializable {
         this.ventana = ventana;
     }
 
-    private void asignarBotones(LinkedList<BotonNavegacion> botones) {
-        for (BotonNavegacion boton : botones) {
-            boton.getBoton().setOnAction(evento -> {
-                establecerEscena(boton.getRuta());
-            });
-        }
-    }
     @FXML
     private Label lbl_titulo_principal;
     @FXML
@@ -173,8 +173,6 @@ public class VentanaController implements Initializable {
     private VBox vb_contendor_botones_principales;
     @FXML
     private VBox vb_contendor_botones_secundarios;
-    @FXML
-    private HBox hb_head;
     @FXML
     private HBox hb_toolbar;
     @FXML

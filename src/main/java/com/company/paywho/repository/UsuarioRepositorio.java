@@ -17,6 +17,9 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
     @Query("SELECT u FROM Usuario u WHERE u.id_usuario = :id AND u.contrasena = :contrasena")
     public Optional<Usuario> findByIDAndContrasena(@Param("id") long id, @Param("contrasena") String contrasena);
 
+    @Query("SELECT u FROM Usuario u WHERE u.correo_electronico = :correo")
+    public Optional<Usuario> findByCorreo(@Param("correo") String correo);
+
     @Transactional
     @Modifying
     @Query("UPDATE Usuario u SET u.nombre = :nombre, u.apellido = :apellido, u.correo_electronico = :correo_electronico, u.saldo = :saldo WHERE u.id_usuario = :id_usuario")

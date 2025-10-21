@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -120,11 +122,18 @@
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <HBox alignment="CENTER" prefHeight="164.0" prefWidth="306.0">
+                                    <HBox alignment="CENTER" prefHeight="190.0" prefWidth="291.0">
                                        <children>
-                                          <StackPane prefHeight="150.0" prefWidth="154.0" style="-fx-background-radius: 40;" styleClass="borde-sombreado-panel">
+                                          <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="borde-sombreado-panel">
                                              <children>
-                                                <ImageView fx:id="img_perfil" fitHeight="164.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true" styleClass="borde-sombreado-panel" />
+                                                <ImageView fx:id="img_perfil" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" smooth="false" styleClass="borde-sombreado-panel" StackPane.alignment="CENTER">
+                                                   <image>
+                                                      <Image url="@../img/user_img_default.png" />
+                                                   </image>
+                                                   <viewport>
+                                                      <Rectangle2D />
+                                                   </viewport>
+                                                </ImageView>
                                              </children>
                                           </StackPane>
                                        </children>

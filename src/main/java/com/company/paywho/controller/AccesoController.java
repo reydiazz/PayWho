@@ -33,29 +33,37 @@ public class AccesoController {
             registrarUsuario();
         });
         btn_crear_cuenta.setOnAction(evento -> {
-            Utilidades.visibilidadComponente(vb_iniciar_sesion, false);
-            Utilidades.visibilidadComponente(vb_registrarse, true);
+            mostrarPlantillaRegistro();
         });
         btn_logear.setOnAction(evento -> {
-            Utilidades.visibilidadComponente(vb_registrarse, false);
-            Utilidades.visibilidadComponente(vb_iniciar_sesion, true);
+            mostrarPlantillaLogin();
         });
     }
 
     private void iniciarSesion() {
         if (enviarDatosEsperarRespuestaServicioLogin()) {
-            System.out.println("Todo correcto");
+            System.out.println("Acceso concedido.");
         } else {
-            System.out.println("Usuario no encontrado.");
+            System.out.println("Acceso denegado.");
         }
     }
 
     private void registrarUsuario() {
-        if (enviarDatosEsperarRespuestaServicioRegistro()) {
-            System.out.println("Todo correcto");
+        if (disponibilidadCorreoElectronico()) {
+            System.out.println("Correo electronico ya registrado.");
         } else {
-            System.out.println("Datos no corespondientes.");
+            if (enviarDatosEsperarRespuestaServicioRegistro()) {
+                System.out.println("Usuario registrado");
+            } else {
+                System.out.println("Complete el formulario correctamente.");
+            }
         }
+
+    }
+
+    private boolean disponibilidadCorreoElectronico() {
+        String correo = txf_correo_registrar.getText();
+        return usuarioServicio.validarCorreoElectronico(correo);
     }
 
     private boolean enviarDatosEsperarRespuestaServicioLogin() {
@@ -63,8 +71,6 @@ public class AccesoController {
         String contrasena = pf_contrasena.getText();
         return usuarioServicio.validarUsuario(correo, contrasena);
     }
-    
-    
 
     private boolean enviarDatosEsperarRespuestaServicioRegistro() {
         String nombre = txf_nombre_registrar.getText();
@@ -73,6 +79,16 @@ public class AccesoController {
         String contrasena = pf_contrasena_registrar.getText();
         String saldo = txf_balance_registro.getText();
         return usuarioServicio.registrarUsuario(nombre, apellido, correo_electronico, contrasena, saldo);
+    }
+
+    private void mostrarPlantillaRegistro() {
+        Utilidades.visibilidadComponente(vb_iniciar_sesion, false);
+        Utilidades.visibilidadComponente(vb_registrarse, true);
+    }
+
+    private void mostrarPlantillaLogin() {
+        Utilidades.visibilidadComponente(vb_registrarse, false);
+        Utilidades.visibilidadComponente(vb_iniciar_sesion, true);
     }
 
     @FXML
