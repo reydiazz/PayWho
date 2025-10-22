@@ -3,6 +3,7 @@ com\company\paywho\entity\Categoria.class
 com\company\paywho\view\BotonNavegacion.class
 com\company\paywho\controller\VentanaController.class
 com\company\paywho\model\Utilidades.class
+com\company\paywho\repository\CategoriaRepositorio.class
 com\company\paywho\controller\AhorroController.class
 com\company\paywho\service\SesionServicio.class
 com\company\paywho\entity\Usuario.class
@@ -15,6 +16,7 @@ com\company\paywho\controller\IngresoController.class
 com\company\paywho\entity\MetaAhorro.class
 com\company\paywho\controller\PerfilController.class
 com\company\paywho\repository\UsuarioRepositorio.class
+com\company\paywho\service\CategoriaServicio.class
 com\company\paywho\JavaFXApp.class
 com\company\paywho\entity\Ingresos.class
 com\company\paywho\service\UsuarioServicio.class

@@ -126,7 +126,7 @@
                                        <children>
                                           <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="borde-sombreado-panel">
                                              <children>
-                                                <ImageView fx:id="img_perfil" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" smooth="false" styleClass="borde-sombreado-panel" StackPane.alignment="CENTER">
+                                                <ImageView fx:id="img_perfil" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" smooth="false" StackPane.alignment="CENTER">
                                                    <image>
                                                       <Image url="@../img/user_img_default.png" />
                                                    </image>

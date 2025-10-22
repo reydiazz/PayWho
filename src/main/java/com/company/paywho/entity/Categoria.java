@@ -12,7 +12,7 @@ public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_C;
+    private long id_categoria;
     private long id_usuario;
     private String nombre;
     private String tipo;
@@ -26,12 +26,12 @@ public class Categoria {
         this.tipo = tipo;
     }
 
-    public long getId_C() {
-        return id_C;
+    public long getId_categoria() {
+        return id_categoria;
     }
 
-    public void setId_C(long id_C) {
-        this.id_C = id_C;
+    public void setId_categoria(long id_categoria) {
+        this.id_categoria = id_categoria;
     }
 
     public long getId_usuario() {
@@ -57,4 +57,5 @@ public class Categoria {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
 }

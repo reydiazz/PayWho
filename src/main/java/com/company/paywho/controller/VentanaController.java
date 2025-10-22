@@ -103,6 +103,7 @@ public class VentanaController implements Initializable {
             System.out.println("Cargo correctamente.");
         } catch (Exception e) {
             System.out.println("No se encontro el archivo fxml.");
+            e.printStackTrace();
         }
     }
 
