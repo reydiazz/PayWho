@@ -27,6 +27,11 @@ public class CategoriaServicio {
         return categoria;
     }
 
+    public List<Categoria> obtenerCategoriasSegunTipo(long id_usuario, String tipo) {
+        List<Categoria> categoria = categoriaRepositorio.findByTypeCategory(id_usuario, tipo);
+        return categoria;
+    }
+
     public boolean guardarCategoria(long id_usuario, String nombre, String tipo) {
         try {
             if (tipo != null) {

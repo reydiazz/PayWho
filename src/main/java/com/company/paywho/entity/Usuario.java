@@ -19,18 +19,19 @@ public class Usuario {
     private String contrasena;
     private long saldo;
     private String ruta_img;
+    private double porcentaje_ahorro;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, String correo_electronico, String contrasena, long saldo, String ruta_img) {
-        this.id_usuario = id_usuario;
+    public Usuario(String nombre, String apellido, String correo_electronico, String contrasena, long saldo, String ruta_img, double porcentaje_ahorro) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo_electronico = correo_electronico;
         this.contrasena = contrasena;
         this.saldo = saldo;
         this.ruta_img = ruta_img;
+        this.porcentaje_ahorro = porcentaje_ahorro;
     }
 
     public Long getId_usuario() {
@@ -92,7 +93,13 @@ public class Usuario {
     public void setRuta_img(String ruta_img) {
         this.ruta_img = ruta_img;
     }
-    
-    
+
+    public double getPorcentaje_ahorro() {
+        return porcentaje_ahorro;
+    }
+
+    public void setPorcentaje_ahorro(double porcentaje_ahorro) {
+        this.porcentaje_ahorro = porcentaje_ahorro;
+    }
 
 }

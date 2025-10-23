@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.security.MessageDigest;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
@@ -107,6 +109,12 @@ public class Utilidades {
             image = new Image(Thread.currentThread().getContextClassLoader().getResource("img/user_img_default.png").toExternalForm());
         }
         return image;
+    }
+
+    public static String obtenerFechaActual() {
+        LocalDate fecha = LocalDate.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return fecha.format(formato);
     }
 
 }

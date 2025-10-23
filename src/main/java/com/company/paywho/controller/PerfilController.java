@@ -38,6 +38,7 @@ public class PerfilController implements Initializable {
         txf_correo_electronico.setText(SesionServicio.getUsuarioActual().getCorreo_electronico());
         txf_balance_actual.setText(String.valueOf(SesionServicio.getUsuarioActual().getSaldo()));
         img_perfil.setImage(Utilidades.obtenerImagenPerfil(SesionServicio.getUsuarioActual().getRuta_img()));
+        txf_porcentaje_ahorro.setText(String.valueOf(SesionServicio.getUsuarioActual().getPorcentaje_ahorro()));
     }
 
     private void inicializarBotones() {
@@ -83,9 +84,12 @@ public class PerfilController implements Initializable {
         String nuevoApellido = txf_apellido.getText();
         String nuevoCorreoElectronico = txf_correo_electronico.getText();
         String nuevoBalance = txf_balance_actual.getText();
-        return usuarioServicio.editarUsuario(nuevoNombre, nuevoApellido, nuevoCorreoElectronico, nuevoBalance, SesionServicio.getUsuarioActual().getId_usuario());
+        String porcentajeCadena = txf_porcentaje_ahorro.getText();
+        return usuarioServicio.editarUsuario(nuevoNombre, nuevoApellido, nuevoCorreoElectronico, nuevoBalance, SesionServicio.getUsuarioActual().getId_usuario(),porcentajeCadena);
     }
 
+    @FXML
+    private TextField txf_porcentaje_ahorro;
     @FXML
     private TextField txf_correo_electronico;
     @FXML

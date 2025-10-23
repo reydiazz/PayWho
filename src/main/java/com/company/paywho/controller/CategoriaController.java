@@ -42,7 +42,7 @@ public class CategoriaController implements Initializable {
         btn_agregar.setOnAction(evento -> {
             agregarCategoria();
         });
-        tb_categoria.getSelectionModel().selectedItemProperty().addListener((observado, antiguoValor, nuevoValor) -> {
+        tv_categoria.getSelectionModel().selectedItemProperty().addListener((observado, antiguoValor, nuevoValor) -> {
             actualizarCategoriaElegida(nuevoValor);
             actualizarFormularioCategoriaElegida();
         });
@@ -60,8 +60,8 @@ public class CategoriaController implements Initializable {
         tc_nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         tc_categoria.setReorderable(false);
         tc_nombre.setReorderable(false);
-        tb_categoria.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
-        tb_categoria.setItems(solicitarDatosAlServicioCategoria());
+        tv_categoria.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
+        tv_categoria.setItems(solicitarDatosAlServicioCategoria());
     }
 
     private void agregarCategoria() {
@@ -69,6 +69,7 @@ public class CategoriaController implements Initializable {
             if (enviarDatosAlServicioCategoriaAgregar()) {
                 System.out.println("Se guardo correctamente");
                 actualizarTabla();
+                limpiarFormulario();
             } else {
                 System.out.println("Error al registrar");
             }
@@ -81,6 +82,7 @@ public class CategoriaController implements Initializable {
         if (enviarDatosAlServicioCategoriaEditar()) {
             System.out.println("Se actualizo correctamente.");
             actualizarTabla();
+            limpiarFormulario();
         } else {
             System.out.println("Error al modificar");
         }
@@ -91,6 +93,7 @@ public class CategoriaController implements Initializable {
             System.out.println("Se elimino correctamente");
             inicializarCategoriaElegida();
             actualizarTabla();
+            limpiarFormulario();
         } else {
             System.out.println("Error al eliminar");
         }
@@ -149,7 +152,7 @@ public class CategoriaController implements Initializable {
     }
 
     private void actualizarTabla() {
-        tb_categoria.setItems(solicitarDatosAlServicioCategoria());
+        tv_categoria.setItems(solicitarDatosAlServicioCategoria());
     }
 
     private void inicializarCategoriaElegida() {
@@ -175,7 +178,7 @@ public class CategoriaController implements Initializable {
     @FXML
     private Button btn_modificar;
     @FXML
-    private TableView<Categoria> tb_categoria;
+    private TableView<Categoria> tv_categoria;
     @FXML
     private TableColumn<Categoria, String> tc_nombre;
     @FXML

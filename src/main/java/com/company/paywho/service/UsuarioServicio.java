@@ -39,10 +39,13 @@ public class UsuarioServicio {
         return false;
     }
 
-    public boolean editarUsuario(String nombre, String apellido, String correo_electronico, String saldoCadena, long id_usuario) {
+    public boolean editarUsuario(String nombre, String apellido, String correo_electronico, String saldoCadena, long id_usuario, String porcentajeCadena) {
         try {
             long saldo = Long.parseLong(saldoCadena);
-            usuarioRepositorio.updateUser(nombre, apellido, correo_electronico, saldo, id_usuario);
+            double porcentajeAhorro = Double.parseDouble(porcentajeCadena);
+            if (saldo > 0 && porcentajeAhorro > 0) {
+                usuarioRepositorio.updateUser(nombre, apellido, correo_electronico, saldo, id_usuario, porcentajeAhorro);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -63,9 +66,13 @@ public class UsuarioServicio {
         String sha256Contrasena = Utilidades.sha256(contrasena);
         try {
             long balance = Long.parseLong(balanceCadena);
-            Usuario usuario = new Usuario(nombre, apellido, correo_electronico, sha256Contrasena, balance, "SIN DEFINIR");
-            usuarioRepositorio.save(usuario);
-            validarUsuario(correo_electronico, contrasena);
+            if (balance > 0) {
+                Usuario usuario = new Usuario(nombre, apellido, correo_electronico, sha256Contrasena, balance, "SIN DEFINIR", 0);
+                usuarioRepositorio.save(usuario);
+                validarUsuario(correo_electronico, contrasena);
+            } else {
+                return false;
+            }
         } catch (Exception e) {
             return false;
         }

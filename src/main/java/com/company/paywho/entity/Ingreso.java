@@ -9,44 +9,36 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Ahorro")
-public class Ahorro {
+@Table(name = "Ingreso")
+public class Ingreso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_ahorro;
-    private String fecha;
+    private long id_ingreso;
     private long id_usuario;
+    private String fecha;
     private double monto;
 
     @ManyToOne
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
-    public Ahorro() {
+    public Ingreso() {
     }
 
-    public Ahorro(Categoria categoria, String fecha, long id_usuario, double monto) {
+    public Ingreso(Categoria categoria, String fecha, long id_usuario, double monto) {
         this.categoria = categoria;
         this.fecha = fecha;
         this.id_usuario = id_usuario;
         this.monto = monto;
     }
 
-    public long getId_ahorro() {
-        return id_ahorro;
+    public long getId_ingreso() {
+        return id_ingreso;
     }
 
-    public void setId_ahorro(long id_ahorro) {
-        this.id_ahorro = id_ahorro;
-    }
-
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setId_ingreso(long id_ingreso) {
+        this.id_ingreso = id_ingreso;
     }
 
     public long getId_usuario() {
@@ -57,20 +49,36 @@ public class Ahorro {
         this.id_usuario = id_usuario;
     }
 
-    public double getMonto() {
-        return monto;
-    }
-
-    public void setMonto(double monto) {
-        this.monto = monto;
-    }
-
     public Categoria getCategoria() {
         return categoria;
     }
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public long getId_Usuario() {
+        return id_usuario;
+    }
+
+    public void setId_Usuario(long id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+
+    public double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(long monto) {
+        this.monto = monto;
     }
 
 }
