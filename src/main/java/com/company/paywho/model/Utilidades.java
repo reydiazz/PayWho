@@ -1,5 +1,6 @@
 package com.company.paywho.model;
 
+import com.company.paywho.controller.AvisoController;
 import com.company.paywho.service.SesionServicio;
 import java.io.File;
 import java.io.IOException;
@@ -9,14 +10,40 @@ import java.security.MessageDigest;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Utilidades {
+
+    public static void crearModal(String mensaje) {
+        try {
+            FXMLLoader fxml = new FXMLLoader(Utilidades.class.getResource(ArchivoServicio.getInstancia().getRuta("aviso.fxml")));
+            Parent raiz = fxml.load();
+            AvisoController controlador = fxml.getController();
+            Stage modal = new Stage();
+            controlador.setVentana(modal);
+            controlador.inicializarMensaje(mensaje);
+            Scene escena = new Scene(raiz);
+            modal.initModality(Modality.APPLICATION_MODAL);
+            modal.initStyle(StageStyle.UNDECORATED);
+            modal.centerOnScreen();
+            modal.setScene(escena);
+            modal.showAndWait();
+
+        } catch (IOException ex) {
+            Logger.getLogger(Utilidades.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public static <T extends Node> LinkedList<T> recojerNodos(Parent root, Parent evitar, Class<T> tipo) {
         LinkedList<T> lista = new LinkedList<>();

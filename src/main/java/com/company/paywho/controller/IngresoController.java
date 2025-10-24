@@ -2,6 +2,7 @@ package com.company.paywho.controller;
 
 import com.company.paywho.entity.Categoria;
 import com.company.paywho.entity.Ingreso;
+import com.company.paywho.model.Utilidades;
 import com.company.paywho.service.AhorroServicio;
 import com.company.paywho.service.CategoriaServicio;
 import com.company.paywho.service.IngresoServicio;
@@ -27,9 +28,9 @@ import org.springframework.stereotype.Controller;
 public class IngresoController implements Initializable {
 
     private IngresoServicio ingresoServicio;
-    private Ingreso ingresoElegido;
     private CategoriaServicio categoriaServicio;
     private AhorroServicio ahorroServicio;
+    private Ingreso ingresoElegido;
 
     @Autowired
     public IngresoController(IngresoServicio ingresoServicio, CategoriaServicio categoriaServicio, AhorroServicio ahorroServicio) {
@@ -41,7 +42,7 @@ public class IngresoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         inicializarTabla();
-        inicializarComboBox();
+        inicializarOpciones();
         inicializarBotones();
         inicializarIngresoElegido();
     }
@@ -57,13 +58,7 @@ public class IngresoController implements Initializable {
         tv_ingresos.setItems(solicitarDatosAlServicioIngreso());
     }
 
-    private ObservableList<Ingreso> solicitarDatosAlServicioIngreso() {
-        List<Ingreso> ingresos = ingresoServicio.obtenerIngresosSegunID(SesionServicio.getUsuarioActual().getId_usuario());
-        ObservableList< Ingreso> lista = FXCollections.observableArrayList(ingresos);
-        return lista;
-    }
-
-    private void inicializarComboBox() {
+    private void inicializarOpciones() {
         List<Categoria> tipos = categoriaServicio.obtenerCategoriasSegunTipo(SesionServicio.getUsuarioActual().getId_usuario(), "Ingreso");
         ObservableList<Categoria> opciones = FXCollections.observableArrayList(tipos);
         cb_tipo_ingreso.setItems(opciones);
@@ -74,10 +69,10 @@ public class IngresoController implements Initializable {
             agregarIngreso();
         });
         btn_eliminar.setOnAction(evento -> {
-            eliminiarCategoria();
+            eliminiarIngreso();
         });
         btn_modificar.setOnAction(evento -> {
-            modificarCategoria();
+            modificarIngreso();
         });
         tv_ingresos.getSelectionModel().selectedItemProperty().addListener((observado, antiguoValor, nuevoValor) -> {
             actualizarIngresoElegido(nuevoValor);
@@ -88,41 +83,41 @@ public class IngresoController implements Initializable {
     private void agregarIngreso() {
         if (cx_ahorrar.isSelected()) {
             if (enviarDatosAlServicioIngresoAgregarAhorro() && enviarDatosAlServicioAhorroAgregar()) {
-                System.out.println("Se guardo correctamente");
                 actualizarTabla();
                 limpiarFormulario();
+                Utilidades.crearModal("Se registro correctamente el ingreso.");
             } else {
-                System.out.println("Error al registrar");
+                Utilidades.crearModal("Error al registrar el ingreso.");
             }
         } else {
             if (enviarDatosAlServicioIngresoAgregar()) {
-                System.out.println("Se guardo correctamente");
                 actualizarTabla();
                 limpiarFormulario();
+                Utilidades.crearModal("Se registro correctamente el ingreso.");
             } else {
-                System.out.println("Error al registrar");
+                Utilidades.crearModal("Error al registrar el ingreso.");
             }
         }
     }
 
-    private void modificarCategoria() {
+    private void modificarIngreso() {
         if (enviarDatosAlServicioIngresoModificar()) {
-            System.out.println("Se actualizo correctamente.");
             actualizarTabla();
             limpiarFormulario();
+            Utilidades.crearModal("Se actualizo correctamente el ingreso.");
         } else {
-            System.out.println("Error al modificar");
+            Utilidades.crearModal("Error al modificar el ingreso.");
         }
     }
 
-    private void eliminiarCategoria() {
+    private void eliminiarIngreso() {
         if (enviarDatosAlServicioIngresoEliminar()) {
-            System.out.println("Se elimino correctamente");
             inicializarIngresoElegido();
             actualizarTabla();
             limpiarFormulario();
+            Utilidades.crearModal("Se elimino correctamente el ingreso.");
         } else {
-            System.out.println("Error al eliminar");
+            Utilidades.crearModal("Error al eliminar el ingreso.");
         }
     }
 
@@ -152,6 +147,12 @@ public class IngresoController implements Initializable {
 
     private boolean enviarDatosAlServicioIngresoEliminar() {
         return ingresoServicio.borrarIngreso(ingresoElegido);
+    }
+
+    private ObservableList<Ingreso> solicitarDatosAlServicioIngreso() {
+        List<Ingreso> ingresos = ingresoServicio.obtenerIngresosSegunID(SesionServicio.getUsuarioActual().getId_usuario());
+        ObservableList< Ingreso> lista = FXCollections.observableArrayList(ingresos);
+        return lista;
     }
 
     private void actualizarTabla() {

@@ -44,6 +44,7 @@ public class JavaFXApp extends Application {
             VentanaController controlador = fxml.getController();
             controlador.setVentana(stage);
             stage.initStyle(StageStyle.UNDECORATED);
+            stage.centerOnScreen();
             stage.show();
         } catch (Exception ex) {
             ex.printStackTrace();

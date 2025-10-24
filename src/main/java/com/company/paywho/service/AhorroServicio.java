@@ -19,11 +19,11 @@ public class AhorroServicio {
     }
 
     public List<Ahorro> obtenerAhorrosSegunID(long id_usuario) {
-        List<Ahorro> ahorros = ahorroRepositorio.findByIDUserSaving(id_usuario);
-        for (Ahorro a : ahorros) {
-            if (a.getCategoria() == null) {
-                ahorros.remove(a);
-                ahorroRepositorio.delete(a);
+        List<Ahorro> ahorros = ahorroRepositorio.buscarAhorroID(id_usuario);
+        for (Ahorro ahorro : ahorros) {
+            if (ahorro.getCategoria() == null) {
+                ahorros.remove(ahorro);
+                ahorroRepositorio.delete(ahorro);
                 break;
             }
         }
@@ -33,9 +33,11 @@ public class AhorroServicio {
     public boolean guardarAhorro(Categoria categoria, long id_usuario, String montoString) {
         try {
             if (categoria != null) {
-                double monto = Double.valueOf(montoString) * (SesionServicio.getUsuarioActual().getPorcentaje_ahorro() / 100);
-                if (monto > 0) {
-                    Ahorro ahorro = new Ahorro(categoria, Utilidades.obtenerFechaActual(), id_usuario, monto);
+                double monto = Double.valueOf(montoString);
+                double montoSegunPorcentaje = SesionServicio.getUsuarioActual().getPorcentaje_ahorro() / 100;
+                double montoAhorro = monto * montoSegunPorcentaje;
+                if (montoAhorro >= 0) {
+                    Ahorro ahorro = new Ahorro(categoria, Utilidades.obtenerFechaActual(), id_usuario, montoAhorro);
                     ahorroRepositorio.save(ahorro);
                     return true;
                 } else {

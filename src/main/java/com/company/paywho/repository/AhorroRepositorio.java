@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 public interface AhorroRepositorio extends JpaRepository<Ahorro, Long> {
 
     @Query("SELECT a FROM Ahorro a WHERE a.id_usuario =:id_usuario")
-    public List<Ahorro> findByIDUserSaving(@Param("id_usuario") long id_usuario);
+    public List<Ahorro> buscarAhorroID(@Param("id_usuario") long id_usuario);
 
 }

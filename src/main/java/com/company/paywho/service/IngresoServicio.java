@@ -19,11 +19,11 @@ public class IngresoServicio {
     }
 
     public List<Ingreso> obtenerIngresosSegunID(long id_usuario) {
-        List<Ingreso> ingresos = ingresoRepositorio.findByIDUserEarning(id_usuario);
-        for (Ingreso i : ingresos) {
-            if (i.getCategoria() == null) {
-                ingresos.remove(i);
-                ingresoRepositorio.delete(i);
+        List<Ingreso> ingresos = ingresoRepositorio.buscarIngresoIDUsuario(id_usuario);
+        for (Ingreso ingreso : ingresos) {
+            if (ingreso.getCategoria() == null) {
+                ingresos.remove(ingreso);
+                ingresoRepositorio.delete(ingreso);
                 break;
             }
         }
@@ -52,8 +52,10 @@ public class IngresoServicio {
     public boolean guardarIngresoAhorro(Categoria categoria, long id_usuario, String montoString) {
         try {
             if (categoria != null) {
-                double porcentajeAhorro = Double.valueOf(montoString) * (SesionServicio.getUsuarioActual().getPorcentaje_ahorro() / 100);
-                double montoAhorro = Double.valueOf(montoString) - porcentajeAhorro;
+                double monto = Double.valueOf(montoString);
+                double porcentajeAhorro = (SesionServicio.getUsuarioActual().getPorcentaje_ahorro() / 100);
+                double parteAhorro = monto * porcentajeAhorro;
+                double montoAhorro = monto - parteAhorro;
                 if (montoAhorro > 0) {
                     Ingreso ingreso = new Ingreso(categoria, Utilidades.obtenerFechaActual(), id_usuario, montoAhorro);
                     ingresoRepositorio.save(ingreso);
@@ -86,7 +88,7 @@ public class IngresoServicio {
         try {
             if (ingreso != null) {
                 double monto = Double.parseDouble(montoCadena);
-                ingresoRepositorio.updateEarning(categoria, monto, ingreso.getId_ingreso());
+                ingresoRepositorio.editarIngreso(categoria, monto, ingreso.getId_ingreso());
             } else {
                 return false;
             }

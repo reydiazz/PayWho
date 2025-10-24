@@ -18,17 +18,17 @@ public class CategoriaServicio {
     }
 
     public boolean comprobarDisponibilidadNombreCategoria(long idCategoria, String nombre, String tipo) {
-        Optional<Categoria> categoria = categoriaRepositorio.findByNameCategory(idCategoria, nombre, tipo);
+        Optional<Categoria> categoria = categoriaRepositorio.buscarCategoriaNombre(idCategoria, nombre, tipo);
         return categoria.isPresent();
     }
 
     public List<Categoria> obtenerCategoriaSegunID(long id_usuario) {
-        List<Categoria> categoria = categoriaRepositorio.findByIDCategory(id_usuario);
+        List<Categoria> categoria = categoriaRepositorio.buscarCategoriaID(id_usuario);
         return categoria;
     }
 
     public List<Categoria> obtenerCategoriasSegunTipo(long id_usuario, String tipo) {
-        List<Categoria> categoria = categoriaRepositorio.findByTypeCategory(id_usuario, tipo);
+        List<Categoria> categoria = categoriaRepositorio.buscarCategoriaTipo(id_usuario, tipo);
         return categoria;
     }
 
@@ -62,7 +62,7 @@ public class CategoriaServicio {
     public boolean modificarCategoria(Categoria categoria, String nombre, String tipo) {
         try {
             if (categoria != null) {
-                categoriaRepositorio.updateCategory(nombre, tipo, categoria.getId_categoria());
+                categoriaRepositorio.actualizarCategoria(nombre, tipo, categoria.getId_categoria());
             } else {
                 return false;
             }

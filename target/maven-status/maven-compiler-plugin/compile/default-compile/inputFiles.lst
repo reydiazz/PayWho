@@ -1,5 +1,6 @@
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\controller\AccesoController.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\controller\AhorroController.java
+C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\controller\AvisoController.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\controller\CategoriaController.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\controller\GastoController.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\controller\IngresoController.java
@@ -8,6 +9,7 @@ C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\controller\VentanaController.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\entity\Ahorro.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\entity\Categoria.java
+C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\entity\Gasto.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\entity\Ingreso.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\entity\MetaAhorro.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\entity\Usuario.java

@@ -41,21 +41,19 @@ public class AccesoController {
     }
 
     private void iniciarSesion() {
-        if (enviarDatosEsperarRespuestaServicioLogin()) {
-            System.out.println("Acceso concedido.");
-        } else {
-            System.out.println("Acceso denegado.");
-        }
+        if (!enviarDatosEsperarRespuestaServicioLogin()) {
+            Utilidades.crearModal("Acceso denegado.");
+        } 
     }
 
     private void registrarUsuario() {
         if (disponibilidadCorreoElectronico()) {
-            System.out.println("Correo electronico ya registrado.");
+            Utilidades.crearModal("Correo electronico ya registrado.");
         } else {
             if (enviarDatosEsperarRespuestaServicioRegistro()) {
-                System.out.println("Usuario registrado");
+                Utilidades.crearModal("Usuario registrado");
             } else {
-                System.out.println("Complete el formulario correctamente.");
+                Utilidades.crearModal("Complete el formulario correctamente.");
             }
         }
 

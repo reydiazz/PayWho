@@ -27,7 +27,7 @@ import org.springframework.stereotype.Controller;
 public class VentanaController implements Initializable {
 
     private Stage ventana;
-
+    
     private double recorridoX;
     private double recorridoY;
 

@@ -18,7 +18,8 @@ public class UsuarioServicio {
     }
 
     public boolean validarUsuario(String correo_electronico, String contrasena) {
-        Optional<Usuario> usuario = usuarioRepositorio.findByCorreoAndContrasena(correo_electronico, Utilidades.sha256(contrasena));
+        String contrasenaHash = Utilidades.sha256(contrasena);
+        Optional<Usuario> usuario = usuarioRepositorio.buscarUsuarioContrasenaCorreo(correo_electronico, contrasenaHash);
         if (usuario.isPresent()) {
             SesionServicio.iniciarSesion(usuario.get());
             return true;
@@ -26,48 +27,22 @@ public class UsuarioServicio {
         return false;
     }
 
-    public boolean validarCorreoElectronico(String correo) {
-        Optional<Usuario> usuario = usuarioRepositorio.findByCorreo(correo);
+    public boolean validarUsuarioContrasena(long idUsuario, String contrasena) {
+        Optional<Usuario> usuario = usuarioRepositorio.buscarUsuarioIDContrasena(idUsuario, Utilidades.sha256(contrasena));
         return usuario.isPresent();
     }
 
-    public boolean validarUsuarioContrasena(long idUsuario, String contrasena) {
-        Optional<Usuario> usuario = usuarioRepositorio.findByIDAndContrasena(idUsuario, Utilidades.sha256(contrasena));
-        if (usuario.isPresent()) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean editarUsuario(String nombre, String apellido, String correo_electronico, String saldoCadena, long id_usuario, String porcentajeCadena) {
-        try {
-            long saldo = Long.parseLong(saldoCadena);
-            double porcentajeAhorro = Double.parseDouble(porcentajeCadena);
-            if (saldo > 0 && porcentajeAhorro > 0) {
-                usuarioRepositorio.updateUser(nombre, apellido, correo_electronico, saldo, id_usuario, porcentajeAhorro);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-
-    public boolean editarImagenUsuario(long idUsuario, String rutaImg) {
-        try {
-            usuarioRepositorio.updateImgRute(rutaImg, idUsuario);
-        } catch (Exception e) {
-            return false;
-        }
-        return true;
+    public boolean validarCorreoElectronico(String correo) {
+        Optional<Usuario> usuario = usuarioRepositorio.buscarUsuarioCorreo(correo);
+        return usuario.isPresent();
     }
 
     public boolean registrarUsuario(String nombre, String apellido, String correo_electronico, String contrasena, String balanceCadena) {
-        String sha256Contrasena = Utilidades.sha256(contrasena);
         try {
+            String contrasenaHash = Utilidades.sha256(contrasena);
             long balance = Long.parseLong(balanceCadena);
             if (balance > 0) {
-                Usuario usuario = new Usuario(nombre, apellido, correo_electronico, sha256Contrasena, balance, "SIN DEFINIR", 0);
+                Usuario usuario = new Usuario(nombre, apellido, correo_electronico, contrasenaHash, balance, "SIN DEFINIR", 0);
                 usuarioRepositorio.save(usuario);
                 validarUsuario(correo_electronico, contrasena);
             } else {
@@ -79,4 +54,25 @@ public class UsuarioServicio {
         return true;
     }
 
+    public boolean editarUsuario(String nombre, String apellido, String correo_electronico, String saldoCadena, long id_usuario, String porcentajeCadena) {
+        try {
+            long saldo = Long.parseLong(saldoCadena);
+            double porcentajeAhorro = Double.parseDouble(porcentajeCadena);
+            if (saldo > 0 && porcentajeAhorro >= 0 && porcentajeAhorro <= 100) {
+                usuarioRepositorio.editarUsuario(nombre, apellido, correo_electronico, saldo, id_usuario, porcentajeAhorro);
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean editarImagenUsuario(long idUsuario, String rutaImg) {
+        try {
+            usuarioRepositorio.editarUsuarioImagenRuta(rutaImg, idUsuario);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
 }

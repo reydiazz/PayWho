@@ -1,6 +1,7 @@
 package com.company.paywho.controller;
 
 import com.company.paywho.entity.Categoria;
+import com.company.paywho.model.Utilidades;
 import com.company.paywho.service.CategoriaServicio;
 import com.company.paywho.service.SesionServicio;
 import java.net.URL;
@@ -32,7 +33,7 @@ public class CategoriaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        inicializarComboBox();
+        inicializarOpcionesCategoria();
         inicializarBotones();
         inicializarTabla();
         inicializarCategoriaElegida();
@@ -67,35 +68,35 @@ public class CategoriaController implements Initializable {
     private void agregarCategoria() {
         if (verificarDisponibilidadCategoria()) {
             if (enviarDatosAlServicioCategoriaAgregar()) {
-                System.out.println("Se guardo correctamente");
                 actualizarTabla();
                 limpiarFormulario();
+                Utilidades.crearModal("Se registro correctamente la categoría.");
             } else {
-                System.out.println("Error al registrar");
+                Utilidades.crearModal("Error al registrar la categoría.");
             }
         } else {
-            System.out.println("Categoria ya registrada.");
+            Utilidades.crearModal("Categoría ya registrada.");
         }
     }
 
     private void modificarCategoria() {
         if (enviarDatosAlServicioCategoriaEditar()) {
-            System.out.println("Se actualizo correctamente.");
             actualizarTabla();
             limpiarFormulario();
+            Utilidades.crearModal("Se actualizo correctamente la categoría.");
         } else {
-            System.out.println("Error al modificar");
+            Utilidades.crearModal("Error al modificar la categoría.");
         }
     }
 
     private void eliminiarCategoria() {
         if (enviarDatosAlServicioCategoriaEliminar()) {
-            System.out.println("Se elimino correctamente");
             inicializarCategoriaElegida();
             actualizarTabla();
             limpiarFormulario();
+            Utilidades.crearModal("Se elimino correctamente la categoría.");
         } else {
-            System.out.println("Error al eliminar");
+            Utilidades.crearModal("Error al eliminar la categoría.");
         }
     }
 
@@ -131,23 +132,21 @@ public class CategoriaController implements Initializable {
 
     private void actualizarFormularioCategoriaElegida() {
         if (categoriaElegida != null) {
-            txf_nombre.setText(categoriaElegida.getNombre());
-            switch (categoriaElegida.getTipo()) {
+            String nombreCategoria = categoriaElegida.getNombre();
+            String tipoCategoria = categoriaElegida.getTipo();
+            txf_nombre.setText(nombreCategoria);
+            switch (tipoCategoria) {
                 case "Ingreso":
                     cb_categoria.getSelectionModel().select(0);
                     break;
                 case "Gasto":
                     cb_categoria.getSelectionModel().select(1);
                     break;
-                default:
-                    throw new AssertionError();
             }
-        } else {
-            limpiarFormulario();
         }
     }
 
-    private void inicializarComboBox() {
+    private void inicializarOpcionesCategoria() {
         cb_categoria.setItems(FXCollections.observableArrayList("Ingreso", "Gasto"));
     }
 

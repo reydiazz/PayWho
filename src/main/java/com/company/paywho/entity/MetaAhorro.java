@@ -14,16 +14,16 @@ public class MetaAhorro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_meta;
     private long id_usuario;
-    private double m_meta;
-    private double m_logrado;
+    private double meta;
+    private double monto_logrado;
 
     public MetaAhorro() {
     }
 
-    public MetaAhorro(long id_usuario, double m_meta, double m_logrado) {
+    public MetaAhorro(long id_usuario, double meta, double monto_logrado) {
         this.id_usuario = id_usuario;
-        this.m_meta = m_meta;
-        this.m_logrado = m_logrado;
+        this.meta = meta;
+        this.monto_logrado = monto_logrado;
     }
 
     public long getId_meta() {
@@ -42,19 +42,21 @@ public class MetaAhorro {
         this.id_usuario = id_usuario;
     }
 
-    public double getM_meta() {
-        return m_meta;
+    public double getMeta() {
+        return meta;
     }
 
-    public void setM_meta(double m_meta) {
-        this.m_meta = m_meta;
+    public void setMeta(double meta) {
+        this.meta = meta;
     }
 
-    public double getM_logrado() {
-        return m_logrado;
+    public double getMonto_logrado() {
+        return monto_logrado;
     }
 
-    public void setM_logrado(double m_logrado) {
-        this.m_logrado = m_logrado;
+    public void setMonto_logrado(double monto_logrado) {
+        this.monto_logrado = monto_logrado;
     }
+
+    
 }

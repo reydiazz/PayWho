@@ -18,20 +18,20 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class PerfilController implements Initializable {
-
+    
     private UsuarioServicio usuarioServicio;
-
+    
     @Autowired
     public PerfilController(UsuarioServicio usuarioServicio) {
         this.usuarioServicio = usuarioServicio;
     }
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         inicializarDatosUsuario();
         inicializarBotones();
     }
-
+    
     private void inicializarDatosUsuario() {
         txf_nombre.setText(SesionServicio.getUsuarioActual().getNombre());
         txf_apellido.setText(SesionServicio.getUsuarioActual().getApellido());
@@ -40,54 +40,53 @@ public class PerfilController implements Initializable {
         img_perfil.setImage(Utilidades.obtenerImagenPerfil(SesionServicio.getUsuarioActual().getRuta_img()));
         txf_porcentaje_ahorro.setText(String.valueOf(SesionServicio.getUsuarioActual().getPorcentaje_ahorro()));
     }
-
+    
     private void inicializarBotones() {
         btn_editar.setOnAction(evento -> {
             editarPerfil();
         });
-
+        
         btn_cambiar_img_perfil.setOnAction(evento -> {
             editarImagenPerfil(evento);
         });
     }
-
+    
     private void editarPerfil() {
         if (esperarServicioSiContrasenaEsCorrecta()) {
-            System.out.println("Contrasena correcta");
             if (esperarServicioEditarPerfil()) {
-                System.out.println("Datos editados correctamente, para visualizarlos autentíquese de nuevo.");
+                Utilidades.crearModal("Datos editados correctamente, para\nvisualizarlos autentíquese de nuevo.");
             } else {
-                System.out.println("Datos invalidos");
+                Utilidades.crearModal("Datos invalidos.");
             }
         } else {
-            System.out.println("Contrasena incorrecta.");
+            Utilidades.crearModal("Contraseña incorrecta.");
         }
     }
-
+    
     private void editarImagenPerfil(ActionEvent evento) {
         File nuevaImagen = Utilidades.cargarImagen(evento);
         if (nuevaImagen != null) {
             if (usuarioServicio.editarImagenUsuario(SesionServicio.getUsuarioActual().getId_usuario(), nuevaImagen.getPath())) {
-                System.out.println("Imagen editada correctamente, para visualizarla autentíquese de nuevo.");
+                Utilidades.crearModal("Imagen editada correctamente, para\nvisualizarla autentíquese de nuevo.");
             } else {
-                System.out.println("Error al cargar la imagen.");
+                Utilidades.crearModal("Error al cargar la imagen.");
             }
         }
     }
-
+    
     private boolean esperarServicioSiContrasenaEsCorrecta() {
         return usuarioServicio.validarUsuarioContrasena(SesionServicio.getUsuarioActual().getId_usuario(), pf_contrasena_actual.getText());
     }
-
+    
     private boolean esperarServicioEditarPerfil() {
         String nuevoNombre = txf_nombre.getText();
         String nuevoApellido = txf_apellido.getText();
         String nuevoCorreoElectronico = txf_correo_electronico.getText();
         String nuevoBalance = txf_balance_actual.getText();
         String porcentajeCadena = txf_porcentaje_ahorro.getText();
-        return usuarioServicio.editarUsuario(nuevoNombre, nuevoApellido, nuevoCorreoElectronico, nuevoBalance, SesionServicio.getUsuarioActual().getId_usuario(),porcentajeCadena);
+        return usuarioServicio.editarUsuario(nuevoNombre, nuevoApellido, nuevoCorreoElectronico, nuevoBalance, SesionServicio.getUsuarioActual().getId_usuario(), porcentajeCadena);
     }
-
+    
     @FXML
     private TextField txf_porcentaje_ahorro;
     @FXML
