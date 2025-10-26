@@ -39,6 +39,15 @@ public class MetaServicio {
         return true;
     }
 
+    public boolean aumentarMontoMetaAhorro(long idUsuario, double montoNuevo) {
+        try {
+            metaAhorroRepositorio.actualizarMontoMetaAhorro(montoNuevo, idUsuario);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
     public boolean modificarMetaAhorro(long idUsuario, String nuevoNombre, String nuevaMetaString) {
         try {
             double nuevaMeta = Double.parseDouble(nuevaMetaString);

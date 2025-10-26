@@ -116,7 +116,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btn_ajuste" alignment="BASELINE_LEFT" disable="true" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="button-nav-decorator" text="Ajustes">
+                  <Button fx:id="btn_ajuste" alignment="BASELINE_LEFT" disable="true" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="button-nav-decorator" text="Ajustes" visible="false">
                      <graphic>
                         <Group styleClass="svg-button">
                            <children>

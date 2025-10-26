@@ -35,6 +35,7 @@ public class IngresoController implements Initializable {
     private Ingreso ingresoElegido;
 
     @Autowired
+
     public IngresoController(IngresoServicio ingresoServicio, CategoriaServicio categoriaServicio, AhorroServicio ahorroServicio, UsuarioServicio usuarioServicio) {
         this.ingresoServicio = ingresoServicio;
         this.categoriaServicio = categoriaServicio;

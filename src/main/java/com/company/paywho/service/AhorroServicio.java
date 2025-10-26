@@ -12,10 +12,12 @@ import org.springframework.stereotype.Service;
 public class AhorroServicio {
 
     private AhorroRepositorio ahorroRepositorio;
+    private MetaServicio metaServicio;
 
     @Autowired
-    public AhorroServicio(AhorroRepositorio ahorroRepositorio) {
+    public AhorroServicio(AhorroRepositorio ahorroRepositorio, MetaServicio metaServicio) {
         this.ahorroRepositorio = ahorroRepositorio;
+        this.metaServicio = metaServicio;
     }
 
     public List<Ahorro> obtenerAhorrosSegunID(long id_usuario) {
@@ -38,6 +40,7 @@ public class AhorroServicio {
                 double montoAhorro = monto * montoSegunPorcentaje;
                 if (montoAhorro >= 0) {
                     Ahorro ahorro = new Ahorro(categoria, Utilidades.obtenerFechaActual(), id_usuario, montoAhorro);
+                    metaServicio.aumentarMontoMetaAhorro(id_usuario, metaServicio.obtenerMetaAhorro(id_usuario).getFirst().getMonto_actual() + montoAhorro);
                     ahorroRepositorio.save(ahorro);
                     return true;
                 } else {

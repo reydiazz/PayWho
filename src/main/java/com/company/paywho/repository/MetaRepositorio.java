@@ -19,6 +19,11 @@ public interface MetaRepositorio extends JpaRepository<Meta, Long> {
 
     @Transactional
     @Modifying
+    @Query("UPDATE Meta m SET m.monto_actual =:monto_actual WHERE m.id_usuario =:id_usuario")
+    public void actualizarMontoMetaAhorro(@Param("monto_actual") double monto_actual, @Param("id_usuario") long id_usuario);
+
+    @Transactional
+    @Modifying
     @Query("UPDATE Meta m SET m.nombre =:nombre, m.monto_actual =:monto_actual, m.meta =:meta WHERE m.id_usuario =:id_usuario")
     public void actualizarMetaAhorro(@Param("nombre") String nombre, @Param("monto_actual") double monto_actual, @Param("meta") double meta, @Param("id_usuario") long id_usuario);
 

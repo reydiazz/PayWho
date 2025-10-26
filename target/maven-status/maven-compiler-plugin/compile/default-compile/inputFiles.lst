@@ -11,7 +11,7 @@ C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\entity\Categoria.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\entity\Gasto.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\entity\Ingreso.java
-C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\entity\MetaAhorro.java
+C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\entity\Meta.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\entity\Usuario.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\JavaFXApp.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\model\ArchivoServicio.java
@@ -21,10 +21,12 @@ C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\repository\AhorroRepositorio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\repository\CategoriaRepositorio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\repository\IngresoRepositorio.java
+C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\repository\MetaRepositorio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\repository\UsuarioRepositorio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\service\AhorroServicio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\service\CategoriaServicio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\service\IngresoServicio.java
+C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\service\MetaServicio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\service\SesionServicio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\service\UsuarioServicio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\SpringBootApp.java
