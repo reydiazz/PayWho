@@ -17,7 +17,7 @@ public class Usuario {
     private String apellido;
     private String correo_electronico;
     private String contrasena;
-    private long saldo;
+    private double saldo;
     private String ruta_img;
     private double porcentaje_ahorro;
 
@@ -74,8 +74,12 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
-    public long getSaldo() {
+    public double getSaldo() {
         return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
     public void setSaldo(long saldo) {

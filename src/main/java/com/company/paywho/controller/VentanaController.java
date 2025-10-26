@@ -113,7 +113,7 @@ public class VentanaController implements Initializable {
         lbl_titulo_secundario.setText(descripcion);
     }
 
-    private void actualizarImagenPerfil(String rutaImg) {
+    public void actualizarImagenPerfil(String rutaImg) {
         img_perfil.setImage(Utilidades.obtenerImagenPerfil(rutaImg));
     }
 

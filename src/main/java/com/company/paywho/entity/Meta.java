@@ -7,23 +7,33 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "MetaAhorro")
-public class MetaAhorro {
+@Table(name = "Meta")
+public class Meta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_meta;
     private long id_usuario;
     private double meta;
-    private double monto_logrado;
+    private double monto_actual;
+    private String nombre;
 
-    public MetaAhorro() {
+    public Meta() {
     }
 
-    public MetaAhorro(long id_usuario, double meta, double monto_logrado) {
+    public Meta(long id_usuario, double meta, double monto_actual, String nombre) {
         this.id_usuario = id_usuario;
         this.meta = meta;
-        this.monto_logrado = monto_logrado;
+        this.monto_actual = monto_actual;
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public long getId_meta() {
@@ -50,13 +60,12 @@ public class MetaAhorro {
         this.meta = meta;
     }
 
-    public double getMonto_logrado() {
-        return monto_logrado;
+    public double getMonto_actual() {
+        return monto_actual;
     }
 
-    public void setMonto_logrado(double monto_logrado) {
-        this.monto_logrado = monto_logrado;
+    public void setMonto_actual(double monto_actual) {
+        this.monto_actual = monto_actual;
     }
 
-    
 }

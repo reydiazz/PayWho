@@ -7,6 +7,7 @@ import com.company.paywho.service.AhorroServicio;
 import com.company.paywho.service.CategoriaServicio;
 import com.company.paywho.service.IngresoServicio;
 import com.company.paywho.service.SesionServicio;
+import com.company.paywho.service.UsuarioServicio;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -27,16 +28,18 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class IngresoController implements Initializable {
 
+    private UsuarioServicio usuarioServicio;
     private IngresoServicio ingresoServicio;
     private CategoriaServicio categoriaServicio;
     private AhorroServicio ahorroServicio;
     private Ingreso ingresoElegido;
 
     @Autowired
-    public IngresoController(IngresoServicio ingresoServicio, CategoriaServicio categoriaServicio, AhorroServicio ahorroServicio) {
+    public IngresoController(IngresoServicio ingresoServicio, CategoriaServicio categoriaServicio, AhorroServicio ahorroServicio, UsuarioServicio usuarioServicio) {
         this.ingresoServicio = ingresoServicio;
         this.categoriaServicio = categoriaServicio;
         this.ahorroServicio = ahorroServicio;
+        this.usuarioServicio = usuarioServicio;
     }
 
     @Override
@@ -124,7 +127,7 @@ public class IngresoController implements Initializable {
     private boolean enviarDatosAlServicioIngresoAgregar() {
         Categoria categoria = cb_tipo_ingreso.getValue();
         String monto = txf_monto_ingreso.getText();
-        return ingresoServicio.guardarIngreso(categoria, SesionServicio.getUsuarioActual().getId_usuario(), monto);
+        return ingresoServicio.guardarIngreso(categoria, SesionServicio.getUsuarioActual().getId_usuario(), monto) && usuarioServicio.aumentarBalanceUsuario(SesionServicio.getUsuarioActual().getId_usuario(), monto);
     }
 
     private boolean enviarDatosAlServicioIngresoAgregarAhorro() {
@@ -136,7 +139,7 @@ public class IngresoController implements Initializable {
     private boolean enviarDatosAlServicioAhorroAgregar() {
         Categoria categoria = cb_tipo_ingreso.getValue();
         String monto = txf_monto_ingreso.getText();
-        return ahorroServicio.guardarAhorro(categoria, SesionServicio.getUsuarioActual().getId_usuario(), monto);
+        return ahorroServicio.guardarAhorro(categoria, SesionServicio.getUsuarioActual().getId_usuario(), monto) && usuarioServicio.aumentarBalanceUsuario(SesionServicio.getUsuarioActual().getId_usuario(), monto);
     }
 
     private boolean enviarDatosAlServicioIngresoModificar() {
@@ -176,9 +179,9 @@ public class IngresoController implements Initializable {
     private void actualizarFormularioIngresoElegido() {
         if (ingresoElegido != null) {
             txf_monto_ingreso.setText(String.valueOf(ingresoElegido.getMonto()));
-            String diaBuscado = ingresoElegido.getCategoria().getNombre();
+            String categoriaBuscado = ingresoElegido.getCategoria().getNombre();
             for (Categoria item : cb_tipo_ingreso.getItems()) {
-                if (item.getNombre().equals(diaBuscado)) {
+                if (item.getNombre().equals(categoriaBuscado)) {
                     cb_tipo_ingreso.getSelectionModel().select(item);
                     break;
                 }

@@ -56,7 +56,7 @@ public class UsuarioServicio {
 
     public boolean editarUsuario(String nombre, String apellido, String correo_electronico, String saldoCadena, long id_usuario, String porcentajeCadena) {
         try {
-            long saldo = Long.parseLong(saldoCadena);
+            double saldo = Double.parseDouble(saldoCadena);
             double porcentajeAhorro = Double.parseDouble(porcentajeCadena);
             if (saldo > 0 && porcentajeAhorro >= 0 && porcentajeAhorro <= 100) {
                 usuarioRepositorio.editarUsuario(nombre, apellido, correo_electronico, saldo, id_usuario, porcentajeAhorro);
@@ -70,6 +70,17 @@ public class UsuarioServicio {
     public boolean editarImagenUsuario(long idUsuario, String rutaImg) {
         try {
             usuarioRepositorio.editarUsuarioImagenRuta(rutaImg, idUsuario);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean aumentarBalanceUsuario(long idUsuario, String montoAumentarString) {
+        try {
+            double montoAumentar = Double.parseDouble(montoAumentarString);
+            double nuevoMonto = SesionServicio.getUsuarioActual().getSaldo() + montoAumentar;
+            usuarioRepositorio.editarSaldoUsuario(nuevoMonto, idUsuario);
         } catch (Exception e) {
             return false;
         }
