@@ -86,12 +86,16 @@ public class IngresoController implements Initializable {
 
     private void agregarIngreso() {
         if (cx_ahorrar.isSelected()) {
-            if (enviarDatosAlServicioIngresoAgregarAhorro() && enviarDatosAlServicioAhorroAgregar()) {
-                actualizarTabla();
-                limpiarFormulario();
-                Utilidades.crearModal("Se registro correctamente el ingreso.");
+            if (usuarioServicio.obtenerUsuarioID(SesionServicio.getUsuarioActual().getId_usuario()).getPorcentaje_ahorro() != 0) {
+                if (enviarDatosAlServicioIngresoAgregarAhorro() && enviarDatosAlServicioAhorroAgregar()) {
+                    actualizarTabla();
+                    limpiarFormulario();
+                    Utilidades.crearModal("Se registro correctamente el ingreso.");
+                } else {
+                    Utilidades.crearModal("Error al registrar el ingreso.");
+                }
             } else {
-                Utilidades.crearModal("Error al registrar el ingreso.");
+                Utilidades.crearModal("El porcentaje de ahorro tiene que ser mayor a cero.");
             }
         } else {
             if (enviarDatosAlServicioIngresoAgregar()) {

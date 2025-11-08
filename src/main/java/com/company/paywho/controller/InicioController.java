@@ -26,13 +26,13 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class InicioController implements Initializable {
-    
+
     private IngresoServicio ingresoServicio;
     private GastoServicio gastoServicio;
     private AhorroServicio ahorroServicio;
     private UsuarioServicio usuarioServicio;
     private MetaServicio metaServicio;
-    
+
     @Autowired
     public InicioController(IngresoServicio ingresoServicio, GastoServicio gastoServicio, UsuarioServicio usuarioServicio, AhorroServicio ahorroServicio, MetaServicio metaServicio) {
         this.ingresoServicio = ingresoServicio;
@@ -41,12 +41,12 @@ public class InicioController implements Initializable {
         this.ahorroServicio = ahorroServicio;
         this.metaServicio = metaServicio;
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         inicializarGraficos();
     }
-    
+
     private void inicializarGraficos() {
         inicializarGraficoPastel();
         inicializarGraficoBarras();
@@ -54,28 +54,30 @@ public class InicioController implements Initializable {
         inicializarCartillaGastos();
         inicializarCartillaAhorros();
     }
-    
+
     private void inicializarCartillaIngresos() {
         lbl_monto_ingreso.setText("$" + String.valueOf(ingresoServicio.getSumaTotalPorUsuario(SesionServicio.getUsuarioActual().getId_usuario())));
         lbl_numero_ingreso.setText(String.valueOf(ingresoServicio.getCantidadIngresosPorUsuario(SesionServicio.getUsuarioActual().getId_usuario()) + " numero de ingresos"));
         lbl_numero_monto_semanal_ingreso.setText("+" + String.valueOf(ingresoServicio.getCantidadUltimaSemana(SesionServicio.getUsuarioActual().getId_usuario()) + " esta semana"));
-        lbl_porcentaje_semanal_ingreso.setText("+" + String.valueOf(ingresoServicio.calcularPorcentajeCambio(SesionServicio.getUsuarioActual().getId_usuario())) + "%");
+        lbl_porcentaje_semanal_ingreso.setText(String.valueOf(ingresoServicio.calcularPorcentajeCambio(SesionServicio.getUsuarioActual().getId_usuario())) + "%");
     }
-    
+
     private void inicializarCartillaGastos() {
         lbl_monto_gasto.setText("$" + String.valueOf(gastoServicio.getSumaTotalPorUsuario(SesionServicio.getUsuarioActual().getId_usuario())));
         lbl_numero_gasto.setText(String.valueOf(gastoServicio.getCantidadGastosPorUsuario(SesionServicio.getUsuarioActual().getId_usuario()) + " numero de ingresos"));
         lbl_numero_monto_semanal_gasto.setText("+" + String.valueOf(gastoServicio.getCantidadUltimaSemana(SesionServicio.getUsuarioActual().getId_usuario()) + " esta semana"));
-        lbl_porcentaje_semanal_gasto.setText("+" + String.valueOf(gastoServicio.calcularPorcentajeCambio(SesionServicio.getUsuarioActual().getId_usuario())) + "%");
+        lbl_porcentaje_semanal_gasto.setText(String.valueOf(gastoServicio.calcularPorcentajeCambio(SesionServicio.getUsuarioActual().getId_usuario())) + "%");
     }
-    
+
     private void inicializarCartillaAhorros() {
         lbl_porcentaje_ahorro.setText(String.valueOf(usuarioServicio.obtenerUsuarioID(SesionServicio.getUsuarioActual().getId_usuario()).getPorcentaje_ahorro()) + "% de cada ingreso");
         lbl_monto_ahorro.setText("$" + String.valueOf(ahorroServicio.getSumaTotalPorUsuario(SesionServicio.getUsuarioActual().getId_usuario())));
-        double progreso = metaServicio.obtenerMetaAhorro(SesionServicio.getUsuarioActual().getId_usuario()).getFirst().getMonto_actual() / metaServicio.obtenerMetaAhorro(SesionServicio.getUsuarioActual().getId_usuario()).getFirst().getMeta();
-        pb_meta_ahorro.setProgress(progreso);
+        if (metaServicio.validarMetaAhorro(SesionServicio.getUsuarioActual().getId_usuario())) {
+            double progreso = metaServicio.obtenerMetaAhorro(SesionServicio.getUsuarioActual().getId_usuario()).getFirst().getMonto_actual() / metaServicio.obtenerMetaAhorro(SesionServicio.getUsuarioActual().getId_usuario()).getFirst().getMeta();
+            pb_meta_ahorro.setProgress(progreso);
+        }
     }
-    
+
     private void inicializarGraficoPastel() {
         lbl_balance_actual.setText("$" + String.valueOf(ingresoServicio.getSumaTotalPorUsuario(SesionServicio.getUsuarioActual().getId_usuario()) + ahorroServicio.getSumaTotalPorUsuario(SesionServicio.getUsuarioActual().getId_usuario()) - gastoServicio.getSumaTotalPorUsuario(SesionServicio.getUsuarioActual().getId_usuario())));
         ObservableList<PieChart.Data> datos = FXCollections.observableArrayList(
@@ -86,22 +88,22 @@ public class InicioController implements Initializable {
         pc_pastel.setLabelsVisible(false);
         pc_pastel.setData(datos);
     }
-    
+
     private void inicializarGraficoBarras() {
         XYChart.Series<String, Number> ingresos = new XYChart.Series<>();
         XYChart.Series<String, Number> gastos = new XYChart.Series<>();
         XYChart.Series<String, Number> ahorros = new XYChart.Series<>();
-        
+
         ingresos.setName("Ingresos");
         gastos.setName("Gastos");
         ahorros.setName("Ahorros");
-        
+
         Long idUsuario = SesionServicio.getUsuarioActual().getId_usuario();
-        
+
         List<Object[]> datosIngresos = ingresoServicio.obtenerIngresosMensuales(idUsuario);
         List<Object[]> datosGastos = gastoServicio.obtenerGastosMensuales(idUsuario);
         List<Object[]> datosAhorros = ahorroServicio.obtenerAhorrosMensuales(idUsuario);
-        
+
         String[] meses = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
         Map<String, String> nombreMes = Map.ofEntries(
                 Map.entry("01", "Ene"),
@@ -117,29 +119,29 @@ public class InicioController implements Initializable {
                 Map.entry("11", "Nov"),
                 Map.entry("12", "Dic")
         );
-        
+
         Map<String, Double> mapaIngresos = convertirAMapa(datosIngresos);
         Map<String, Double> mapaGastos = convertirAMapa(datosGastos);
         Map<String, Double> mapaAhorros = convertirAMapa(datosAhorros);
-        
+
         for (String mes : meses) {
             String nombre = nombreMes.get(mes);
             ingresos.getData().add(new XYChart.Data<>(nombre, mapaIngresos.getOrDefault(mes, 0.0)));
             gastos.getData().add(new XYChart.Data<>(nombre, mapaGastos.getOrDefault(mes, 0.0)));
             ahorros.getData().add(new XYChart.Data<>(nombre, mapaAhorros.getOrDefault(mes, 0.0)));
         }
-        
+
         CategoryAxis ejeX = (CategoryAxis) sbc_barras.getXAxis();
         ejeX.setCategories(FXCollections.observableArrayList(
                 "Ene", "Feb", "Mar", "Abr", "May", "Jun",
                 "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
         ));
-        
+
         sbc_barras.getData().clear();
         sbc_barras.getData().addAll(ingresos, gastos, ahorros);
-        
+
     }
-    
+
     private Map<String, Double> convertirAMapa(List<Object[]> datos) {
         Map<String, Double> mapa = new HashMap<>();
         for (Object[] fila : datos) {
@@ -154,7 +156,7 @@ public class InicioController implements Initializable {
         }
         return mapa;
     }
-    
+
     @FXML
     private StackedBarChart sbc_barras;
     @FXML
@@ -183,5 +185,5 @@ public class InicioController implements Initializable {
     private Label lbl_monto_ahorro;
     @FXML
     private ProgressBar pb_meta_ahorro;
-    
+
 }

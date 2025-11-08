@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="paywho.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1846"/><column_width id="4" width="0"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="Ahorro" custom_title="0" dock_id="1" table="4,6:mainAhorro"/><dock_state state="000000ff00000000fd00000001000000020000000000000000fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000ffffffff0000011e00ffffff000000000000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1*">-- =====================================================
+-- Script SQLite para crear la base de datos paywho.db
+-- =====================================================
+
+PRAGMA foreign_keys = ON;
+
+-- ===========================================
+-- Tabla: Usuario
+-- ===========================================
+CREATE TABLE IF NOT EXISTS Usuario (
+    id_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT,
+    apellido TEXT,
+    correo_electronico TEXT UNIQUE,
+    contrasena TEXT,
+    ruta_img TEXT,
+    porcentaje_ahorro REAL
+);
+
+-- ===========================================
+-- Tabla: Categoria
+-- ===========================================
+CREATE TABLE IF NOT EXISTS Categoria (
+    id_categoria INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_usuario INTEGER NOT NULL,
+    nombre TEXT NOT NULL,
+    tipo TEXT NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) ON DELETE CASCADE
+);
+
+-- ===========================================
+-- Tabla: Ingreso
+-- ===========================================
+CREATE TABLE IF NOT EXISTS Ingreso (
+    id_ingreso INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_categoria INTEGER NOT NULL,
+    id_usuario INTEGER NOT NULL,
+    fecha TEXT NOT NULL,
+    monto REAL NOT NULL,
+    FOREIGN KEY (id_categoria) REFERENCES Categoria(id_categoria),
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
+);
+
+-- ===========================================
+-- Tabla: Gasto
+-- ===========================================
+CREATE TABLE IF NOT EXISTS Gasto (
+    id_gasto INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_categoria INTEGER NOT NULL,
+    id_usuario INTEGER NOT NULL,
+    fecha TEXT NOT NULL,
+    monto REAL NOT NULL,
+    FOREIGN KEY (id_categoria) REFERENCES Categoria(id_categoria),
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
+);
+
+-- ===========================================
+-- Tabla: Ahorro
+-- ===========================================
+CREATE TABLE IF NOT EXISTS Ahorro (
+    id_ahorro INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_categoria INTEGER NOT NULL,
+    id_usuario INTEGER NOT NULL,
+    monto REAL NOT NULL,
+    fecha TEXT NOT NULL,
+    FOREIGN KEY (id_categoria) REFERENCES Categoria(id_categoria),
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
+);
+
+-- ===========================================
+-- Tabla: Meta
+-- ===========================================
+CREATE TABLE IF NOT EXISTS Meta (
+    id_meta INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_usuario INTEGER NOT NULL,
+    monto_actual REAL NOT NULL,
+    meta REAL NOT NULL,
+    nombre TEXT NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
+);
+</sql><current_tab id="0"/></tab_sql></sqlb_project>

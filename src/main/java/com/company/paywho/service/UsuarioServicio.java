@@ -58,6 +58,8 @@ public class UsuarioServicio {
             double porcentajeAhorro = Double.parseDouble(porcentajeCadena);
             if (porcentajeAhorro >= 0 && porcentajeAhorro <= 100) {
                 usuarioRepositorio.editarUsuario(nombre, apellido, correo_electronico, id_usuario, porcentajeAhorro);
+            } else {
+                return false;
             }
         } catch (Exception e) {
             return false;

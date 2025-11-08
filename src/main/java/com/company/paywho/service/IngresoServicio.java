@@ -56,7 +56,7 @@ public class IngresoServicio {
                 double porcentajeAhorro = (SesionServicio.getUsuarioActual().getPorcentaje_ahorro() / 100);
                 double parteAhorro = monto * porcentajeAhorro;
                 double montoAhorro = monto - parteAhorro;
-                if (montoAhorro > 0) {
+                if (montoAhorro >= 0) {
                     Ingreso ingreso = new Ingreso(categoria, Utilidades.obtenerFechaActual(), id_usuario, montoAhorro);
                     ingresoRepositorio.save(ingreso);
                     return true;
