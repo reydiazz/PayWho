@@ -20,11 +20,13 @@ C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\model\Utilidades.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\repository\AhorroRepositorio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\repository\CategoriaRepositorio.java
+C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\repository\GastoRepositorio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\repository\IngresoRepositorio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\repository\MetaRepositorio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\repository\UsuarioRepositorio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\service\AhorroServicio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\service\CategoriaServicio.java
+C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\service\GastoServicio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\service\IngresoServicio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\service\MetaServicio.java
 C:\Users\User\Documents\NetBeansProjects\PayWho\src\main\java\com\company\paywho\service\SesionServicio.java

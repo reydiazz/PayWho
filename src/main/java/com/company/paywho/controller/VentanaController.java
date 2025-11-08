@@ -1,9 +1,11 @@
 package com.company.paywho.controller;
 
 import com.company.paywho.JavaFXApp;
+import com.company.paywho.entity.Usuario;
 import com.company.paywho.model.ArchivoServicio;
 import com.company.paywho.model.Utilidades;
 import com.company.paywho.service.SesionServicio;
+import com.company.paywho.service.UsuarioServicio;
 import com.company.paywho.view.BotonNavegacion;
 import java.net.URL;
 import java.util.LinkedList;
@@ -21,15 +23,22 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class VentanaController implements Initializable {
 
     private Stage ventana;
-    
+    private UsuarioServicio usuarioServicio;
+
     private double recorridoX;
     private double recorridoY;
+
+    @Autowired
+    public VentanaController(UsuarioServicio usuarioServicio) {
+        this.usuarioServicio = usuarioServicio;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -84,11 +93,12 @@ public class VentanaController implements Initializable {
 
     public void inicializarAutenticacion() {
         SesionServicio.sesionActivaProperty().addListener((observado, antiguoValor, nuevoValor) -> {
+            Usuario usuarioActual = usuarioServicio.obtenerUsuarioID(SesionServicio.getUsuarioActual().getId_usuario());
             if (nuevoValor) {
                 Utilidades.visibilidadComponentes(obtenerGrupoComponentesEliminarLogin(), true);
                 establecerEscena(ArchivoServicio.getInstancia().getRuta("inicio.fxml"));
-                actualizarEtiquetas(SesionServicio.getUsuarioActual().getNombreApellido(), "Bienvenido de nuevo, " + SesionServicio.getUsuarioActual().getNombre(), "Un paso más hacia tus metas financieras.");
-                actualizarImagenPerfil(SesionServicio.getUsuarioActual().getRuta_img());
+                actualizarEtiquetas(usuarioActual.getNombreApellido(), "Bienvenido de nuevo, " + usuarioActual.getNombre(), "Un paso más hacia tus metas financieras.");
+                actualizarImagenPerfil(usuarioActual.getRuta_img());
             }
         });
     }

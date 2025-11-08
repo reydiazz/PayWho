@@ -1,5 +1,7 @@
 package com.company.paywho.controller;
 
+import com.company.paywho.service.IngresoServicio;
+import com.company.paywho.service.SesionServicio;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -9,21 +11,36 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class InicioController implements Initializable {
-
+    
+    private IngresoServicio ingresoServicio;
+    
+    public InicioController(IngresoServicio ingresoServicio) {
+        this.ingresoServicio = ingresoServicio;
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         inicializarGraficos();
     }
-
+    
     private void inicializarGraficos() {
         inicializarGraficoPastel();
         inicializarGraficoBarras();
+        inicializarCartillaIngresos();
     }
-
+    
+    private void inicializarCartillaIngresos() {
+        lbl_monto_ingreso.setText("$" + String.valueOf(ingresoServicio.getSumaTotalPorUsuario(SesionServicio.getUsuarioActual().getId_usuario())));
+        lbl_numero_ingreso.setText(String.valueOf(ingresoServicio.getCantidadIngresosPorUsuario(SesionServicio.getUsuarioActual().getId_usuario()) + " numero de ingresos"));
+        lbl_numero_monto_semanal.setText("+" + String.valueOf(ingresoServicio.getCantidadUltimaSemana(SesionServicio.getUsuarioActual().getId_usuario()) + " esta semana"));
+        lbl_porcentaje_semanal.setText("+" + String.valueOf(ingresoServicio.calcularPorcentajeCambio(SesionServicio.getUsuarioActual().getId_usuario())) + "%");
+    }
+    
     private void inicializarGraficoPastel() {
         ObservableList<PieChart.Data> datos = FXCollections.observableArrayList(
                 new PieChart.Data("Ingresos", 70),
@@ -33,7 +50,7 @@ public class InicioController implements Initializable {
         pc_pastel.setLabelsVisible(false);
         pc_pastel.setData(datos);
     }
-
+    
     private void inicializarGraficoBarras() {
         // Serie de Gastos
         XYChart.Series<String, Number> gastos = new XYChart.Series<>();
@@ -72,4 +89,16 @@ public class InicioController implements Initializable {
     private StackedBarChart sbc_barras;
     @FXML
     private PieChart pc_pastel;
+
+    // Ingresos
+    @FXML
+    private Label lbl_numero_ingreso;
+    @FXML
+    private Label lbl_monto_ingreso;
+    @FXML
+    private Label lbl_porcentaje_semanal;
+    @FXML
+    private Label lbl_numero_monto_semanal;
+    
+    //Gastos
 }

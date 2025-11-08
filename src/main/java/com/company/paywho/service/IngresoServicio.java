@@ -97,4 +97,34 @@ public class IngresoServicio {
         }
         return true;
     }
+
+    public Double getSumaTotalPorUsuario(long usuarioId) {
+        Double total = ingresoRepositorio.obtenerSumaTotalPorUsuario(usuarioId);
+        return total != null ? total : 0.0;
+    }
+
+    public Long getCantidadIngresosPorUsuario(Long usuarioId) {
+        Long cantidad = ingresoRepositorio.contarTodosLosIngresos(usuarioId);
+        return cantidad != null ? cantidad : 0L;
+    }
+
+    public Long getCantidadUltimaSemana(Long usuarioId) {
+        Long cantidad = ingresoRepositorio.contarIngresosUltimaSemana(usuarioId);
+        return cantidad != null ? cantidad : 0L;
+    }
+
+    public Double calcularPorcentajeCambio(Long idUsuario) {
+        Double actual = ingresoRepositorio.obtenerSumaSemanaActual(idUsuario);
+        Double anterior = ingresoRepositorio.obtenerSumaSemanaAnterior(idUsuario);
+
+        actual = (actual != null) ? actual : 0.0;
+        anterior = (anterior != null && anterior != 0) ? anterior : 0.0;
+
+        if (anterior == 0) {
+            // Evitar división por cero
+            return actual > 0 ? 100.0 : 0.0;
+        }
+
+        return ((actual - anterior) / anterior) * 100;
+    }
 }

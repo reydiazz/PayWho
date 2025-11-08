@@ -1,5 +1,6 @@
 package com.company.paywho.controller;
 
+import com.company.paywho.entity.Usuario;
 import com.company.paywho.model.Utilidades;
 import com.company.paywho.service.SesionServicio;
 import com.company.paywho.service.UsuarioServicio;
@@ -18,43 +19,46 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class PerfilController implements Initializable {
-    
+
     private UsuarioServicio usuarioServicio;
-    
+
     @Autowired
     public PerfilController(UsuarioServicio usuarioServicio) {
         this.usuarioServicio = usuarioServicio;
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         inicializarDatosUsuario();
         inicializarBotones();
     }
-    
+
     private void inicializarDatosUsuario() {
-        txf_nombre.setText(SesionServicio.getUsuarioActual().getNombre());
-        txf_apellido.setText(SesionServicio.getUsuarioActual().getApellido());
-        txf_correo_electronico.setText(SesionServicio.getUsuarioActual().getCorreo_electronico());
-        txf_balance_actual.setText(String.valueOf(SesionServicio.getUsuarioActual().getSaldo()));
-        img_perfil.setImage(Utilidades.obtenerImagenPerfil(SesionServicio.getUsuarioActual().getRuta_img()));
-        txf_porcentaje_ahorro.setText(String.valueOf(SesionServicio.getUsuarioActual().getPorcentaje_ahorro()));
+        Usuario usuarioActual = usuarioServicio.obtenerUsuarioID(SesionServicio.getUsuarioActual().getId_usuario());
+        txf_nombre.setText(usuarioActual.getNombre());
+        txf_apellido.setText(usuarioActual.getApellido());
+        txf_correo_electronico.setText(usuarioActual.getCorreo_electronico());
+        txf_balance_actual.setText(String.valueOf(usuarioActual.getSaldo()));
+        txf_porcentaje_ahorro.setText(String.valueOf(usuarioActual.getPorcentaje_ahorro()));
+        img_perfil.setImage(Utilidades.obtenerImagenPerfil(usuarioActual.getRuta_img()));
     }
-    
+
     private void inicializarBotones() {
         btn_editar.setOnAction(evento -> {
             editarPerfil();
         });
-        
+
         btn_cambiar_img_perfil.setOnAction(evento -> {
             editarImagenPerfil(evento);
         });
     }
-    
+
     private void editarPerfil() {
         if (esperarServicioSiContrasenaEsCorrecta()) {
             if (esperarServicioEditarPerfil()) {
-                Utilidades.crearModal("Datos editados correctamente, para\nvisualizarlos autentíquese de nuevo.");
+                Utilidades.crearModal("Datos editados correctamente.");
+                SesionServicio.sesionDesactivada();
+                SesionServicio.sesionActiva();
             } else {
                 Utilidades.crearModal("Datos invalidos.");
             }
@@ -62,22 +66,22 @@ public class PerfilController implements Initializable {
             Utilidades.crearModal("Contraseña incorrecta.");
         }
     }
-    
+
     private void editarImagenPerfil(ActionEvent evento) {
         File nuevaImagen = Utilidades.cargarImagen(evento);
         if (nuevaImagen != null) {
             if (usuarioServicio.editarImagenUsuario(SesionServicio.getUsuarioActual().getId_usuario(), nuevaImagen.getPath())) {
-                Utilidades.crearModal("Imagen editada correctamente, para\nvisualizarla autentíquese de nuevo.");
+                Utilidades.crearModal("Imagen editada correctamente.");
             } else {
                 Utilidades.crearModal("Error al cargar la imagen.");
             }
         }
     }
-    
+
     private boolean esperarServicioSiContrasenaEsCorrecta() {
         return usuarioServicio.validarUsuarioContrasena(SesionServicio.getUsuarioActual().getId_usuario(), pf_contrasena_actual.getText());
     }
-    
+
     private boolean esperarServicioEditarPerfil() {
         String nuevoNombre = txf_nombre.getText();
         String nuevoApellido = txf_apellido.getText();
@@ -86,7 +90,7 @@ public class PerfilController implements Initializable {
         String porcentajeCadena = txf_porcentaje_ahorro.getText();
         return usuarioServicio.editarUsuario(nuevoNombre, nuevoApellido, nuevoCorreoElectronico, nuevoBalance, SesionServicio.getUsuarioActual().getId_usuario(), porcentajeCadena);
     }
-    
+
     @FXML
     private TextField txf_porcentaje_ahorro;
     @FXML

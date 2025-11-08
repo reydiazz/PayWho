@@ -16,6 +16,7 @@ com\company\paywho\repository\MetaRepositorio.class
 com\company\paywho\repository\UsuarioRepositorio.class
 com\company\paywho\service\CategoriaServicio.class
 com\company\paywho\JavaFXApp.class
+com\company\paywho\service\GastoServicio.class
 com\company\paywho\controller\GastoController.class
 com\company\paywho\model\SQLiteDialecto$2.class
 com\company\paywho\controller\InicioController.class
@@ -28,6 +29,7 @@ com\company\paywho\service\IngresoServicio.class
 com\company\paywho\entity\Usuario.class
 com\company\paywho\SpringBootApp.class
 com\company\paywho\controller\CategoriaController.class
+com\company\paywho\repository\GastoRepositorio.class
 com\company\paywho\entity\Ingreso.class
 com\company\paywho\service\AhorroServicio.class
 com\company\paywho\repository\AhorroRepositorio.class

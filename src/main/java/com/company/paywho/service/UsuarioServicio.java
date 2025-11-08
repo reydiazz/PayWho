@@ -27,6 +27,10 @@ public class UsuarioServicio {
         return false;
     }
 
+    public Usuario obtenerUsuarioID(long id_usuario) {
+        return usuarioRepositorio.findById(id_usuario).get();
+    }
+
     public boolean validarUsuarioContrasena(long idUsuario, String contrasena) {
         Optional<Usuario> usuario = usuarioRepositorio.buscarUsuarioIDContrasena(idUsuario, Utilidades.sha256(contrasena));
         return usuario.isPresent();
@@ -80,6 +84,17 @@ public class UsuarioServicio {
         try {
             double montoAumentar = Double.parseDouble(montoAumentarString);
             double nuevoMonto = SesionServicio.getUsuarioActual().getSaldo() + montoAumentar;
+            usuarioRepositorio.editarSaldoUsuario(nuevoMonto, idUsuario);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean disminuirBalanceUsuario(long idUsuario, String montoAumentarString) {
+        try {
+            double montoAumentar = Double.parseDouble(montoAumentarString);
+            double nuevoMonto = SesionServicio.getUsuarioActual().getSaldo() - montoAumentar;
             usuarioRepositorio.editarSaldoUsuario(nuevoMonto, idUsuario);
         } catch (Exception e) {
             return false;
