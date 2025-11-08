@@ -39,7 +39,7 @@
                            <children>
                               <VBox prefHeight="481.0" prefWidth="1105.0" spacing="20.0">
                                  <children>
-                                    <VBox prefHeight="600.0" prefWidth="340.0" spacing="10.0">
+                                    <VBox prefHeight="600.0" prefWidth="499.0" spacing="10.0">
                                        <children>
                                           <Label text="Correo electronico">
                                              <font>
@@ -61,31 +61,31 @@
                                                 <TextField fx:id="txf_nombre" prefHeight="60.0" prefWidth="340.0" />
                                              </children>
                                           </VBox>
-                                          <VBox prefHeight="68.0" prefWidth="411.0" spacing="15.0">
+                                          <VBox prefHeight="64.0" prefWidth="411.0" spacing="15.0">
                                              <children>
                                                 <Label text="Apellido">
                                                    <font>
                                                       <Font name="Segoe UI" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="txf_apellido" prefHeight="65.0" prefWidth="222.0" />
+                                                <TextField fx:id="txf_apellido" prefHeight="60.0" prefWidth="245.0" />
                                              </children>
                                           </VBox>
                                        </children>
                                     </HBox>
                                     <HBox prefHeight="600.0" prefWidth="842.0" spacing="15.0">
                                        <children>
-                                          <VBox prefHeight="77.0" prefWidth="486.0" spacing="10.0">
+                                          <VBox prefHeight="64.0" prefWidth="486.0" spacing="10.0">
                                              <children>
                                                 <Label text="Porcentaje de ahorro">
                                                    <font>
                                                       <Font name="Segoe UI" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="txf_porcentaje_ahorro" prefHeight="65.0" prefWidth="222.0" />
+                                                <TextField fx:id="txf_porcentaje_ahorro" prefHeight="87.0" prefWidth="222.0" />
                                              </children>
                                           </VBox>
-                                          <VBox prefHeight="77.0" prefWidth="503.0" spacing="10.0">
+                                          <VBox prefHeight="64.0" prefWidth="503.0" spacing="10.0">
                                              <children>
                                                 <Label text="Contraseña actual">
                                                    <font>
@@ -97,24 +97,14 @@
                                           </VBox>
                                        </children>
                                     </HBox>
-                                    <VBox prefHeight="600.0" prefWidth="342.0" spacing="10.0">
-                                       <children>
-                                          <Label text="Balance actual">
-                                             <font>
-                                                <Font name="Segoe UI" size="15.0" />
-                                             </font>
-                                          </Label>
-                                          <TextField fx:id="txf_balance_actual" prefHeight="65.0" prefWidth="222.0" />
-                                       </children>
-                                    </VBox>
-                                    <VBox prefHeight="600.0" prefWidth="504.0" spacing="20.0">
+                                    <VBox prefHeight="600.0" prefWidth="489.0" spacing="20.0">
                                        <children>
                                           <Button fx:id="btn_editar" mnemonicParsing="false" prefHeight="38.0" prefWidth="160.0" text="Editar">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                              <VBox.margin>
-                                                <Insets top="10.0" />
+                                                <Insets top="20.0" />
                                              </VBox.margin>
                                           </Button>
                                        </children>

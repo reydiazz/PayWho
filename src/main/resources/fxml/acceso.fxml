@@ -118,16 +118,6 @@
                               <PasswordField fx:id="pf_contrasena_registrar" prefHeight="107.0" prefWidth="440.0" />
                            </children>
                         </VBox>
-                        <VBox prefHeight="77.0" prefWidth="340.0" spacing="5.0">
-                           <children>
-                              <Label text="Balance actual">
-                                 <font>
-                                    <Font name="Segoe UI" size="15.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txf_balance_registro" prefHeight="53.0" prefWidth="340.0" />
-                           </children>
-                        </VBox>
                         <Button fx:id="btn_registrarse" mnemonicParsing="false" prefHeight="54.0" prefWidth="215.0" text="Registrarse">
                            <cursor>
                               <Cursor fx:constant="HAND" />

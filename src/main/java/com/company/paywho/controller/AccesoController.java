@@ -43,7 +43,7 @@ public class AccesoController {
     private void iniciarSesion() {
         if (!enviarDatosEsperarRespuestaServicioLogin()) {
             Utilidades.crearModal("Acceso denegado.");
-        } 
+        }
     }
 
     private void registrarUsuario() {
@@ -75,8 +75,7 @@ public class AccesoController {
         String apellido = txf_apellido_registrar.getText();
         String correo_electronico = txf_correo_registrar.getText();
         String contrasena = pf_contrasena_registrar.getText();
-        String saldo = txf_balance_registro.getText();
-        return usuarioServicio.registrarUsuario(nombre, apellido, correo_electronico, contrasena, saldo);
+        return usuarioServicio.registrarUsuario(nombre, apellido, correo_electronico, contrasena);
     }
 
     private void mostrarPlantillaRegistro() {
@@ -109,8 +108,6 @@ public class AccesoController {
     private PasswordField pf_contrasena_registrar;
     @FXML
     private Button btn_registrarse;
-    @FXML
-    private TextField txf_balance_registro;
     @FXML
     private VBox vb_iniciar_sesion;
     @FXML

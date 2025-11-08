@@ -128,7 +128,7 @@ public class IngresoController implements Initializable {
     private boolean enviarDatosAlServicioIngresoAgregar() {
         Categoria categoria = cb_tipo_ingreso.getValue();
         String monto = txf_monto_ingreso.getText();
-        return ingresoServicio.guardarIngreso(categoria, SesionServicio.getUsuarioActual().getId_usuario(), monto) && usuarioServicio.aumentarBalanceUsuario(SesionServicio.getUsuarioActual().getId_usuario(), monto);
+        return ingresoServicio.guardarIngreso(categoria, SesionServicio.getUsuarioActual().getId_usuario(), monto);
     }
 
     private boolean enviarDatosAlServicioIngresoAgregarAhorro() {
@@ -140,7 +140,7 @@ public class IngresoController implements Initializable {
     private boolean enviarDatosAlServicioAhorroAgregar() {
         Categoria categoria = cb_tipo_ingreso.getValue();
         String monto = txf_monto_ingreso.getText();
-        return ahorroServicio.guardarAhorro(categoria, SesionServicio.getUsuarioActual().getId_usuario(), monto) && usuarioServicio.aumentarBalanceUsuario(SesionServicio.getUsuarioActual().getId_usuario(), monto);
+        return ahorroServicio.guardarAhorro(categoria, SesionServicio.getUsuarioActual().getId_usuario(), monto);
     }
 
     private boolean enviarDatosAlServicioIngresoModificar() {

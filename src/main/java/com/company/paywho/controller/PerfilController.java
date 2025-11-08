@@ -38,7 +38,6 @@ public class PerfilController implements Initializable {
         txf_nombre.setText(usuarioActual.getNombre());
         txf_apellido.setText(usuarioActual.getApellido());
         txf_correo_electronico.setText(usuarioActual.getCorreo_electronico());
-        txf_balance_actual.setText(String.valueOf(usuarioActual.getSaldo()));
         txf_porcentaje_ahorro.setText(String.valueOf(usuarioActual.getPorcentaje_ahorro()));
         img_perfil.setImage(Utilidades.obtenerImagenPerfil(usuarioActual.getRuta_img()));
     }
@@ -86,9 +85,8 @@ public class PerfilController implements Initializable {
         String nuevoNombre = txf_nombre.getText();
         String nuevoApellido = txf_apellido.getText();
         String nuevoCorreoElectronico = txf_correo_electronico.getText();
-        String nuevoBalance = txf_balance_actual.getText();
         String porcentajeCadena = txf_porcentaje_ahorro.getText();
-        return usuarioServicio.editarUsuario(nuevoNombre, nuevoApellido, nuevoCorreoElectronico, nuevoBalance, SesionServicio.getUsuarioActual().getId_usuario(), porcentajeCadena);
+        return usuarioServicio.editarUsuario(nuevoNombre, nuevoApellido, nuevoCorreoElectronico, SesionServicio.getUsuarioActual().getId_usuario(), porcentajeCadena);
     }
 
     @FXML
@@ -99,8 +97,6 @@ public class PerfilController implements Initializable {
     private TextField txf_nombre;
     @FXML
     private TextField txf_apellido;
-    @FXML
-    private TextField txf_balance_actual;
     @FXML
     private PasswordField pf_contrasena_actual;
     @FXML

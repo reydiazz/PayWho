@@ -17,19 +17,17 @@ public class Usuario {
     private String apellido;
     private String correo_electronico;
     private String contrasena;
-    private double saldo;
     private String ruta_img;
     private double porcentaje_ahorro;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, String correo_electronico, String contrasena, long saldo, String ruta_img, double porcentaje_ahorro) {
+    public Usuario(String nombre, String apellido, String correo_electronico, String contrasena, String ruta_img, double porcentaje_ahorro) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo_electronico = correo_electronico;
         this.contrasena = contrasena;
-        this.saldo = saldo;
         this.ruta_img = ruta_img;
         this.porcentaje_ahorro = porcentaje_ahorro;
     }
@@ -73,19 +71,7 @@ public class Usuario {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
-    public void setSaldo(long saldo) {
-        this.saldo = saldo;
-    }
-
+    
     public String getNombreApellido() {
         return nombre + " " + apellido;
     }

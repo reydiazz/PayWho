@@ -21,13 +21,8 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
 
     @Transactional
     @Modifying
-    @Query("UPDATE Usuario u SET u.saldo = :saldo WHERE u.id_usuario = :id_usuario")
-    public void editarSaldoUsuario(@Param("saldo") double saldo, @Param("id_usuario") long id_usuario);
-
-    @Transactional
-    @Modifying
-    @Query("UPDATE Usuario u SET u.nombre = :nombre, u.apellido = :apellido, u.correo_electronico = :correo_electronico, u.saldo = :saldo, u.porcentaje_ahorro = :porcentaje_ahorro WHERE u.id_usuario = :id_usuario")
-    public void editarUsuario(@Param("nombre") String nombre, @Param("apellido") String apellido, @Param("correo_electronico") String correo_electronico, @Param("saldo") double saldo, @Param("id_usuario") long id_usuario, @Param("porcentaje_ahorro") double porcentaje_ahorro);
+    @Query("UPDATE Usuario u SET u.nombre = :nombre, u.apellido = :apellido, u.correo_electronico = :correo_electronico, u.porcentaje_ahorro = :porcentaje_ahorro WHERE u.id_usuario = :id_usuario")
+    public void editarUsuario(@Param("nombre") String nombre, @Param("apellido") String apellido, @Param("correo_electronico") String correo_electronico, @Param("id_usuario") long id_usuario, @Param("porcentaje_ahorro") double porcentaje_ahorro);
 
     @Transactional
     @Modifying

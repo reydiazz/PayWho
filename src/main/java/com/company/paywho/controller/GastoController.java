@@ -115,7 +115,7 @@ public class GastoController implements Initializable {
     private boolean enviarDatosAlServicioGastoAgregar() {
         Categoria categoria = cb_tipo_gasto.getValue();
         String monto = txf_monto_gasto.getText();
-        return gastoServicio.guardarGasto(categoria, SesionServicio.getUsuarioActual().getId_usuario(), monto) && usuarioServicio.disminuirBalanceUsuario(SesionServicio.getUsuarioActual().getId_usuario(), monto);
+        return gastoServicio.guardarGasto(categoria, SesionServicio.getUsuarioActual().getId_usuario(), monto);
     }
 
     private boolean enviarDatosAlServicioGastoModificar() {
