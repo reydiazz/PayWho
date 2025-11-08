@@ -50,4 +50,13 @@ public interface IngresoRepositorio extends JpaRepository<Ingreso, Long> {
     """, nativeQuery = true)
     public Double obtenerSumaSemanaAnterior(@Param("id_usuario") Long idUsuario);
 
+    @Query(value = """
+    SELECT substr(fecha, 4, 2) AS mes, SUM(monto)
+    FROM Ingreso
+    WHERE id_usuario = :id_usuario
+    GROUP BY substr(fecha, 4, 2)
+    ORDER BY mes
+""", nativeQuery = true)
+    List<Object[]> obtenerIngresosMensuales(@Param("id_usuario") Long idUsuario);
+
 }

@@ -54,4 +54,18 @@ public class AhorroServicio {
         }
     }
 
+    public Double getSumaTotalPorUsuario(long usuarioId) {
+        Double total = ahorroRepositorio.obtenerSumaTotalPorUsuario(usuarioId);
+        return total != null ? total : 0.0;
+    }
+
+    public Long getCantidadAhorrosPorUsuario(Long usuarioId) {
+        Long cantidad = ahorroRepositorio.contarTodosLosAhorros(usuarioId);
+        return cantidad != null ? cantidad : 0L;
+    }
+
+    public List<Object[]> obtenerAhorrosMensuales(Long usuarioId) {
+        return ahorroRepositorio.obtenerAhorrosMensuales(usuarioId);
+    }
+
 }

@@ -127,4 +127,8 @@ public class IngresoServicio {
 
         return ((actual - anterior) / anterior) * 100;
     }
+
+    public List<Object[]> obtenerIngresosMensuales(Long usuarioId) {
+        return ingresoRepositorio.obtenerIngresosMensuales(usuarioId);
+    }
 }

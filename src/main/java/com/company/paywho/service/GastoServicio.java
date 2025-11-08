@@ -75,4 +75,38 @@ public class GastoServicio {
         }
         return true;
     }
+
+    public Double getSumaTotalPorUsuario(long usuarioId) {
+        Double total = gastoRepositorio.obtenerSumaTotalPorUsuario(usuarioId);
+        return total != null ? total : 0.0;
+    }
+
+    public Long getCantidadGastosPorUsuario(Long usuarioId) {
+        Long cantidad = gastoRepositorio.contarTodosLosGastos(usuarioId);
+        return cantidad != null ? cantidad : 0L;
+    }
+
+    public Long getCantidadUltimaSemana(Long usuarioId) {
+        Long cantidad = gastoRepositorio.contarGastoUltimaSemana(usuarioId);
+        return cantidad != null ? cantidad : 0L;
+    }
+
+    public Double calcularPorcentajeCambio(Long idUsuario) {
+        Double actual = gastoRepositorio.obtenerSumaSemanaActual(idUsuario);
+        Double anterior = gastoRepositorio.obtenerSumaSemanaAnterior(idUsuario);
+
+        actual = (actual != null) ? actual : 0.0;
+        anterior = (anterior != null && anterior != 0) ? anterior : 0.0;
+
+        if (anterior == 0) {
+            // Evitar división por cero
+            return actual > 0 ? 100.0 : 0.0;
+        }
+
+        return ((actual - anterior) / anterior) * 100;
+    }
+
+    public List<Object[]> obtenerGastosMensuales(Long usuarioId) {
+        return gastoRepositorio.obtenerGastosMensuales(usuarioId);
+    }
 }

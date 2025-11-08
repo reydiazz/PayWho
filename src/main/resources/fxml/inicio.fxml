@@ -74,7 +74,7 @@
                                                       <Font name="Montserrat Bold" size="25.0" />
                                                    </font>
                                                 </Label>
-                                                <Label prefHeight="52.0" prefWidth="196.0" text="4 numero de gastos">
+                                                <Label fx:id="lbl_numero_gasto" prefHeight="52.0" prefWidth="196.0" text="X numero de gastos">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -85,7 +85,7 @@
                                     </HBox>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <Label prefHeight="100.0" prefWidth="314.0" text="\$500">
+                                          <Label fx:id="lbl_monto_gasto" prefHeight="100.0" prefWidth="314.0" text="\$XXX">
                                              <font>
                                                 <Font name="Segoe UI Bold" size="51.0" />
                                              </font>
@@ -97,7 +97,7 @@
                                     </HBox>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <Label prefHeight="48.0" prefWidth="163.0" text="+7.2%">
+                                          <Label fx:id="lbl_porcentaje_semanal_gasto" prefHeight="26.0" prefWidth="201.0" text="+XX.XX%">
                                              <graphic>
                                                 <Group>
                                                    <children>
@@ -109,7 +109,7 @@
                                                 <Font size="17.0" />
                                              </font>
                                           </Label>
-                                          <Label prefHeight="48.0" prefWidth="254.0" text="+1 esta semana">
+                                          <Label fx:id="lbl_numero_monto_semanal_gasto" prefHeight="48.0" prefWidth="254.0" text="+X esta semana">
                                              <font>
                                                 <Font size="17.0" />
                                              </font>
@@ -162,7 +162,7 @@
                                                       <Font name="Montserrat Bold" size="25.0" />
                                                    </font>
                                                 </Label>
-                                                <Label prefHeight="52.0" prefWidth="196.0" text="15% de cada ingreso">
+                                                <Label fx:id="lbl_porcentaje_ahorro" prefHeight="52.0" prefWidth="196.0" text="XX% de cada ingreso">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -173,7 +173,7 @@
                                     </HBox>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <Label prefHeight="76.0" prefWidth="314.0" text="\$100">
+                                          <Label fx:id="lbl_monto_ahorro" prefHeight="76.0" prefWidth="314.0" text="\$XXX">
                                              <font>
                                                 <Font name="Segoe UI Bold" size="51.0" />
                                              </font>
@@ -188,7 +188,7 @@
                                           <Insets left="20.0" right="20.0" top="10.0" />
                                        </padding>
                                        <children>
-                                          <ProgressBar prefHeight="30.0" prefWidth="267.0" progress="0.0" />
+                                          <ProgressBar fx:id="pb_meta_ahorro" prefHeight="30.0" prefWidth="267.0" progress="0.0" />
                                           <Label alignment="CENTER" prefHeight="30.0" prefWidth="35.0">
                                              <graphic>
                                                 <Group>
@@ -243,7 +243,7 @@
                                                       <Font name="Montserrat Bold" size="25.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="lbl_numero_ingreso" prefHeight="52.0" prefWidth="196.0" text="9 numero de ingresos" textFill="WHITE">
+                                                <Label fx:id="lbl_numero_ingreso" prefHeight="52.0" prefWidth="196.0" text="X numero de ingresos" textFill="WHITE">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
@@ -254,7 +254,7 @@
                                     </HBox>
                                     <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <Label fx:id="lbl_monto_ingreso" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="314.0" text="\$700" textFill="WHITE">
+                                          <Label fx:id="lbl_monto_ingreso" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="314.0" text="\$XXX" textFill="WHITE">
                                              <font>
                                                 <Font name="Segoe UI Bold" size="51.0" />
                                              </font>
@@ -266,7 +266,7 @@
                                     </HBox>
                                     <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <Label fx:id="lbl_porcentaje_semanal" prefHeight="48.0" prefWidth="207.0" text="+15.65%" textFill="WHITE">
+                                          <Label fx:id="lbl_porcentaje_semanal_ingreso" prefHeight="48.0" prefWidth="207.0" text="+XX.XX%" textFill="WHITE">
                                              <graphic>
                                                 <Group>
                                                    <children>
@@ -278,7 +278,7 @@
                                                 <Font size="17.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="lbl_numero_monto_semanal" prefHeight="48.0" prefWidth="254.0" text="+4 esta semana" textFill="WHITE">
+                                          <Label fx:id="lbl_numero_monto_semanal_ingreso" prefHeight="48.0" prefWidth="254.0" text="+X esta semana" textFill="WHITE">
                                              <font>
                                                 <Font size="17.0" />
                                              </font>
@@ -321,12 +321,12 @@
                                           <Insets top="20.0" />
                                        </padding>
                                     </Label>
-                                    <StackedBarChart fx:id="sbc_barras">
+                                    <StackedBarChart fx:id="sbc_barras" animated="false">
                                       <xAxis>
                                         <CategoryAxis side="BOTTOM" />
                                       </xAxis>
                                       <yAxis>
-                                        <NumberAxis side="LEFT" />
+                                        <NumberAxis prefHeight="196.0" prefWidth="24.0" side="LEFT" />
                                       </yAxis>
                                     </StackedBarChart>
                                  </children>
@@ -339,7 +339,7 @@
                                  <children>
                                     <VBox prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <Label prefHeight="57.0" prefWidth="348.0" text="Balance actual" VBox.vgrow="ALWAYS">
+                                          <Label prefHeight="57.0" prefWidth="306.0" text="Balance actual" VBox.vgrow="ALWAYS">
                                              <font>
                                                 <Font name="Montserrat Bold" size="25.0" />
                                              </font>
@@ -347,7 +347,7 @@
                                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                              </padding>
                                           </Label>
-                                          <Label prefHeight="62.0" prefWidth="337.0" text="\$250" VBox.vgrow="ALWAYS">
+                                          <Label fx:id="lbl_balance_actual" prefHeight="80.0" prefWidth="306.0" text="\$XXX" VBox.vgrow="ALWAYS">
                                              <font>
                                                 <Font name="Segoe UI Bold" size="51.0" />
                                              </font>
