@@ -93,8 +93,8 @@ public class VentanaController implements Initializable {
 
     public void inicializarAutenticacion() {
         SesionServicio.sesionActivaProperty().addListener((observado, antiguoValor, nuevoValor) -> {
-            Usuario usuarioActual = usuarioServicio.obtenerUsuarioID(SesionServicio.getUsuarioActual().getId_usuario());
             if (nuevoValor) {
+                Usuario usuarioActual = usuarioServicio.obtenerUsuarioID(SesionServicio.getUsuarioActual().getId_usuario());
                 Utilidades.visibilidadComponentes(obtenerGrupoComponentesEliminarLogin(), true);
                 establecerEscena(ArchivoServicio.getInstancia().getRuta("inicio.fxml"));
                 actualizarEtiquetas(usuarioActual.getNombreApellido(), "Bienvenido de nuevo, " + usuarioActual.getNombre(), "Un paso más hacia tus metas financieras.");

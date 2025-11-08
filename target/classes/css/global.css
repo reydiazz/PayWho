@@ -153,11 +153,11 @@
 }
 
 .default-color0.chart-bar {
-    -fx-bar-fill: #950000;
+    -fx-bar-fill: #567E55;
 }
 
 .default-color1.chart-bar {
-    -fx-bar-fill: #567E55;
+    -fx-bar-fill: #950000;
 }
 
 .default-color2.chart-bar {

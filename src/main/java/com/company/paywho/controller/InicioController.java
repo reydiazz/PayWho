@@ -150,7 +150,6 @@ public class InicioController implements Initializable {
                 }
                 Double monto = ((Number) fila[1]).doubleValue();
                 mapa.put(mes, monto);
-                System.out.println("Mes limpio: " + mes + " -> " + monto);
             }
         }
         return mapa;
@@ -162,8 +161,6 @@ public class InicioController implements Initializable {
     private PieChart pc_pastel;
     @FXML
     private Label lbl_balance_actual;
-
-    // Ingresos
     @FXML
     private Label lbl_numero_ingreso;
     @FXML
@@ -172,8 +169,6 @@ public class InicioController implements Initializable {
     private Label lbl_porcentaje_semanal_ingreso;
     @FXML
     private Label lbl_numero_monto_semanal_ingreso;
-
-    //Gastos
     @FXML
     private Label lbl_numero_gasto;
     @FXML
@@ -182,8 +177,6 @@ public class InicioController implements Initializable {
     private Label lbl_porcentaje_semanal_gasto;
     @FXML
     private Label lbl_numero_monto_semanal_gasto;
-
-    //Ahorros
     @FXML
     private Label lbl_porcentaje_ahorro;
     @FXML
