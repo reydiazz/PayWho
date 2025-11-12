@@ -63,7 +63,7 @@ public class IngresoController implements Initializable {
     }
 
     private void inicializarOpciones() {
-        List<Categoria> tipos = categoriaServicio.obtenerCategoriasSegunTipo(SesionServicio.getUsuarioActual().getId_usuario(), "Ingreso");
+        List<Categoria> tipos = categoriaServicio.obtenerCategoriasSegunTipo(SesionServicio.getUsuarioActual().getId_usuario(), "INGRESO");
         ObservableList<Categoria> opciones = FXCollections.observableArrayList(tipos);
         cb_tipo_ingreso.setItems(opciones);
     }

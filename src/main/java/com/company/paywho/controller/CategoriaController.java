@@ -136,10 +136,10 @@ public class CategoriaController implements Initializable {
             String tipoCategoria = categoriaElegida.getTipo();
             txf_nombre.setText(nombreCategoria);
             switch (tipoCategoria) {
-                case "Ingreso":
+                case "INGRESO":
                     cb_categoria.getSelectionModel().select(0);
                     break;
-                case "Gasto":
+                case "GASTO":
                     cb_categoria.getSelectionModel().select(1);
                     break;
             }
@@ -147,7 +147,7 @@ public class CategoriaController implements Initializable {
     }
 
     private void inicializarOpcionesCategoria() {
-        cb_categoria.setItems(FXCollections.observableArrayList("Ingreso", "Gasto"));
+        cb_categoria.setItems(FXCollections.observableArrayList("INGRESO", "GASTO"));
     }
 
     private void actualizarTabla() {

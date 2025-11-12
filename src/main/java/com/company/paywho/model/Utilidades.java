@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -59,6 +60,24 @@ public class Utilidades {
             }
         }
         return lista;
+    }
+
+    public static boolean comprobarFormulario(Parent parent) {
+        for (Node node : parent.getChildrenUnmodifiable()) {
+            // Si el nodo es un TextField, verificar si está vacío
+            if (node instanceof TextField) {
+                TextField textField = (TextField) node;
+                if (textField.getText().trim().isEmpty()) {
+                    return false; // algún campo está vacío
+                }
+            } // Si el nodo es un contenedor (VBox, HBox, etc.), llamar recursivamente
+            else if (node instanceof Parent) {
+                if (!comprobarFormulario((Parent) node)) {
+                    return false;
+                }
+            }
+        }
+        return true; // todos los campos están completos
     }
 
     public static String sha256(final String base) {

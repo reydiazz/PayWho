@@ -60,7 +60,7 @@ public class GastoController implements Initializable {
     }
 
     private void inicializarOpciones() {
-        List<Categoria> tipos = categoriaServicio.obtenerCategoriasSegunTipo(SesionServicio.getUsuarioActual().getId_usuario(), "Gasto");
+        List<Categoria> tipos = categoriaServicio.obtenerCategoriasSegunTipo(SesionServicio.getUsuarioActual().getId_usuario(), "GASTO");
         ObservableList<Categoria> opciones = FXCollections.observableArrayList(tipos);
         cb_tipo_gasto.setItems(opciones);
     }

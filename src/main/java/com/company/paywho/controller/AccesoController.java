@@ -12,19 +12,19 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class AccesoController {
-
+    
     private UsuarioServicio usuarioServicio;
-
+    
     @Autowired
     public AccesoController(UsuarioServicio usuarioServicio) {
         this.usuarioServicio = usuarioServicio;
     }
-
+    
     @FXML
     public void initialize() {
         inicializarBotones();
     }
-
+    
     private void inicializarBotones() {
         btn_iniciar_sesion.setOnAction(evento -> {
             iniciarSesion();
@@ -39,37 +39,40 @@ public class AccesoController {
             mostrarPlantillaLogin();
         });
     }
-
+    
     private void iniciarSesion() {
         if (!enviarDatosEsperarRespuestaServicioLogin()) {
             Utilidades.crearModal("Acceso denegado.");
         }
     }
-
+    
     private void registrarUsuario() {
-        if (disponibilidadCorreoElectronico()) {
-            Utilidades.crearModal("Correo electronico ya registrado.");
-        } else {
-            if (enviarDatosEsperarRespuestaServicioRegistro()) {
-                Utilidades.crearModal("Usuario registrado");
+        if (Utilidades.comprobarFormulario(vb_registrarse)) {
+            if (disponibilidadCorreoElectronico()) {
+                Utilidades.crearModal("Correo electronico ya registrado.");
             } else {
-                Utilidades.crearModal("Complete el formulario correctamente.");
+                if (enviarDatosEsperarRespuestaServicioRegistro()) {
+                    Utilidades.crearModal("Usuario registrado");
+                } else {
+                    Utilidades.crearModal("Complete el formulario correctamente.");
+                }
             }
+        } else {
+            Utilidades.crearModal("Complete los campos.");
         }
-
     }
-
+    
     private boolean disponibilidadCorreoElectronico() {
         String correo = txf_correo_registrar.getText();
         return usuarioServicio.validarCorreoElectronico(correo);
     }
-
+    
     private boolean enviarDatosEsperarRespuestaServicioLogin() {
         String correo = txf_correo.getText();
         String contrasena = pf_contrasena.getText();
         return usuarioServicio.validarUsuario(correo, contrasena);
     }
-
+    
     private boolean enviarDatosEsperarRespuestaServicioRegistro() {
         String nombre = txf_nombre_registrar.getText();
         String apellido = txf_apellido_registrar.getText();
@@ -77,17 +80,17 @@ public class AccesoController {
         String contrasena = pf_contrasena_registrar.getText();
         return usuarioServicio.registrarUsuario(nombre, apellido, correo_electronico, contrasena);
     }
-
+    
     private void mostrarPlantillaRegistro() {
         Utilidades.visibilidadComponente(vb_iniciar_sesion, false);
         Utilidades.visibilidadComponente(vb_registrarse, true);
     }
-
+    
     private void mostrarPlantillaLogin() {
         Utilidades.visibilidadComponente(vb_registrarse, false);
         Utilidades.visibilidadComponente(vb_iniciar_sesion, true);
     }
-
+    
     @FXML
     private Button btn_logear;
     @FXML
@@ -112,5 +115,5 @@ public class AccesoController {
     private VBox vb_iniciar_sesion;
     @FXML
     private VBox vb_registrarse;
-
+    
 }

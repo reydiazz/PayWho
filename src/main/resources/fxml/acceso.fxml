@@ -118,7 +118,7 @@
                               <PasswordField fx:id="pf_contrasena_registrar" prefHeight="107.0" prefWidth="440.0" />
                            </children>
                         </VBox>
-                        <Button fx:id="btn_registrarse" mnemonicParsing="false" prefHeight="54.0" prefWidth="215.0" text="Registrarse">
+                        <Button fx:id="btn_registrarse" mnemonicParsing="false" prefHeight="40.0" prefWidth="215.0" text="Registrarse">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
