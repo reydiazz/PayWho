@@ -1,12 +1,19 @@
 package com.company.paywho.repository;
 
 import com.company.paywho.entity.Ahorro;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface AhorroRepositorio extends JpaRepository<Ahorro, Long> {
+
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM Ahorro a WHERE a.categoria.id = :idCategoria")
+    void deleteByCategoria(@Param("idCategoria") Long idCategoria);
 
     @Query("SELECT a FROM Ahorro a WHERE a.id_usuario =:id_usuario")
     public List<Ahorro> buscarAhorroID(@Param("id_usuario") long id_usuario);

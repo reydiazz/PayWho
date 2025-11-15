@@ -81,9 +81,9 @@ public class InicioController implements Initializable {
     private void inicializarGraficoPastel() {
         lbl_balance_actual.setText("$" + String.valueOf(ingresoServicio.getSumaTotalPorUsuario(SesionServicio.getUsuarioActual().getId_usuario()) + ahorroServicio.getSumaTotalPorUsuario(SesionServicio.getUsuarioActual().getId_usuario()) - gastoServicio.getSumaTotalPorUsuario(SesionServicio.getUsuarioActual().getId_usuario())));
         ObservableList<PieChart.Data> datos = FXCollections.observableArrayList(
-                new PieChart.Data("Ingresos", ingresoServicio.getCantidadIngresosPorUsuario(SesionServicio.getUsuarioActual().getId_usuario())),
-                new PieChart.Data("Gastos", gastoServicio.getCantidadGastosPorUsuario(SesionServicio.getUsuarioActual().getId_usuario())),
-                new PieChart.Data("Ahorros", ahorroServicio.getCantidadAhorrosPorUsuario(SesionServicio.getUsuarioActual().getId_usuario()))
+                new PieChart.Data("Ingresos", ingresoServicio.getSumaTotalPorUsuario(SesionServicio.getUsuarioActual().getId_usuario())),
+                new PieChart.Data("Gastos", gastoServicio.getSumaTotalPorUsuario(SesionServicio.getUsuarioActual().getId_usuario())),
+                new PieChart.Data("Ahorros", ahorroServicio.getSumaTotalPorUsuario(SesionServicio.getUsuarioActual().getId_usuario()))
         );
         pc_pastel.setLabelsVisible(false);
         pc_pastel.setData(datos);

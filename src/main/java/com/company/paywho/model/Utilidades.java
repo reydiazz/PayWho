@@ -163,4 +163,8 @@ public class Utilidades {
         return fecha.format(formato);
     }
 
+    public static boolean validar(String texto) {
+        return texto.matches(".+@.+\\..+");
+    }
+
 }

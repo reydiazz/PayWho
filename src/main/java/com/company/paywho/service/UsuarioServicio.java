@@ -44,9 +44,13 @@ public class UsuarioServicio {
     public boolean registrarUsuario(String nombre, String apellido, String correo_electronico, String contrasena) {
         try {
             String contrasenaHash = Utilidades.sha256(contrasena);
-            Usuario usuario = new Usuario(nombre, apellido, correo_electronico, contrasenaHash, "SIN DEFINIR", 0);
-            usuarioRepositorio.save(usuario);
-            validarUsuario(correo_electronico, contrasena);
+            if (Utilidades.validar(correo_electronico)) {
+                Usuario usuario = new Usuario(nombre, apellido, correo_electronico, contrasenaHash, "SIN DEFINIR", 0);
+                usuarioRepositorio.save(usuario);
+                validarUsuario(correo_electronico, contrasena);
+            } else {
+                return false;
+            }
         } catch (Exception e) {
             return false;
         }

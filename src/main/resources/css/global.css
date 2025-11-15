@@ -139,17 +139,14 @@
 
 .default-color0.chart-pie {
     -fx-pie-color: #567E55;
-    -fx-border-width: 3;
 }
 
 .default-color1.chart-pie {
     -fx-pie-color: #950000;
-    -fx-border-width: 3;
 }
 
 .default-color2.chart-pie {
     -fx-pie-color: #04156E;
-    -fx-border-width: 3;
 }
 
 .default-color0.chart-bar {

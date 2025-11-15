@@ -11,6 +11,11 @@ import org.springframework.data.repository.query.Param;
 
 public interface GastoRepositorio extends JpaRepository<Gasto, Long> {
 
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM Gasto g WHERE g.categoria.id = :idCategoria")
+    void deleteByCategoria(@Param("idCategoria") Long idCategoria);
+
     @Transactional
     @Modifying
     @Query("UPDATE Gasto g SET g.categoria = :categoria, g.monto = :monto WHERE g.id_gasto = :id_gasto")

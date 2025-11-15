@@ -40,7 +40,9 @@ public class AhorroServicio {
                 double montoAhorro = monto * montoSegunPorcentaje;
                 if (montoAhorro >= 0) {
                     Ahorro ahorro = new Ahorro(categoria, Utilidades.obtenerFechaActual(), id_usuario, montoAhorro);
-                    metaServicio.aumentarMontoMetaAhorro(id_usuario, metaServicio.obtenerMetaAhorro(id_usuario).getFirst().getMonto_actual() + montoAhorro);
+                    if (!metaServicio.obtenerMetaAhorro(id_usuario).isEmpty()) {
+                        metaServicio.aumentarMontoMetaAhorro(id_usuario, metaServicio.obtenerMetaAhorro(id_usuario).getFirst().getMonto_actual() + montoAhorro);
+                    }
                     ahorroRepositorio.save(ahorro);
                     return true;
                 } else {

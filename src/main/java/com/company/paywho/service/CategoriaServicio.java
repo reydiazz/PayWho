@@ -1,7 +1,10 @@
 package com.company.paywho.service;
 
 import com.company.paywho.entity.Categoria;
+import com.company.paywho.repository.AhorroRepositorio;
 import com.company.paywho.repository.CategoriaRepositorio;
+import com.company.paywho.repository.GastoRepositorio;
+import com.company.paywho.repository.IngresoRepositorio;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +14,16 @@ import org.springframework.stereotype.Service;
 public class CategoriaServicio {
 
     private CategoriaRepositorio categoriaRepositorio;
+    private IngresoRepositorio ingresoRepositorio;
+    private GastoRepositorio gastoRepositorio;
+    private AhorroRepositorio ahorroRepositorio;
 
     @Autowired
-    public CategoriaServicio(CategoriaRepositorio categoriaRepositorio) {
+    public CategoriaServicio(CategoriaRepositorio categoriaRepositorio, IngresoRepositorio ingresoRepositorio, GastoRepositorio gastoRepositorio, AhorroRepositorio ahorroRepositorio) {
         this.categoriaRepositorio = categoriaRepositorio;
+        this.ingresoRepositorio = ingresoRepositorio;
+        this.gastoRepositorio = gastoRepositorio;
+        this.ahorroRepositorio = ahorroRepositorio;
     }
 
     public boolean comprobarDisponibilidadNombreCategoria(long idCategoria, String nombre, String tipo) {
@@ -49,6 +58,9 @@ public class CategoriaServicio {
     public boolean borrarCategoria(Categoria categoria) {
         try {
             if (categoria != null) {
+                ingresoRepositorio.deleteByCategoria(categoria.getId_categoria());
+                ahorroRepositorio.deleteByCategoria(categoria.getId_categoria());
+                gastoRepositorio.deleteByCategoria(categoria.getId_categoria());
                 categoriaRepositorio.delete(categoria);
             } else {
                 return false;
